@@ -21,7 +21,7 @@
         var name = document.getElementById('name').value;
         var message = document.getElementById('message').value;
 
-        fetch('https://script.google.com/macros/s/AKfycbwbVMKkxiU50FLmcrZGOjrSD_kOBw3Ttula3-pWD-Usrb6817VgCaJWBqJwmz4F798P/exec', {
+        fetch('https://script.google.com/macros/s/AKfycbzeu6N9D83Aj7dG7q8HO9-0O4xyU8sCH0-ULn54UMF32_CEJrEAJ3FaMcW3iesqoD4w/exec', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
