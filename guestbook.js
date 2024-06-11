@@ -1,20 +1,4 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <base target="_top">
-    <link rel="stylesheet" href="styles.html">
-  </head>
-  <body>
-    <div class="container">
-      <h1>Guestbook</h1>
-      <form id="guestbook-form">
-        <input type="text" id="name" placeholder="Your Name" required>
-        <textarea id="message" placeholder="Your Message" required></textarea>
-        <button type="submit">Submit</button>
-      </form>
-      <div id="guestbook-entries"></div>
-    </div>
-    <script>
+
       document.getElementById('guestbook-form').addEventListener('submit', function(event) {
         event.preventDefault();
 
@@ -42,6 +26,4 @@
         })
         .catch(error => console.error('Error:', error));
       });
-    </script>
-  </body>
-</html>
+   
