@@ -63,6 +63,10 @@
     </style>
 </head>
 <body>
+    <audio id="myAudio" controls autoplay loop>
+    <source src="popipo.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
 <div class="container">
 
     <section>
@@ -70,5 +74,28 @@
         <img src="kitty.png" alt="고양이">
         <p>This is the content of section 1.</p>
     </section>
-  
+  <script>
+    // Music
+    var audio = document.getElementById("myAudio");
+
+    // Random background color
+    function getRandomColor() {
+        var letters = "0123456789ABCDEF";
+        var color = "#";
+        for (var i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+
+    function changeBackgroundColor() {
+        var newColor = getRandomColor();
+        document.body.style.backgroundColor = newColor;
+    }
+
+    // Change background color every 5 seconds
+    setInterval(changeBackgroundColor, 5000);
+</script>
+
 </body>
+</html>
