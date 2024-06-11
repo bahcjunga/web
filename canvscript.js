@@ -9,13 +9,9 @@ canvas.height = window.innerHeight * 0.8;
 
 let painting = false;
 
-
-    
-
 function startPosition(e) {
     painting = true;
     draw(e);
-    
 }
 
 function endPosition() {
