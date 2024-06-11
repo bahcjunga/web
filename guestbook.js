@@ -5,7 +5,7 @@
     var name = document.getElementById('name').value;
     var message = document.getElementById('message').value;
 
-    var url = 'https://script.google.com/macros/s/AKfycby_lGOaP6s241-4PKi92FmR-urCo8ifSKCLgneOZod-c-7mv7v6tE8UlZE36IMstYLqjQ/exec';  // 여기서 YOUR_SCRIPT_URL을 실제 URL로 변경합니다.
+    var url = 'https://script.google.com/macros/s/AKfycbzHaVpjrB5eITALDzHM9V6gih7Hyq9yQ7sfNrdtJN2yaH0GIP17x5M0aN9VYrNpTnONTg/exec';  // 여기서 YOUR_SCRIPT_URL을 실제 URL로 변경합니다.
 
     fetch(url, {
       method: 'POST',
