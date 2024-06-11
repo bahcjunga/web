@@ -15,7 +15,7 @@ let painting = false;
 function startPosition(e) {
     painting = true;
     draw(e);
-    e.preventDefault(); // 스크롤 이벤트 방지
+    
 }
 
 function endPosition() {
