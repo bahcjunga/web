@@ -9,6 +9,9 @@ canvas.height = window.innerHeight * 0.8;
 
 let painting = false;
 
+
+    
+
 function startPosition(e) {
     painting = true;
     draw(e);
@@ -27,20 +30,16 @@ function draw(e) {
     ctx.lineCap = 'round';
     ctx.strokeStyle = colorPicker.value;
 
-    // 터치 이벤트에서의 좌표 처리
-    const touchX = e.touches[0].clientX - canvas.offsetLeft;
-    const touchY = e.touches[0].clientY - canvas.offsetTop;
-
-    ctx.lineTo(touchX, touchY);
+    ctx.lineTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
     ctx.stroke();
     ctx.beginPath();
-    ctx.moveTo(touchX, touchY);
+    ctx.moveTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
 }
 
-canvas.addEventListener('touchstart', startPosition);
-canvas.addEventListener('touchend', endPosition);
-canvas.addEventListener('touchmove', draw);
+canvas.addEventListener('mousedown', startPosition);
+canvas.addEventListener('mouseup', endPosition);
+canvas.addEventListener('mousemove', draw);
 
 clearButton.addEventListener('click', () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-});
+}); 
