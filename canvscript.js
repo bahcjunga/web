@@ -12,6 +12,7 @@ let painting = false;
 function startPosition(e) {
     painting = true;
     draw(e);
+    e.preventDefault(); // 스크롤 이벤트 방지
 }
 
 function endPosition() {
@@ -26,10 +27,14 @@ function draw(e) {
     ctx.lineCap = 'round';
     ctx.strokeStyle = colorPicker.value;
 
-    ctx.lineTo(e.touches[0].clientX - canvas.offsetLeft, e.touches[0].clientY - canvas.offsetTop);
+    // 터치 이벤트에서의 좌표 처리
+    const touchX = e.touches[0].clientX - canvas.offsetLeft;
+    const touchY = e.touches[0].clientY - canvas.offsetTop;
+
+    ctx.lineTo(touchX, touchY);
     ctx.stroke();
     ctx.beginPath();
-    ctx.moveTo(e.touches[0].clientX - canvas.offsetLeft, e.touches[0].clientY - canvas.offsetTop);
+    ctx.moveTo(touchX, touchY);
 }
 
 canvas.addEventListener('touchstart', startPosition);
