@@ -1,18 +1,42 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guestbook</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
     <h1>Guestbook</h1>
     <form id="guestbook-form">
-        <input type="text" id="name" placeholder="Your Name" required>
-        <textarea id="message" placeholder="Your Message" required></textarea>
+        <input type="text" id="name" placeholder="Your Name" required><br>
+        <textarea id="message" placeholder="Your Message" required></textarea><br>
         <button type="submit">Submit</button>
     </form>
-    <div id="guestbook-entries"></div>
-    <script src="guestbook.js"></script>
+
+    <script>
+        document.getElementById('guestbook-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            var name = document.getElementById('name').value;
+            var message = document.getElementById('message').value;
+
+            fetch('https://script.google.com/macros/s/AKfycbxLXe3T1CRbyE1KhyxofOYfI-RHVwHpScZ8MKQgXjxLKQfliX88RbXAK3EaNtiaK21J/exec', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'name=' + encodeURIComponent(name) + '&message=' + encodeURIComponent(message)
+            })
+            .then(response => response.text())
+            .then(data => {
+                if (data === 'Success') {
+                    alert('Message submitted successfully!');
+                    document.getElementById('guestbook-form').reset();
+                } else {
+                    console.error('Error:', data);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
 </body>
 </html>
