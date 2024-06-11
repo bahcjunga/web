@@ -4,7 +4,7 @@ document.getElementById('guestbook-form').addEventListener('submit', function(ev
     var name = document.getElementById('name').value;
     var message = document.getElementById('message').value;
 
-    fetch('https://script.google.com/macros/s/AKfycbzL65Xa2BcBDcF07CAp40tMGf5mGLnK7NRaNGfa4D7gI32mLEhzYnAGSZ5zSdHk0NVj0Q/exec', {
+    fetch('https://script.google.com/macros/s/AKfycbySWuxuoYZw2dkMcpStKAKItC80w--Cw5TILZLrIdcGawjlNSFnFWQG95LCqBI2tdSE/exec', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
