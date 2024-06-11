@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>그림판</title>
+    <link rel="stylesheet" href="canvastyles.css">
+</head>
+<body>
+    <h1>그림판</h1>
+    <div id="toolbar">
+        <label for="colorPicker">Color: </label>
+        <input type="color" id="colorPicker">
+        <label for="brushSize">Brush Size: </label>
+        <input type="range" id="brushSize" min="1" max="10" value="5">
+        <button id="clearButton">Clear</button>
+    </div>
+    <canvas id="paintCanvas"></canvas>
+    <script src="canvscript.js"></script>
+</body>
+</html>
