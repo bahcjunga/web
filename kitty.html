@@ -104,10 +104,11 @@
 
     <section>
         <h2>Section 1</h2>
-        <img src="kitty.png" alt="고양이">
+        <img src="kitty.png" alt="고양이" id="kitty">
         <p>This is the content of section 1.</p>
         <div class="custom-cursor" id="cursor">
         <script>
+        
             const cursor = document.getElementById("cursor");
         
             // 마우스 움직임에 따라 커서 위치 업데이트
@@ -115,7 +116,29 @@
               cursor.style.left = `${e.clientX}px`;
               cursor.style.top = `${e.clientY}px`;
             });
+            
           </script>
+
+<script>
+    const image = document.getElementById("kitty");
+
+    // 드래그 방지
+    image.addEventListener("dragstart", (event) => {
+      event.preventDefault();
+    });
+
+    // 우클릭 방지 (컨텍스트 메뉴 열기 방지)
+    image.addEventListener("contextmenu", (event) => {
+      event.preventDefault();
+    });
+
+    // 좌클릭 방지 (옵션)
+    image.addEventListener("mousedown", (event) => {
+      if (event.button === 0) { // 왼쪽 버튼
+        event.preventDefault();
+      }
+    });
+  </script>
         <!-- <script> -->
             <!-- document.body.addEventListener("mousedown", () => { -->
               <!-- document.body.style.cursor = "grabbing"; -->
