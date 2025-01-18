@@ -10,12 +10,28 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            cursor: help;
-        
+            /* cursor: grab; */
+            cursor: none; /* 기본 커서를 숨김 */
 
             
         }
-        
+        .custom-cursor {
+      position: absolute;
+      width: 450px; /* 커서 크기 */
+      height: 430px; /* 커서 크기 */
+      background-color: transparent;
+      background-image: url('IMG_9767.png'); /* 손 모양 커서 이미지 */
+      background-size: cover;
+      background-repeat: no-repeat;
+      pointer-events: none; /* 상호작용 방지 */
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+    }
+
+    /* 클릭 시 손 모양 변화 */
+    body:active .custom-cursor {
+      background-image: url('IMG_9766.png'); /* 손 모양 변화 이미지 */
+    }
 
         
 
@@ -80,14 +96,35 @@
 <body>
     <audio id="myAudio" controls autoplay loop>
     <source src="popipo.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
+    
 </audio>
+
 <div class="container">
+    
 
     <section>
         <h2>Section 1</h2>
         <img src="kitty.png" alt="고양이">
         <p>This is the content of section 1.</p>
+        <div class="custom-cursor" id="cursor">
+        <script>
+            const cursor = document.getElementById("cursor");
+        
+            // 마우스 움직임에 따라 커서 위치 업데이트
+            document.addEventListener("mousemove", (e) => {
+              cursor.style.left = `${e.clientX}px`;
+              cursor.style.top = `${e.clientY}px`;
+            });
+          </script>
+        <!-- <script> -->
+            <!-- document.body.addEventListener("mousedown", () => { -->
+              <!-- document.body.style.cursor = "grabbing"; -->
+            <!-- }); -->
+        
+            <!-- document.body.addEventListener("mouseup", () => { -->
+              <!-- document.body.style.cursor = "grab"; // 기본 커서로 복귀 -->
+            <!-- }); -->
+          <!-- </script> -->
         
     
     </section>
