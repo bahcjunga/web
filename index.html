@@ -29,22 +29,75 @@
     </nav>
 </header>
 <main>
-    <section id="Works">
+  
+  <section id="CV">
+    <h2>About</h2>
+    <p>This is the about section.</p>
+    <a href="https://chachan.netlify.app/"><button>무거운이사</button></a>
+
+  </section>
+  
+  <section id="Works">
       
-        <h2>Works</h2>
-        <input type="button" name="" value="4Pillars of the Apocalypse"></input>
-      <br><br>
-        <input type="button" name="" value="텍토닉렉카"></input>
-      <br><br>
-        <input type="button" name="" value="Sabotage"></input>
-    </section>
-    <section id="CV">
-        <h2>About</h2>
-        <p>This is the about section.</p>
-        <a href="https://chachan.netlify.app/"><button>무거운이사</button></a>
-    
-        </section>
-    <section id="contact">
+      <h2>Works</h2>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header">2025</div>
+          <div class="accordion-content">
+            <p>comming soon</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">2024</div>
+          <div class="accordion-content">
+            <a href="4pillars.html"><button>4 Pillars of the Apocalypse</button></a>
+            <br>
+            <br>
+            <button>텍토닉 렉카</button>
+            <br>
+            <br>
+            <button>휴짓조각</button>
+            <br>
+            <br>
+            <button>Vision Test</button>
+            <br>
+            <br>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">2023</div>
+          <div class="accordion-content">
+            <p>내용 3: 세 번째 탭의 내용입니다.</p>
+          </div>
+        </div>
+      </div>
+  </section>
+
+  <script>
+    // 모든 아코디언 헤더에 클릭 이벤트 추가
+    const headers = document.querySelectorAll('.accordion-header');
+    headers.forEach(header => {
+      header.addEventListener('click', function() {
+        // 현재 열려있는 다른 아코디언 내용 닫기
+        headers.forEach(item => {
+          if (item !== this) {
+            item.nextElementSibling.style.display = 'none';
+          }
+        });
+
+        // 클릭한 헤더의 관련 내용 토글
+        const content = this.nextElementSibling;
+        if (content.style.display === 'block') {
+          content.style.display = 'none';
+        } else {
+          content.style.display = 'block';
+        }
+      });
+    });
+  </script>
+  
+  <section id="contact">
         <h2>Contact</h2>
      
       <a href="https://www.instagram.com/walkietalkie_okeydokey/">
