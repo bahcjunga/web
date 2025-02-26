@@ -1,173 +1,109 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="favicon.ico" type="favicon.ico">
-    <title>kitty cat</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            /* cursor: grab; */
-            cursor: none; /* 기본 커서를 숨김 */
-
-            
-        }
-        .custom-cursor {
-            position: absolute;
-            width: calc(0.33 * 100vw); /* 커서 크기 */
-            height: calc(0.33 * 100vw); /* 커서 크기 */
-            background-color: transparent;
-            background-image: url('IMG_9767.png'); /* 손 모양 커서 이미지 */
-            background-size: cover;
-            background-repeat: no-repeat;
-            pointer-events: none; /* 상호작용 방지 */
-            transform: translate(-50%, -50%);
-            z-index: 9999;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>kitty cat</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .custom-cursor {
+      position: absolute;
+      width: calc(0.33 * 100vw);
+      height: calc(0.33 * 100vw);
+      background-color: transparent;
+      background-image: url('IMG_9767.png'); 
+      background-size: cover;
+      background-repeat: no-repeat;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+      display: none;
+    }
 
     /* 클릭 시 손 모양 변화 */
     body:active .custom-cursor {
-      background-image: url('IMG_9766.png'); /* 손 모양 변화 이미지 */
+      background-image: url('IMG_9766.png'); 
     }
 
-        
+    section {
+      padding: 20px;
+      height: 100vh;
+    }
 
-        
-
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
-
-        nav {
-            background-color: #666;
-            color: #fff;
-            padding: 10px;
-            text-align: center;
-        }
-
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 10px;
-        }
-
-        section {
-            padding: 20px;
-            margin-bottom: 20px;
-            background-color: transparent;
-        }
-
-        section img {
-            max-width: 100%; /* 이미지의 최대 너비를 부모 요소에 맞게 조절 */
-            height: auto; /* 이미지의 높이를 자동으로 조절하여 비율 유지 */
-        }
-
-
-        section .content {
-            background-color: rgba(255, 255, 255, 0.7); /* 섹션 내부 요소의 배경을 투명하게 설정 */
-            padding: 20px;
-        }
-
-
-        footer {
-            background-color: #333;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
-
-        @media screen and (max-width: 768px) {
-            nav {
-                flex-direction: column;
-            }
-
-            nav a {
-                margin: 5px 0;
-            }
-        }
-    </style>
+    /* Section 1 이후 영역 */
+    .default-cursor-area {
+      height: 100vh;
+      padding: 20px;
+      background-color: lightgray;
+    }
+  </style>
 </head>
 <body>
-    <audio id="myAudio" controls autoplay loop>
-        <source src="popipo.mp3" type="audio/mpeg">
-    </audio>
 
-    <div class="container" style="width: 100vw; height: 100vh;">
-        <section style="width: 100vw; height: 100vh;">
-            <h2>Section 1</h2>
-            <img src="kitty.png" alt="고양이" id="kitty">
-            <p>This is the content of section 1.</p>
-            
-            <div class="custom-cursor" id="cursor"></div>
+  <audio id="myAudio" controls autoplay loop>
+    <source src="popipo.mp3" type="audio/mpeg">
+  </audio>
 
-            <script>
-                const cursor = document.getElementById("cursor");
-            
-                // 마우스 움직임에 따라 커서 위치 업데이트
-                document.addEventListener("mousemove", (e) => {
-                    cursor.style.left = `${e.clientX}px`;
-                    cursor.style.top = `${e.clientY}px`;
-                });   
-            </script>
+  <div class="container">
+    <!-- Section 1 -->
+    <section id="section1">
+      <h2>Section 1</h2>
+      <img src="kitty.png" alt="고양이" id="kitty">
+      <p>This is the content of section 1.</p>
+      
+      <!-- 커스텀 커서 -->
+      <div class="custom-cursor" id="cursor"></div>
+    </section>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <!-- Section 2 (기본 커서 영역) -->
+    <div class="default-cursor-area">
+      <h2>Section 2</h2>
+      <p>이 영역에서는 기본 커서로 돌아갑니다.</p>
+    </div>
+  </div>
 
-            <script>
-                const image = document.getElementById("kitty");
+  <script>
+    const cursor = document.getElementById("cursor");
+    const section1 = document.getElementById("section1");
+    const defaultCursorArea = document.querySelector(".default-cursor-area");
 
-                // 드래그 방지
-                image.addEventListener("dragstart", (event) => {
-                    event.preventDefault();
-                });
+    // Section 1 내부에서 커스텀 커서 활성화
+    section1.addEventListener("mouseenter", () => {
+      document.body.style.cursor = "none";
+      cursor.style.display = "block";
+    });
 
-                // 우클릭 방지 (컨텍스트 메뉴 열기 방지)
-                image.addEventListener("contextmenu", (event) => {
-                    event.preventDefault();
-                });
+    // Section 1에서 마우스 이동 시 커스텀 커서 위치 변경
+    section1.addEventListener("mousemove", (e) => {
+      cursor.style.left = `${e.clientX}px`;
+      cursor.style.top = `${e.clientY}px`;
+    });
 
-                // 좌클릭 방지 (옵션)
-                image.addEventListener("mousedown", (event) => {
-                if (event.button === 0) { // 왼쪽 버튼
-                    event.preventDefault();
-                }
-                });
-            </script>
-            <!-- <script> -->
-                <!-- document.body.addEventListener("mousedown", () => { -->
-                <!-- document.body.style.cursor = "grabbing"; -->
-                <!-- }); -->
-            
-                <!-- document.body.addEventListener("mouseup", () => {
-                document.body.style.cursor = "grab"; // 기본 커서로 복귀
-                }); -->
-            <!-- </script> -->
-            
-        
-        </section>
+    // Section 1을 벗어나면 기본 커서로 변경
+    defaultCursorArea.addEventListener("mouseenter", () => {
+      document.body.style.cursor = "auto";
+      cursor.style.display = "none";
+    });
 
-    <script>
-        // Music
-        var audio = document.getElementById("myAudio");
+    // 🎨 배경색 랜덤 변경 유지
+    function getRandomColor() {
+      var hue = Math.floor(Math.random() * 360);
+      var saturation = Math.floor(Math.random() * 51) + 50;
+      var lightness = Math.floor(Math.random() * 51) + 50;
+      return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+    }
 
-        // Random high saturation and high lightness color
-        function getRandomColor() {
-            var hue = Math.floor(Math.random() * 360);
-            var saturation = Math.floor(Math.random() * 51) + 50; // 50% ~ 100%
-            var lightness = Math.floor(Math.random() * 51) + 50;  // 50% ~ 100%
-            return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
-        }
+    function changeBackgroundColor() {
+      document.body.style.backgroundColor = getRandomColor();
+    }
 
-        function changeBackgroundColor() {
-            var newColor = getRandomColor();
-            document.body.style.backgroundColor = newColor;
-        }
+    setInterval(changeBackgroundColor, 1600);
+  </script>
 
-        // Change background color every 5 seconds
-        setInterval(changeBackgroundColor, 1600);
-    </script>
 </body>
 </html>
