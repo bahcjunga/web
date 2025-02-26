@@ -10,11 +10,11 @@
       margin: 0;
       padding: 0;
     }
-    
+
     .custom-cursor {
       position: absolute;
-      width: calc(0.33 * 100vw);
-      height: calc(0.33 * 100vw);
+      width: 80px; /* 기본 커서 크기 */
+      height: 80px;
       background-color: transparent;
       background-image: url('IMG_9767.png'); 
       background-size: cover;
@@ -35,11 +35,27 @@
       height: 100vh;
     }
 
+    /* 이미지 반응형 적용 */
+    #kitty {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
     /* Section 1 이후 영역 */
     .default-cursor-area {
       height: 100vh;
       padding: 20px;
       background-color: lightgray;
+    }
+
+    /* ✅ 반응형 스타일 */
+    @media (max-width: 768px) {
+      .custom-cursor {
+        width: 50px; /* 모바일에서 커서 크기 줄임 */
+        height: 50px;
+      }
     }
   </style>
 </head>
@@ -52,18 +68,18 @@
   <div class="container">
     <!-- Section 1 -->
     <section id="section1">
-      
+      <h2>Section 1</h2>
       <img src="kitty.png" alt="고양이" id="kitty">
-      
+      <p>This is the content of section 1.</p>
       
       <!-- 커스텀 커서 -->
       <div class="custom-cursor" id="cursor"></div>
     </section>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
     <!-- Section 2 (기본 커서 영역) -->
     <div class="default-cursor-area">
-      
-      
+      <h2>Section 2</h2>
+      <p>이 영역에서는 기본 커서로 돌아갑니다.</p>
     </div>
   </div>
 
