@@ -42,6 +42,15 @@
       background-color: lightgray;
     }
 
+    /* 이미지 비율 유지하고 화면에 맞추기 (잘리지 않게) */
+    #kitty {
+      /*width: 100%;*/
+      height: 100%;
+      object-fit: contain; 
+      display: block;
+      margin: 0 ;
+    }
+
     /* 반응형 디자인 적용 */
     @media (max-width: 768px) {
       .custom-cursor {
@@ -71,7 +80,7 @@
       <!-- 커스텀 커서 -->
       <div class="custom-cursor" id="cursor"></div>
     </section>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
     <!-- Section 2 (기본 커서 영역) -->
     <div class="default-cursor-area">
       <h2>Section 2</h2>
