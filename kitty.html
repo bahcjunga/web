@@ -13,8 +13,8 @@
 
     .custom-cursor {
       position: absolute;
-      width: 80px; /* 기본 커서 크기 */
-      height: 80px;
+      width: calc(0.33 * 100vw);
+      height: calc(0.33 * 100vw);
       background-color: transparent;
       background-image: url('IMG_9767.png'); 
       background-size: cover;
@@ -35,14 +35,6 @@
       height: 100vh;
     }
 
-    /* 이미지 반응형 적용 */
-    #kitty {
-      max-width: 100%;
-      height: auto;
-      display: block;
-      margin: 0 auto;
-    }
-
     /* Section 1 이후 영역 */
     .default-cursor-area {
       height: 100vh;
@@ -50,11 +42,15 @@
       background-color: lightgray;
     }
 
-    /* ✅ 반응형 스타일 */
+    /* 반응형 디자인 적용 */
     @media (max-width: 768px) {
       .custom-cursor {
-        width: 50px; /* 모바일에서 커서 크기 줄임 */
-        height: 50px;
+        width: 60px;
+        height: 60px;
+      }
+
+      section {
+        height: auto; /* 모바일에서는 섹션 높이 자동 조정 */
       }
     }
   </style>
@@ -75,7 +71,7 @@
       <!-- 커스텀 커서 -->
       <div class="custom-cursor" id="cursor"></div>
     </section>
-
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <!-- Section 2 (기본 커서 영역) -->
     <div class="default-cursor-area">
       <h2>Section 2</h2>
