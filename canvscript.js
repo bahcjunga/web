@@ -39,3 +39,12 @@ canvas.addEventListener('mousemove', draw);
 clearButton.addEventListener('click', () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 }); 
+// 저장 버튼 기능
+const saveBtn = document.getElementById('saveBtn');
+saveBtn.addEventListener('click', () => {
+    const imageUrl = canvas.toDataURL('image/png'); // canvas 데이터를 이미지 URL로 변환
+    const link = document.createElement('a');
+    link.href = imageUrl;
+    link.download = 'drawing.png'; // 저장될 파일 이름
+    link.click(); // 다운로드 실행
+});
