@@ -79,6 +79,23 @@
     <p>저작권 © 2024 박정아 </p>
 </footer>
   </div>
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
+    const content = document.querySelector('.novel-content');
+
+    // 마우스 드래그 방지
+    content.addEventListener('mousedown', (event) => {
+        event.preventDefault();
+    });
+
+    // 우클릭 방지
+    document.addEventListener('contextmenu', (event) => {
+        event.preventDefault();
+    });
+});
+
+
+  </script>
 </body>
 
 </html>

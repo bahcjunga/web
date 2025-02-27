@@ -38,6 +38,14 @@ header p {
   color: #666;
 }
 
+.novel-content {
+  user-select: none; /* 드래그 방지 */
+  -webkit-user-select: none; /* 크롬, 사파리 */
+  -moz-user-select: none; /* 파이어폭스 */
+  -ms-user-select: none; /* 엣지, 인터넷 익스플로러 */
+}
+
+
 /* 소설 본문 스타일 */
 .novel-content h2 {
   font-size: 28px;
