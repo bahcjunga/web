@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>그림판</title>
-    <link rel="icon" href="favicon.ico" type="favicon.ico">
     <link rel="stylesheet" href="canvastyles.css">
+    <link rel="icon" href="favicon.ico" type="favicon.ico">
 </head>
 <body>
     <h1>그림판</h1>
@@ -16,7 +16,8 @@
         <input type="range" id="brushSize" min="1" max="10" value="5">
         <button id="clearButton">Clear</button>
         <button id="saveBtn">저장</button>
-
+        <label for="backgroundColorPicker">배경색: </label>
+        <input type="color" id="backgroundColorPicker" value="#ffffff">
     </div>
     <canvas id="paintCanvas"></canvas>
     <script src="canvscript.js"></script>
