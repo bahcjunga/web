@@ -1,11 +1,99 @@
-
-
-
-.img {
-  width: 100%; /* 부모 요소의 너비에 맞게 이미지 크기 조정 */
-  height: auto; /* 비율을 유지하면서 자동으로 높이 조정 */
-  object-fit: contain; /* 비율을 유지하며 이미지 크기 맞추기 */
+/* 기본 스타일 */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  
 }
 
+/* 포트폴리오 컨테이너 */
+.portfolio-container {
+  max-width: 1000px;
+  margin: 50px;
+  padding: 20px;
+  background: white;
+  
+  
+}
 
+/* 헤더 스타일 */
+.portfolio-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.portfolio-header h1 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+.portfolio-header .date {
+  color: #777;
+  font-size: 14px;
+}
 
+/* 그리드 레이아웃 */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* 이미지 스타일 */
+.portfolio-image img {
+  width: 100%;
+  
+  
+}
+
+/* 프로젝트 상세 설명 */
+.portfolio-details h2 {
+  font-size: 22px;
+  margin-top: 0;
+}
+.portfolio-details p {
+  font-size: 16px;
+  color: #555;
+}
+.portfolio-details ul {
+  list-style: none;
+  padding: 0;
+}
+.portfolio-details li {
+  background: #eee;
+  padding: 8px;
+  margin: 5px 0;
+  border-radius: 5px;
+}
+
+/* 푸터 버튼 스타일 */
+.portfolio-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+/*.btn {
+  padding: 10px 20px;
+  background: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+.btn:hover {
+  background: #0056b3;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .portfolio-grid {
+      grid-template-columns: 1fr; /* 모바일에서 1열로 변경 */
+  }
+  .portfolio-footer {
+      flex-direction: column;
+      align-items: center;
+  }}
+  /*.btn {
+      margin-top: 10px;
+      width: 100%;
+      text-align: center;
+  }
+}
