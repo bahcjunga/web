@@ -11,7 +11,36 @@ h3 {
 
   font-weight: bold;
   font-size: 20px;
-  
+
 
 
  }
+
+ /* 기본적으로 두 섹션 모두 숨김 */
+.desktop-only {
+  display: none;
+}
+
+.mobile-only {
+  display: none;
+}
+
+/* 데스크톱에서는 .desktop-only만 보이게 설정 */
+@media (min-width: 769px) {
+  .desktop-only {
+    display: block;
+  }
+  .mobile-only {
+      display: hidden;
+  }
+}
+
+/* 모바일에서는 .mobile-only만 보이게 설정 */
+@media (max-width: 768px) {
+  .desktop-only {
+      display: hidden;
+  }
+    .mobile-only {
+      display: block;
+  }
+}
