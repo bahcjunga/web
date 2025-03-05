@@ -23,6 +23,8 @@ h3 {
 
 .mobile-only {
   display: none;
+  font-size: 2vh;
+  
 }
 
 /* 데스크톱에서는 .desktop-only만 보이게 설정 */
