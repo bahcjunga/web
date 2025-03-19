@@ -5,41 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guestbook</title>
     <link rel="icon" href="favicon.ico" type="favicon.ico">
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="guestbook.css">
 </head>
 <body>
     <h1>Guestbook</h1>
-    <form id="guestbook-form">
-        <input type="text" id="name" placeholder="Your Name" required><br>
-        <textarea id="message" placeholder="Your Message" required></textarea><br>
-        <button type="submit">Submit</button>
-    </form>
+    <div class="guestbook-container">
+        <form id="guestbook-form">
+            <label for="name">이름:</label>
+            <input type="text" id="name" name="name" required>
 
-    <script>
-        document.getElementById('guestbook-form').addEventListener('submit', function(event) {
-            event.preventDefault();
+            <label for="message">메시지:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
 
-            var name = document.getElementById('name').value;
-            var message = document.getElementById('message').value;
+            <button type="submit">작성하기</button>
+        </form>
+    </div>
 
-            fetch('https://script.google.com/macros/s/AKfycbxLXe3T1CRbyE1KhyxofOYfI-RHVwHpScZ8MKQgXjxLKQfliX88RbXAK3EaNtiaK21J/exec', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: 'name=' + encodeURIComponent(name) + '&message=' + encodeURIComponent(message)
-            })
-            .then(response => response.text())
-            .then(data => {
-                if (data === 'Success') {
-                    alert('Message submitted successfully!');
-                    document.getElementById('guestbook-form').reset();
-                } else {
-                    console.error('Error:', data);
-                }
-            })
-            .catch(error => console.error('Error:', error));
-        });
-    </script>
+    <!-- 방명록 출력 영역 -->
+    <div id="guestbook-messages" class="messages">
+        <h2>방명록</h2>
+        <div id="message-list"></div>
+    </div>
+
+    <script src="guestbook.js"></script>
 </body>
 </html>
+
