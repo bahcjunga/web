@@ -25,7 +25,7 @@ body {
   overflow: hidden;
   width: 90vw;  /* 화면 너비의 90% */
  
-  aspect-ratio: 16 / 3; 
+  aspect-ratio: 16 / 9; 
   
 }
 
@@ -38,7 +38,7 @@ body {
 .image-slider img {
   width: 100%;  /* 이미지가 슬라이드 영역에 맞게 크기 조정 */
   height: auto;
-  aspect-ratio: 16 / 3; /* 이미지 비율 유지 */
+  aspect-ratio: 16 / 9; /* 이미지 비율 유지 */
   object-fit: contain;
 }
 
@@ -47,7 +47,7 @@ body {
   
   /*max-height: 80vh; /* 화면 높이의 80%까지만 */
   object-fit: contain; /* 비율 유지하면서 화면에 맞추기 */
-  aspect-ratio: 16 / 3; /* 이미지 비율 유지 */
+  aspect-ratio: 16 / 9; /* 이미지 비율 유지 */
   width: 100%;  /* 이미지가 슬라이드 영역에 맞게 크기 조정 */
     height: auto;
     object-fit: contain;
