@@ -1,7 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');  // cors 패키지 추가
 const app = express();
 const port = 3000;
+
+// CORS 설정
+app.use(cors());
 
 // JSON 데이터를 처리하기 위한 미들웨어
 app.use(bodyParser.json());
