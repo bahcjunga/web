@@ -1,36 +1,49 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const cors = require('cors');  // cors 패키지 추가
+
 const app = express();
-const port = 3000;
+const PORT = 3000;
 
-// CORS 설정
-app.use(cors());
+// MongoDB 연결
+mongoose.connect('mongodb+srv://bahcjunga:<db_password>@ghostbook.d9y94.mongodb.net/', { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => console.log('MongoDB 연결 성공'))
+    .catch((err) => console.log('MongoDB 연결 실패', err));
 
-// JSON 데이터를 처리하기 위한 미들웨어
+// MongoDB 스키마 및 모델
+const messageSchema = new mongoose.Schema({
+    name: String,
+    message: String,
+    createdAt: { type: Date, default: Date.now }
+});
+
+const Message = mongoose.model('Message', messageSchema);
+
+// 미들웨어 설정
 app.use(bodyParser.json());
+app.use(express.static('public')); // public 폴더를 정적 파일 제공
 
-// 방명록 데이터를 저장할 배열 (데이터베이스 대신 메모리 사용)
-let guestbookMessages = [];
-
-// 방명록 데이터 가져오기 (GET)
-app.get('/api/messages', (req, res) => {
-    res.json(guestbookMessages);
+// 방명록 메시지 저장 API
+app.post('/api/messages', async (req, res) => {
+    try {
+        const newMessage = new Message(req.body);
+        await newMessage.save();
+        res.status(201).send(newMessage);
+    } catch (err) {
+        res.status(400).send(err);
+    }
 });
 
-// 방명록 메시지 추가 (POST)
-app.post('/api/messages', (req, res) => {
-    const { name, message } = req.body;
-    const newMessage = {
-        name,
-        message,
-        date: new Date().toLocaleString(),
-    };
-    guestbookMessages.push(newMessage);
-    res.status(201).json(newMessage);
+// 방명록 메시지 조회 API
+app.get('/api/messages', async (req, res) => {
+    try {
+        const messages = await Message.find();
+        res.status(200).json(messages);
+    } catch (err) {
+        res.status(400).send(err);
+    }
 });
 
-// 서버 실행
-app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
+app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
 });
