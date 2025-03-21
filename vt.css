@@ -1,0 +1,53 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: Arial, sans-serif;
+}
+
+.slider-container {
+  width: 80vw;
+  overflow: hidden;
+  aspect-ratio: 9/ 16; 
+  position: relative;
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.3s ease;
+}
+
+.slider img {
+  
+  height: auto;
+  user-select: none;
+
+  
+    overflow: hidden;
+    width: 90vw;  /* 화면 너비의 90% */
+   
+    aspect-ratio: 9/ 16; 
+    
+  
+  
+}
+
+button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+#prevBtn {
+  left: 10px;
+}
+
+#nextBtn {
+  right: 10px;
+}
