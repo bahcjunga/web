@@ -79,6 +79,19 @@ body {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
+*/
+
+.exh img {
+
+  width: 80vw;
+  height: auto;
+  aspect-ratio: 3 / 2; /* 이미지 비율 유지 */
+  object-fit: contain;
+}
+
+
+
+
 /* 내용 섹션 */
 .content-section {
   max-width: 800px;
@@ -117,6 +130,9 @@ h1 {
   .image-section {
       width: 100%;
   }
+
+  
+  
 
   .image-slider img {
       width: 100%;
