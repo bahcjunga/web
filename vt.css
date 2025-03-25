@@ -14,6 +14,7 @@ body, html {
 
 .slider {
   display: flex;
+  
   transition: transform 0.3s ease;
 }
 
@@ -23,10 +24,25 @@ body, html {
   user-select: none;
 
   
-    overflow: hidden;
-    width: 90vw;  /* 화면 너비의 90% */
+  overflow: hidden;
+  width: 90vw;  /* 화면 너비의 90% */
    
-    aspect-ratio: 9/ 16; 
+  aspect-ratio: 9/ 16; 
+    
+  
+  
+}
+
+.slider-container img {
+  
+  height: auto;
+  user-select: none;
+
+  
+  overflow: hidden;
+  width: 90vw;  /* 화면 너비의 90% */
+   
+  aspect-ratio: 9/ 16; 
     
   
   

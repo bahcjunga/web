@@ -1,5 +1,3 @@
-// script.js
-
 let currentIndex = 0;
 const images = document.querySelectorAll(".slider img");
 const slider = document.getElementById("slider");
@@ -44,7 +42,7 @@ slider.addEventListener('touchend', (e) => {
     }
 });
 
-// 클릭 이벤트 처리
+// 클릭 이벤트 처리 (이미지 클릭 시 해당 이미지로 이동)
 slider.addEventListener("click", (e) => {
     const clickedElement = e.target;
     if (clickedElement.tagName === "IMG") {
