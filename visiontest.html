@@ -10,17 +10,47 @@
 <body>
 
   <h1> Vision Test </h1>
-  <div class="slider-container">
-    <div class="slider" id="slider">
-      <img src="vtimg/vt1.png" alt="Image 1">
-        <img src="vtimg/vt2.jpg" alt="Image 2">
-        <img src="vtimg/artsav4.jpg" alt="Image 3">
-    </div>
-</div>
-  
-<button id="prevBtn">Prev</button>
-<button id="nextBtn">Next</button>
 
+  <div class="container">
+    <!-- 좌측 화살표 버튼 -->
+    <button class="prev" onclick="slide(-1)">&#10094;</button>
+
+    <!-- 이미지 슬라이드 영역 -->
+    <div class="image-section">
+        <div class="image-slider">
+            <img src="vtimg/vt1.png" alt="작품 이미지 1">
+            <img src="vtimg/vt2.jpg" alt="작품 이미지 2">
+            <img src="vtimg/ridi.jpg" alt="작품 이미지 3">
+            <img src="vtimg/artsav4.jpg" alt="작품 이미지 4">
+            
+        </div>
+    </div>
+
+    <!-- 우측 화살표 버튼 -->
+    <button class="next" onclick="slide(1)">&#10095;</button>
+</div>
+<br><br>
+<div class="exh">
+    <img src="">
+
+</div>
+
+<!-- 작품 설명 -->
+<div class="content-section">
+   
+    <h3> Live Performance // 12분</h3>
+    <p class="description">
+        이 작품은 창의적인 아이디어와 기술을 결합하여 만든 프로젝트입니다.  
+        <a href="https://youtu.be/9KWxAiiQVVE?si=SGKZd7ddNM323vD6">Highway-To-Hall</a> 
+    </p>
+    <ul class="features">
+        <li> 퍼포머 : <a href="https://www.instagram.com/jhy_ein/">전혜인</a></li>
+        
+    </ul>
+</div>
+<div class="portfolio-footer">
+        <a href="index.html" class="btn">이전 페이지</a>
+        </div>
 <script src="vt.js"></script>
 
 
