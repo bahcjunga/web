@@ -1,16 +1,373 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>오목</title>
-    <link rel="stylesheet" href="omokstyles.css">
-    <link rel="icon" href="favicon.ico" type="favicon.ico">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>오목</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --board-color: #c8922a;
+      --board-dark: #a07020;
+      --line-color: #5a3a0a;
+      --cell: 40px;
+      --stone: 34px;
+      --bg: #1a1208;
+      --text: #f0e0b0;
+      --accent: #e8c060;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Noto Serif KR', serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 32px 16px;
+      background-image:
+        radial-gradient(ellipse at 20% 20%, #2a1a0850 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 80%, #1a0a0230 0%, transparent 60%);
+    }
+
+    h1 {
+      font-size: 2rem;
+      letter-spacing: 0.3em;
+      color: var(--accent);
+      margin-bottom: 8px;
+      text-shadow: 0 2px 12px #c8922a60;
+    }
+
+    #status {
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      color: var(--text);
+      min-height: 1.6em;
+      margin-bottom: 20px;
+      opacity: 0.85;
+      transition: all 0.2s;
+    }
+
+    #status.win {
+      color: var(--accent);
+      font-size: 1.2rem;
+      opacity: 1;
+      text-shadow: 0 0 16px #e8c06080;
+    }
+
+    /* Board wrapper */
+    #board-wrap {
+      position: relative;
+      padding: 24px;
+      background: var(--board-color);
+      border-radius: 4px;
+      box-shadow:
+        0 0 0 3px var(--board-dark),
+        0 8px 40px #00000080,
+        inset 0 1px 0 #d4a84060;
+      background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 1px, #c8922a40 1px, #c8922a40 2px),
+        repeating-linear-gradient(90deg, transparent, transparent 1px, #c8922a40 1px, #c8922a40 2px);
+    }
+
+    /* The canvas-based board */
+    #board-canvas {
+      display: block;
+      cursor: crosshair;
+    }
+
+    /* Controls */
+    #controls {
+      margin-top: 24px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    button {
+      background: transparent;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-family: 'Noto Serif KR', serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+      padding: 8px 24px;
+      cursor: pointer;
+      transition: all 0.15s;
+      border-radius: 2px;
+    }
+
+    button:hover {
+      background: var(--accent);
+      color: var(--bg);
+    }
+
+    #turn-indicator {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      opacity: 0.75;
+    }
+
+    #turn-stone {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      display: inline-block;
+      box-shadow: 0 1px 4px #00000060;
+      transition: background 0.2s;
+    }
+
+    #turn-stone.black { background: #111; }
+    #turn-stone.white { background: #f0f0f0; border: 1px solid #aaa; }
+  </style>
 </head>
 <body>
-    <h1>오목</h1>
-    <div id="board"></div>
-    <p id="message"></p>
-    <script src="omokscript.js"></script>
+
+<h1>오목</h1>
+<div id="status">흑의 차례</div>
+
+<div id="board-wrap">
+  <canvas id="board-canvas"></canvas>
+</div>
+
+<div id="controls">
+  <div id="turn-indicator">
+    <span id="turn-stone" class="black"></span>
+    <span id="turn-text">흑 차례</span>
+  </div>
+  <button id="reset-btn">처음부터</button>
+</div>
+
+<script>
+const BOARD_SIZE = 15;
+const CELL = 40;
+const PADDING = 24;
+const STONE_R = 16;
+const CANVAS_SIZE = CELL * (BOARD_SIZE - 1) + PADDING * 2;
+
+// Star points (천원, 화점)
+const STARS = [[3,3],[3,11],[7,7],[11,3],[11,11],[3,7],[7,3],[7,11],[11,7]];
+
+const canvas = document.getElementById('board-canvas');
+const ctx = canvas.getContext('2d');
+canvas.width = CANVAS_SIZE;
+canvas.height = CANVAS_SIZE;
+
+const statusEl = document.getElementById('status');
+const turnStone = document.getElementById('turn-stone');
+const turnText = document.getElementById('turn-text');
+const resetBtn = document.getElementById('reset-btn');
+
+let gameState, currentPlayer, gameActive;
+
+function init() {
+  gameState = Array.from({length: BOARD_SIZE}, () => Array(BOARD_SIZE).fill(null));
+  currentPlayer = 'black';
+  gameActive = true;
+  statusEl.textContent = '흑의 차례';
+  statusEl.className = '';
+  updateTurnUI();
+  drawBoard();
+}
+
+function pos(i) { return PADDING + i * CELL; }
+
+function drawBoard() {
+  ctx.clearRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
+
+  // Lines
+  ctx.strokeStyle = '#5a3a0a';
+  ctx.lineWidth = 1;
+  for (let i = 0; i < BOARD_SIZE; i++) {
+    ctx.beginPath();
+    ctx.moveTo(pos(0), pos(i));
+    ctx.lineTo(pos(BOARD_SIZE - 1), pos(i));
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(pos(i), pos(0));
+    ctx.lineTo(pos(i), pos(BOARD_SIZE - 1));
+    ctx.stroke();
+  }
+
+  // Star points
+  ctx.fillStyle = '#5a3a0a';
+  for (const [r, c] of STARS) {
+    ctx.beginPath();
+    ctx.arc(pos(c), pos(r), 3.5, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  // Stones
+  for (let r = 0; r < BOARD_SIZE; r++) {
+    for (let c = 0; c < BOARD_SIZE; c++) {
+      if (gameState[r][c]) {
+        drawStone(r, c, gameState[r][c]);
+      }
+    }
+  }
+}
+
+function drawStone(row, col, color, highlight = false) {
+  const x = pos(col);
+  const y = pos(row);
+
+  ctx.save();
+  if (color === 'black') {
+    const grad = ctx.createRadialGradient(x - 4, y - 4, 2, x, y, STONE_R);
+    grad.addColorStop(0, '#555');
+    grad.addColorStop(1, '#0a0a0a');
+    ctx.fillStyle = grad;
+  } else {
+    const grad = ctx.createRadialGradient(x - 4, y - 5, 2, x, y, STONE_R);
+    grad.addColorStop(0, '#ffffff');
+    grad.addColorStop(1, '#cccccc');
+    ctx.fillStyle = grad;
+  }
+
+  // Shadow
+  ctx.shadowColor = 'rgba(0,0,0,0.5)';
+  ctx.shadowBlur = 6;
+  ctx.shadowOffsetX = 2;
+  ctx.shadowOffsetY = 3;
+
+  ctx.beginPath();
+  ctx.arc(x, y, STONE_R, 0, Math.PI * 2);
+  ctx.fill();
+
+  ctx.shadowColor = 'transparent';
+
+  if (highlight) {
+    ctx.strokeStyle = '#e8c060';
+    ctx.lineWidth = 2.5;
+    ctx.stroke();
+
+    // Red dot for winning
+    ctx.fillStyle = '#ff4040';
+    ctx.beginPath();
+    ctx.arc(x, y, 5, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  ctx.restore();
+}
+
+function getCellFromEvent(e) {
+  const rect = canvas.getBoundingClientRect();
+  const scaleX = canvas.width / rect.width;
+  const scaleY = canvas.height / rect.height;
+  const x = (e.clientX - rect.left) * scaleX;
+  const y = (e.clientY - rect.top) * scaleY;
+  const col = Math.round((x - PADDING) / CELL);
+  const row = Math.round((y - PADDING) / CELL);
+  if (row < 0 || row >= BOARD_SIZE || col < 0 || col >= BOARD_SIZE) return null;
+  return {row, col};
+}
+
+canvas.addEventListener('click', (e) => {
+  if (!gameActive) return;
+  const pos = getCellFromEvent(e);
+  if (!pos) return;
+  const {row, col} = pos;
+  if (gameState[row][col]) return;
+
+  gameState[row][col] = currentPlayer;
+  drawBoard();
+
+  const winning = checkWin(row, col);
+  if (winning) {
+    for (const {row: r, col: c} of winning) {
+      drawStone(r, c, currentPlayer, true);
+    }
+    const label = currentPlayer === 'black' ? '흑' : '백';
+    statusEl.textContent = `${label} 승리!`;
+    statusEl.className = 'win';
+    gameActive = false;
+    return;
+  }
+
+  // 무승부 체크
+  const placed = gameState.flat().filter(Boolean).length;
+  if (placed === BOARD_SIZE * BOARD_SIZE) {
+    statusEl.textContent = '무승부';
+    gameActive = false;
+    return;
+  }
+
+  currentPlayer = currentPlayer === 'black' ? 'white' : 'black';
+  updateTurnUI();
+});
+
+// Hover preview
+canvas.addEventListener('mousemove', (e) => {
+  if (!gameActive) return;
+  const cell = getCellFromEvent(e);
+  drawBoard();
+  if (!cell) return;
+  const {row, col} = cell;
+  if (gameState[row][col]) return;
+
+  const x = pos(col);
+  const y = pos(row);
+  ctx.save();
+  ctx.globalAlpha = 0.35;
+  if (currentPlayer === 'black') {
+    ctx.fillStyle = '#111';
+  } else {
+    ctx.fillStyle = '#eee';
+  }
+  ctx.beginPath();
+  ctx.arc(x, y, STONE_R, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
+});
+
+canvas.addEventListener('mouseleave', () => { drawBoard(); });
+
+function updateTurnUI() {
+  turnStone.className = currentPlayer;
+  const label = currentPlayer === 'black' ? '흑' : '백';
+  turnText.textContent = `${label} 차례`;
+  statusEl.textContent = `${label}의 차례`;
+}
+
+function checkWin(row, col) {
+  const directions = [[1,0],[0,1],[1,1],[1,-1]];
+  for (const [dr, dc] of directions) {
+    const cells = getLine(row, col, dr, dc);
+    if (cells) return cells;
+  }
+  return null;
+}
+
+function getLine(row, col, dr, dc) {
+  const player = gameState[row][col];
+  let cells = [{row, col}];
+
+  for (let d = 1; d < 5; d++) {
+    const r = row + dr * d, c = col + dc * d;
+    if (r < 0 || r >= BOARD_SIZE || c < 0 || c >= BOARD_SIZE || gameState[r][c] !== player) break;
+    cells.push({row: r, col: c});
+  }
+  for (let d = 1; d < 5; d++) {
+    const r = row - dr * d, c = col - dc * d;
+    if (r < 0 || r >= BOARD_SIZE || c < 0 || c >= BOARD_SIZE || gameState[r][c] !== player) break;
+    cells.push({row: r, col: c});
+  }
+
+  // exactly 5 (장목 무효 — 흑만)
+  if (player === 'black' && cells.length > 5) return null;
+  return cells.length >= 5 ? cells : null;
+}
+
+resetBtn.addEventListener('click', init);
+init();
+</script>
 </body>
 </html>
