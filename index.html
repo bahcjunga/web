@@ -292,6 +292,25 @@
     </a>
   </div>
 </section>
+  
+<script>
+  /* 방명록 로컬 임시 처리 */
+  document.getElementById('gbForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const name = document.getElementById('gbName').value.trim() || '익명';
+    const msg  = document.getElementById('gbMsg').value.trim();
+    if (!msg) return;
+
+    const entry = document.createElement('div');
+    entry.className = 'gb-entry';
+    entry.innerHTML = `
+      <div class="gb-meta">${name} · ${new Date().toLocaleDateString('ko-KR')}</div>
+      <div class="gb-msg" style="color:white;">${msg}</div>`;
+    document.getElementById('gbEntries').prepend(entry);
+    e.target.reset();
+  });
+</script>
+
 </body>
 
 </html>
