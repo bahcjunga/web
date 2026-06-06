@@ -7,8 +7,8 @@
   --white: #FFFFFF;
   --black: #000000;
   --label-pad: 6px 10px;
-  --mono: 'Noto Sans KR', sans-serif;
-  --sans: 'Noto Sans KR', sans-serif;
+  --mono: 'Pretendard', sans-serif;
+  --sans: 'Pretendard', sans-serif;
 }
 
 html { scroll-behavior: smooth; }
