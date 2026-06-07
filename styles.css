@@ -384,7 +384,23 @@ footer {
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
+/* ── STAMP (크로마키 마커) ── */
+.hero { cursor: crosshair; }
 
+.stamp {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  animation: stampIn 0.12s cubic-bezier(0.2, 0, 0.4, 1) both;
+}
+
+@keyframes stampIn {
+  0%   { transform: translate(-50%, -50%) scale(1.6); opacity: 0; }
+  60%  { transform: translate(-50%, -50%) scale(0.92); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
 /* ── RESPONSIVE ── */
 @media (max-width: 640px) {
   nav { padding: 0.6rem 1rem; }
