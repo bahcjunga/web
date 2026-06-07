@@ -133,11 +133,13 @@ nav {
 .slide.active { opacity: 1; }
 
 .slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+ width: 100%;
+ height: 100%;
+ object-fit: contain;
+ display: block;
+ background: var(--blue);
 }
+
 
 .slider-nav {
   position: absolute;
