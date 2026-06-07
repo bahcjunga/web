@@ -50,72 +50,14 @@ nav {
 
 /* ── HERO ── */
 .hero {
-  min-height: 100vh;
   background: var(--blue);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
   padding-top: 3rem;
+}
+
+/* 슬라이더: 전폭, 이미지 원본 비율 그대로 */
+.hero-slider-wrap {
+  width: 100%;
   position: relative;
-  overflow: hidden;
-}
-
-.hero-left {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 3rem 2rem 3rem 1.5rem;
-  position: relative;
-  z-index: 1;
-}
-
-.hero-index {
-  font-size: 0.65rem;
-  color: rgba(255,255,255,0.4);
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  margin-bottom: 1.5rem;
-  font-weight: 400;
-}
-
-.hero-title {
-  font-size: clamp(1.8rem, 4vw, 3.5rem);
-  font-weight: 900;
-  color: var(--white);
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  margin-bottom: 2rem;
-}
-
-.hero-specs {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-}
-
-.spec-row {
-  display: inline-flex;
-  align-items: center;
-  gap: 0;
-}
-
-.label {
-  display: inline-block;
-  background: var(--white);
-  color: var(--black);
-  font-size: 0.72rem;
-  font-weight: 400;
-  padding: 4px 8px;
-  line-height: 1.4;
-}
-
-.label-bold { font-weight: 700; }
-
-/* ── 이미지 슬라이더 ── */
-.hero-right {
-  position: relative;
-  display: flex;
-  align-items: center;
-  background: var(--blue);
 }
 
 .slider {
@@ -137,7 +79,56 @@ nav {
   display: block;
 }
 
+/* 텍스트: 슬라이더 아래 */
+.hero-left {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1.5rem;
+}
 
+.hero-index {
+  font-size: 0.65rem;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.hero-title {
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.hero-specs {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.spec-row {
+  display: inline-flex;
+  align-items: center;
+}
+
+.label {
+  display: inline-block;
+  background: var(--white);
+  color: var(--black);
+  font-size: 0.72rem;
+  font-weight: 400;
+  padding: 4px 8px;
+  line-height: 1.4;
+}
+
+.label-bold { font-weight: 700; }
 
 .slider-nav {
   position: absolute;
@@ -321,10 +312,7 @@ footer {
 
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
-  .hero { grid-template-columns: 1fr; }
-  .hero-right { min-height: 60vw; }
-  .slider { min-height: 60vw; }
-  .hero-left { padding: 2rem 1rem; }
+  .hero-left { flex-direction: column; gap: 1rem; }
   .content-grid { grid-template-columns: 1fr; }
   .content-left { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.12); padding: 2rem 1rem; }
   .content-right { padding: 2rem 1rem; }
