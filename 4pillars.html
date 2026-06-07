@@ -15,24 +15,9 @@
   <a href="index.html#works" class="nav-back">← Works</a>
 </nav>
 
-<!-- HERO -->
 <div class="hero">
-  <!-- 왼쪽: 작품 정보 -->
-  <div class="hero-left">
-    <p class="hero-index">Works — 01</p>
-    <h1 class="hero-title">4 Pillars of<br>the Apocalypse</h1>
-    <div class="hero-specs">
-      <div class="spec-row">
-        <span class="label label-bold">3 channel video . FHD (16:3) . 13min 15sec .</span>
-      </div>
-      <div class="spec-row">
-        <span class="label">2024</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- 오른쪽: 슬라이더 -->
-  <div class="hero-right">
+  <!-- 슬라이더: 전폭 -->
+  <div class="hero-slider-wrap">
     <div class="slider" id="slider">
       <div class="slide active">
         <img src="https://bahcjunga.github.io/web/4pillarsimg/4p_main.jpg" alt="4 Pillars of the Apocalypse">
@@ -55,6 +40,22 @@
       <button class="slider-btn" id="next">→</button>
     </div>
     <div class="slider-nav" id="dots"></div>
+  </div>
+
+  <!-- 작품 정보: 슬라이더 아래 -->
+  <div class="hero-left">
+    <div>
+      <p class="hero-index">Works — 01</p>
+      <h1 class="hero-title">4 Pillars of the Apocalypse</h1>
+    </div>
+    <div class="hero-specs">
+      <div class="spec-row">
+        <span class="label label-bold">3 channel video . FHD (16:3) . 13min 15sec .</span>
+      </div>
+      <div class="spec-row">
+        <span class="label">2024</span>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -144,7 +145,6 @@
   // 자동 슬라이드
   setInterval(() => goTo(current + 1), 4000);
 </script>
-
 
 </body>
 
