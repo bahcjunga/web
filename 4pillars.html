@@ -4,54 +4,145 @@
   <meta name="viewport", charset="UTF-8", content="width=device-width, initial-scale = 1.0">
   <link rel="icon" href="favicon.ico" type="favicon.ico">
   <title> 4 Pillars of the Apocalypse </title>
-  <link rel="stylesheet" href="4pillars.css">
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" href="4pillars.css">
 </head>
 
 <body>
 
-  <h1> 4 Pillars of the Apocalypse </h1>
+  <nav>
+  <a href="index.html" class="nav-id">박정아 / Bahc Jung A</a>
+  <a href="index.html#works" class="nav-back">← Works</a>
+</nav>
 
-  <div class="container">
-    <!-- 좌측 화살표 버튼 -->
-    <button class="prev" onclick="slide(-1)">&#10094;</button>
-
-    <!-- 이미지 슬라이드 영역 -->
-    <div class="image-section">
-        <div class="image-slider">
-            <img src="4pillarsimg/4p_main.jpg" alt="작품 이미지 1">
-            <img src="4pillarsimg/4p_king.jpg" alt="작품 이미지 2">
-            <img src="4pillarsimg/4p_map.jpg" alt="작품 이미지 3">
-            <img src="4pillarsimg/4p_earth.jpg" alt="작품 이미지 4">
-            <img src="4pillarsimg/4p_saju.jpg" alt="작품 이미지 5">
-        </div>
+<!-- HERO -->
+<div class="hero">
+  <!-- 왼쪽: 작품 정보 -->
+  <div class="hero-left">
+    <p class="hero-index">Works — 01</p>
+    <h1 class="hero-title">4 Pillars of<br>the Apocalypse</h1>
+    <div class="hero-specs">
+      <div class="spec-row">
+        <span class="label label-bold">3 channel video . FHD (16:3) . 13min 15sec .</span>
+      </div>
+      <div class="spec-row">
+        <span class="label">2024</span>
+      </div>
     </div>
+  </div>
 
-    <!-- 우측 화살표 버튼 -->
-    <button class="next" onclick="slide(1)">&#10095;</button>
+  <!-- 오른쪽: 슬라이더 -->
+  <div class="hero-right">
+    <div class="slider" id="slider">
+      <div class="slide active">
+        <img src="https://bahcjunga.github.io/web/4pillarsimg/4p_main.jpg" alt="4 Pillars of the Apocalypse">
+      </div>
+      <div class="slide">
+        <img src="https://bahcjunga.github.io/web/4pillarsimg/4p_king.jpg" alt="4 Pillars of the Apocalypse">
+      </div>
+      <div class="slide">
+        <img src="https://bahcjunga.github.io/web/4pillarsimg/4p_map.jpg" alt="4 Pillars of the Apocalypse">
+      </div>
+      <div class="slide">
+        <img src="https://bahcjunga.github.io/web/4pillarsimg/4p_earth.jpg" alt="4 Pillars of the Apocalypse">
+      </div>
+      <div class="slide">
+        <img src="https://bahcjunga.github.io/web/4pillarsimg/4p_saju.jpg" alt="4 Pillars of the Apocalypse">
+      </div>
+    </div>
+    <div class="slider-arrows">
+      <button class="slider-btn" id="prev">←</button>
+      <button class="slider-btn" id="next">→</button>
+    </div>
+    <div class="slider-nav" id="dots"></div>
+  </div>
 </div>
-<br><br>
-<div class="exh">
-    <img src="4pillarsimg/exhibit/IMG_5001.jpg">
 
+<!-- 전시 전경 -->
+<img class="full-img" src="https://bahcjunga.github.io/web/4pillarsimg/exhibit/IMG_5001.jpg" alt="전시 전경">
+
+<!-- 설명 + 크레딧 -->
+<div class="content-grid">
+  <div class="content-left">
+    <p class="block-label">작품 설명</p>
+    <p class="description">사주는 네 개의 기둥(생년, 월, 일, 시)을 뜻한다. 성경 요한계시록 속 종말의 네 기사는 영상의 제목에서 종말의 네 기둥이 되었다. 영상에서 '나'는 사주의 힘을 빌려 예술가로서 성공하기 위한 날을 받는다.</p>
+    <p class="description">길일은 동시에 작품의 마감일이 되고, 공개된 작업은 사주와 DNA검사의 유사성을 다룬다. 미신과 과학이라는 두 방법론은 세간의 인식과 달리 이성과 합리의 측면에서 우열을 가리기 힘들다.</p>
+    <p class="description">'나'의 욕망에서 비롯된 영상의 타임라인은 브레이크 댄서와의 인터뷰를 통해 선형적인 자본주의의 시간 속에서 방황할 수밖에 없는 개인의 타임라인과 연결된다. DNA검사에서 볼 수 있듯 서열화를 강요하는 세상에서 '내 위치 찾기'에 실패하고 좌절하는 개인의 돌파구로 등장하는 건 아이러니하게도 종말이라는 운명론적 시간이다.</p>
+    <p class="description">사주를 통해 계산한 지구의 예상 수명이 기후학자들의 예측과 일치한다는 사실은 (믿거나 말거나) 파편화된 개개인의 시간을 거대한 운명으로 끌어들인다. 그럼에도 체념 대신 물구나무를 준비하는 브레이크 댄서의 메시지는 개인이 이 모든 위협을 이겨내고 자유를 찾는 길로써 제시된다.</p>
+  </div>
+  <div class="content-right">
+    <p class="block-label">크레딧</p>
+    <div class="credits">
+      <div class="credit-row">
+        <span class="credit-key">출연</span>
+        <span class="credit-val"><a href="https://www.instagram.com/sugadaiv_bsb/" target="_blank">공은교</a></span>
+      </div>
+      <div class="credit-row">
+        <span class="credit-key">형식</span>
+        <span class="credit-val">3 channel video</span>
+      </div>
+      <div class="credit-row">
+        <span class="credit-key">해상도</span>
+        <span class="credit-val">FHD (16:3)</span>
+      </div>
+      <div class="credit-row">
+        <span class="credit-key">러닝타임</span>
+        <span class="credit-val">13분 15초</span>
+      </div>
+      <div class="credit-row">
+        <span class="credit-key">제작연도</span>
+        <span class="credit-val">2024</span>
+      </div>
+    </div>
+  </div>
 </div>
 
-<!-- 작품 설명 -->
-<div class="content-section">
-   
-    <h3>3 Channel Vedio // 4K // 13분 15초</h3>
-    <p class="description">
-        이 작품은 창의적인 아이디어와 기술을 결합하여 만든 프로젝트입니다.  
-        주요 특징은 다음과 같습니다:
-    </p>
-    <ul class="features">
-        <li> 출연 : <a href="https://www.instagram.com/sugadaiv_bsb/">공은교</a></li>
-        
-    </ul>
+<!-- 이미지 그리드 -->
+<div class="img-grid">
+  <img src="https://bahcjunga.github.io/web/4pillarsimg/4p_king.jpg" alt="">
+  <img src="https://bahcjunga.github.io/web/4pillarsimg/4p_map.jpg" alt="">
+  <img src="https://bahcjunga.github.io/web/4pillarsimg/4p_saju.jpg" alt="">
 </div>
-<div class="portfolio-footer">
-        <a href="index.html" class="btn">이전 페이지</a>
-        </div>
-<script src="4pillars.js"></script>
+
+<!-- 다음 작업 -->
+<div class="section-green">
+  <p class="block-label">다음 작업</p>
+  <a href="tectonic.html" class="next-link">
+    <span class="next-title">텍토닉 렉카 →</span>
+  </a>
+</div>
+
+<footer>
+  <span>박정아 © 2026</span>
+  <span>Seoul, Korea</span>
+</footer>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const dotsContainer = document.getElementById('dots');
+  let current = 0;
+
+  // 점 생성
+  slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+    dot.addEventListener('click', () => goTo(i));
+    dotsContainer.appendChild(dot);
+  });
+
+  function goTo(n) {
+    slides[current].classList.remove('active');
+    dotsContainer.children[current].classList.remove('active');
+    current = (n + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    dotsContainer.children[current].classList.add('active');
+  }
+
+  document.getElementById('prev').addEventListener('click', () => goTo(current - 1));
+  document.getElementById('next').addEventListener('click', () => goTo(current + 1));
+
+  // 자동 슬라이드
+  setInterval(() => goTo(current + 1), 4000);
+</script>
 
 
 </body>
