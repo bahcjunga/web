@@ -1,34 +1,307 @@
 <!DOCTYPE html>
-<html lang="kor">
-  <head>
-    <meta name="viewport", charset="UTF-8", content="width=device-width, initial-scale = 1.0">
-  <link rel="icon" href="favicon.ico" type="favicon.ico">
-  <title> 5분만에 무빙이미지 만들기 </title>
-  <style>
-    /* 영상 컨테이너를 반응형으로 만들기 */
-    .video-container {
-        position: relative;
-        padding-bottom: 56.25%; /* 16:9 비율 (9/16 = 0.5625, 즉 56.25%) */
-        height: 0;
-        overflow: hidden;
-        max-width: 100%;
-    }
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5분 안에 무빙이미지 만들기 — 박정아</title>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    .video-container iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-    }
+:root {
+  --blue: #0029FF;
+  --green: #00D632;
+  --white: #FFFFFF;
+  --black: #000000;
+  --sans: 'Pretendard', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  background: var(--white);
+  color: var(--black);
+  overflow-x: hidden;
+}
+
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 999;
+  background: var(--black);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.7rem 1.5rem;
+}
+
+.nav-id {
+  font-size: 0.72rem;
+  color: var(--white);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+}
+
+.nav-back {
+  font-size: 0.65rem;
+  color: var(--white);
+  text-decoration: none;
+  opacity: 0.5;
+  transition: opacity 0.15s;
+}
+
+.nav-back:hover { opacity: 1; }
+
+/* ── HERO ── */
+.hero {
+  background: var(--blue);
+  padding-top: 3rem;
+}
+
+.hero-video {
+  width: 100%;
+  border: none;
+}
+
+.hero-video iframe {
+  width: 100%;
+  aspect-ratio: 16/9;
+  display: block;
+}
+
+.hero-left {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1.5rem;
+}
+
+.hero-index {
+  font-size: 0.65rem;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.hero-title {
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.hero-specs {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.label {
+  display: inline-block;
+  background: var(--white);
+  color: var(--black);
+  font-size: 0.72rem;
+  font-weight: 400;
+  padding: 4px 8px;
+  line-height: 1.4;
+}
+
+.label-bold { font-weight: 700; }
+
+/* ── CONTENT ── */
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 2px solid var(--black);
+}
+
+.content-left {
+  padding: 3rem 2rem 3rem 1.5rem;
+  border-right: 1px solid rgba(0,0,0,0.12);
+}
+
+.content-right {
+  padding: 3rem 1.5rem 3rem 2rem;
+}
+
+.block-label {
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.4;
+  margin-bottom: 1rem;
+  font-weight: 400;
+}
+
+.description {
+  font-size: 0.95rem;
+  line-height: 1.85;
+  word-break: keep-all;
+}
+
+.description + .description { margin-top: 1.2rem; }
+
+.credits { display: flex; flex-direction: column; gap: 0.8rem; }
+
+.credit-row {
+  display: flex;
+  gap: 1rem;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  padding-bottom: 0.8rem;
+  align-items: baseline;
+}
+
+.credit-key {
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.4;
+  min-width: 5rem;
+  font-weight: 400;
+}
+
+.credit-val {
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+/* ── NEXT ── */
+.section-green {
+  background: var(--green);
+  padding: 3rem 1.5rem;
+  border-top: 2px solid var(--black);
+}
+
+.section-green .block-label { opacity: 0.5; }
+
+.next-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--black);
+  margin-top: 1.5rem;
+}
+
+.next-title {
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  font-weight: 900;
+  line-height: 1;
+  border-bottom: 3px solid var(--black);
+  transition: opacity 0.15s;
+}
+
+.next-link:hover .next-title { opacity: 0.5; }
+
+footer {
+  background: var(--black);
+  color: rgba(255,255,255,0.35);
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .hero-left { flex-direction: column; gap: 1rem; }
+  .content-grid { grid-template-columns: 1fr; }
+  .content-left { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.12); padding: 2rem 1rem; }
+  .content-right { padding: 2rem 1rem; }
+}
 </style>
 </head>
-
 <body>
 
-  <h1> 5분만에 무빙이미지 만들기 </h1>
-<!-- 반응형 영상 컨테이너 -->
-<div class="video-container">
-  <iframe src="https://www.youtube.com/embed/bBYFKtA-o-c" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<nav>
+  <a href="index.html" class="nav-id">박정아 / Bahc Jung A</a>
+  <a href="index.html#works" class="nav-back">← Works</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-video">
+    <iframe
+      src="https://www.youtube.com/embed/bBYFKtA-o-c"
+      title="5분 안에 무빙이미지 만들기"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <div class="hero-left">
+    <div>
+      <p class="hero-index">Works — 05</p>
+      <h1 class="hero-title">5분 안에 무빙이미지 만들기</h1>
+    </div>
+    <div class="hero-specs">
+      <div>
+        <span class="label label-bold">1 channel video . FHD (16:9) . 5min .</span>
+      </div>
+      <div>
+        <span class="label">2023 / 2025</span>
+      </div>
+    </div>
+  </div>
 </div>
+
+<!-- 설명 + 크레딧 -->
+<div class="content-grid">
+  <div class="content-left">
+    <p class="block-label">작품 설명</p>
+    <p class="description">탈 정치화 이후의 아방가르드가 자본과 함께 어디까지 추락하고 있는지와 함께 한국 미술계의 프리즈 낙관론을 비웃는 숏폼 영상 시리즈.</p>
+    <p class="description">'미술관에서 사진 찍기'는 미술관 방문이 하나의 트렌드가 되면서 생긴 사진찍기 가이드 영상의 패러디다. 국군기무사였던 국립현대미술관의 입구, 최근 개방된 청와대에서 전두환과 노태우의 초상화가 걸려있는 방, 서울시립미술관 벙커 내부의 VIP 벙커 전시 구역을 배경으로 SNS에 올리기 좋은 사진을 찍는 법을 안내하는 영상은 경희대 외벽에 복원된 민중미술 벽화 앞에서 마무리된다.</p>
+    <p class="description">시대가 변하고 건물의 용도가 바뀌었더라도 정치적 측면에서 미술의 책임은 사라질 수 없다.</p>
+  </div>
+  <div class="content-right">
+    <p class="block-label">크레딧</p>
+    <div class="credits">
+      <div class="credit-row">
+        <span class="credit-key">형식</span>
+        <span class="credit-val">1 channel video</span>
+      </div>
+      <div class="credit-row">
+        <span class="credit-key">해상도</span>
+        <span class="credit-val">FHD (16:9)</span>
+      </div>
+      <div class="credit-row">
+        <span class="credit-key">러닝타임</span>
+        <span class="credit-val">5분</span>
+      </div>
+      <div class="credit-row">
+        <span class="credit-key">제작연도</span>
+        <span class="credit-val">2023 / 2025</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 다음 작업 -->
+<div class="section-green">
+  <p class="block-label">다음 작업</p>
+  <a href="visiontest.html" class="next-link">
+    <span class="next-title">Vision Test →</span>
+  </a>
+</div>
+
+<footer>
+  <span>박정아 © 2026</span>
+  <span>Seoul, Korea</span>
+</footer>
+
+<script>
+  document.addEventListener('contextmenu', e => e.preventDefault());
+  document.addEventListener('dragstart', e => e.preventDefault());
+</script>
+
 </body>
+</html>
