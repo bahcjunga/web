@@ -304,6 +304,41 @@
     </a>
   </div>
 </section>
+
+  <script>
+  /* 크로마키 스탬프 */
+  const hero = document.getElementById('hero');
+
+  // SVG 마커: 원+십자 (촬영 현장 크로마키 등록 마커)
+  const MARKER_SVG = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+      <!-- 십자 가로 -->
+      <line x1="0" y1="24" x2="48" y2="24" stroke="white" stroke-width="1.5"/>
+      <!-- 십자 세로 -->
+      <line x1="24" y1="0" x2="24" y2="48" stroke="white" stroke-width="1.5"/>
+      <!-- 원 (중앙 비어있음) -->
+      <circle cx="24" cy="24" r="10" fill="none" stroke="white" stroke-width="1.5"/>
+      <!-- 중심점 차단 (원 내부 십자 지움) -->
+      <line x1="14.5" y1="24" x2="33.5" y2="24" stroke="#0029FF" stroke-width="1.5"/>
+      <line x1="24" y1="14.5" x2="24" y2="33.5" stroke="#0029FF" stroke-width="1.5"/>
+    </svg>`;
+
+  hero.addEventListener('click', e => {
+    // hero-content 클릭은 제외
+    if (e.target.closest('.hero-content')) return;
+
+    const rect = hero.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const stamp = document.createElement('div');
+    stamp.className = 'stamp';
+    stamp.style.left = x + 'px';
+    stamp.style.top  = y + 'px';
+    stamp.innerHTML  = MARKER_SVG;
+    hero.appendChild(stamp);
+  });
+</script>
   
 <script>
   /* 방명록 로컬 임시 처리 */
