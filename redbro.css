@@ -1,116 +1,249 @@
-/* 기본 스타일 */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --blue: #0029FF;
+  --green: #00D632;
+  --white: #FFFFFF;
+  --black: #000000;
+  --sans: 'Pretendard', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
 body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  text-align: center;
-  overflow-x: hidden;  /* 가로 스크롤바 방지 */
-  background-color: #f8f8f8; /* 배경색 추가 */
+  font-family: var(--sans);
+  background: var(--white);
+  color: var(--black);
+  overflow-x: hidden;
 }
 
-/* 컨테이너 레이아웃 */
-.container {
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 999;
+  background: var(--black);
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow-x: hidden;  /* 가로 스크롤바 방지 */
+  padding: 0.7rem 1.5rem;
 }
 
-/* 이미지 슬라이드 영역 */
-.image-section {
-  overflow: hidden;
-  width: 90vw;  /* 화면 너비의 90% */
-  aspect-ratio: 16 / 9;  /* 비율 유지 */
-  margin: 0 auto;  /* 중앙 정렬 */
+.nav-id {
+  font-size: 0.72rem;
+  color: var(--white);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-decoration: none;
 }
 
-/* 이미지 슬라이더 */
-.image-slider {
+.nav-back {
+  font-size: 0.65rem;
+  color: var(--white);
+  text-decoration: none;
+  opacity: 0.5;
+  transition: opacity 0.15s;
+}
+
+.nav-back:hover { opacity: 1; }
+
+/* ── HERO ── */
+.hero {
+  background: var(--blue);
+  padding-top: 3rem;
+}
+
+.hero-slider-wrap { width: 100%; position: relative; }
+.slider { width: 100%; position: relative; }
+.slide { display: none; }
+.slide.active { display: block; }
+.slide img { width: 100%; height: auto; display: block; }
+
+.slider-arrows {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 1.5rem;
   display: flex;
-  transition: transform 0.5s ease-in-out;
+  gap: 0.5rem;
+  z-index: 10;
 }
 
-.image-slider img {
-  width: 100%;  /* 이미지가 슬라이드 영역에 맞게 크기 조정 */
-  height: auto;
-  aspect-ratio: 16 / 9; /* 이미지 비율 유지 */
-  object-fit: contain;
-}
-
-/* 화살표 버튼 */
-.prev, .next {
- 
-  
-  
-  
+.slider-btn {
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: var(--white);
+  font-size: 0.8rem;
+  padding: 4px 10px;
   cursor: pointer;
-  padding: 10px 15px;
-  font-size: 24px;
-  /*
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 1;*/
+  font-family: var(--sans);
+  transition: background 0.15s;
 }
 
-.prev {
-  left: 10px;
+.slider-btn:hover { background: rgba(255,255,255,0.3); }
+
+.slider-nav {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  display: flex;
+  gap: 0.5rem;
+  z-index: 10;
 }
 
-.next {
-  right: 10px;
+.slider-dot {
+  width: 6px;
+  height: 6px;
+  background: rgba(255,255,255,0.4);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s;
 }
 
-/* 화살표 버튼 호버 효과 */
+.slider-dot.active { background: var(--white); }
 
-
-/* 내용 섹션 */
-.content-section {
-  max-width: 90vw;
-  margin: 20px auto;
-  background: white;
-  padding: 20px;
-  text-align: left;
+.hero-left {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1.5rem;
 }
 
-h1 {
-  font-size: 28px;
-  color: #333;
+.hero-index {
+  font-size: 0.65rem;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.hero-title {
+  font-size: clamp(1.2rem, 3.5vw, 2.5rem);
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.hero-specs {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.label {
+  display: inline-block;
+  background: var(--white);
+  color: var(--black);
+  font-size: 0.72rem;
+  font-weight: 400;
+  padding: 4px 8px;
+  line-height: 1.4;
+}
+
+.label-bold { font-weight: 700; }
+
+/* ── CONTENT ── */
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 2px solid var(--black);
+}
+
+.content-left {
+  padding: 3rem 2rem 3rem 1.5rem;
+  border-right: 1px solid rgba(0,0,0,0.12);
+}
+
+.content-right {
+  padding: 3rem 1.5rem 3rem 2rem;
+}
+
+.block-label {
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.4;
+  margin-bottom: 1rem;
+  font-weight: 400;
 }
 
 .description {
-  font-size: 16px;
-  color: #666;
-  line-height: 1.6;
+  font-size: 0.95rem;
+  line-height: 1.85;
+  word-break: keep-all;
 }
 
-.features {
-  list-style: none;
-  padding: 0;
+.description + .description { margin-top: 1.2rem; }
+
+.credits { display: flex; flex-direction: column; gap: 0.8rem; }
+
+.credit-row {
+  display: flex;
+  gap: 1rem;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  padding-bottom: 0.8rem;
+  align-items: baseline;
 }
 
-.features li {
-  font-size: 16px;
-  margin: 10px 0;
-  color: #333;
+.credit-key {
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.4;
+  min-width: 5rem;
+  font-weight: 400;
 }
 
-/* 반응형 디자인 */
-@media (max-width: 850px) {
-  .image-section {
-      width: 100%;
-  }
+.credit-val {
+  font-size: 0.9rem;
+  font-weight: 700;
+}
 
-  .image-slider img {
-      width: 100%;
-  }
+/* ── NEXT ── */
+.section-green {
+  background: var(--green);
+  padding: 3rem 1.5rem;
+  border-top: 2px solid var(--black);
+}
 
-  .prev, .next {
-      font-size: 18px;
-      padding: 8px 12px;
-  }
+.section-green .block-label { opacity: 0.5; }
 
-  h1 {
-      font-size: 24px;
-  }
+.next-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--black);
+  margin-top: 1.5rem;
+}
+
+.next-title {
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  font-weight: 900;
+  line-height: 1;
+  border-bottom: 3px solid var(--black);
+  transition: opacity 0.15s;
+}
+
+.next-link:hover .next-title { opacity: 0.5; }
+
+footer {
+  background: var(--black);
+  color: rgba(255,255,255,0.35);
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .hero-left { flex-direction: column; gap: 1rem; }
+  .content-grid { grid-template-columns: 1fr; }
+  .content-left { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.12); padding: 2rem 1rem; }
+  .content-right { padding: 2rem 1rem; }
 }
