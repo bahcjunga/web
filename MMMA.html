@@ -5,3 +5,644 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MMMA :: Mess-Mass Museum of Art 메스매스 뮤지엄 </title>
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #f8f7f4;
+  --black: #1a1a1a;
+  --gray: #767676;
+  --line: #d8d5cf;
+  --white: #ffffff;
+  --red: #c8391a;
+  --serif: 'Noto Serif KR', serif;
+  --sans: 'Noto Sans KR', sans-serif;
+}
+
+html { font-size: 15px; scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--black);
+  font-family: var(--sans);
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+.top-bar {
+  background: var(--black);
+  color: var(--white);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 2rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+}
+
+.top-bar-links { display: flex; gap: 1.5rem; }
+.top-bar-links a { color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.15s; }
+.top-bar-links a:hover { color: var(--white); }
+.top-bar-right { display: flex; gap: 1.5rem; align-items: center; }
+.top-bar-right a { color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.15s; }
+.top-bar-right a:hover { color: var(--white); }
+
+header {
+  background: var(--white);
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-main {
+  display: flex;
+  align-items: center;
+  padding: 0 2rem;
+  height: 64px;
+  gap: 3rem;
+}
+
+.logo {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--black);
+  text-decoration: none;
+  white-space: nowrap;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.logo span { font-size: 0.6rem; font-weight: 300; color: var(--gray); letter-spacing: 0.1em; font-family: var(--sans); }
+
+nav ul { display: flex; list-style: none; gap: 0; flex: 1; }
+
+nav ul li a {
+  display: flex;
+  align-items: center;
+  height: 64px;
+  padding: 0 1.2rem;
+  font-size: 0.78rem;
+  color: var(--black);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.15s;
+  letter-spacing: 0.03em;
+}
+
+nav ul li a:hover { border-bottom-color: var(--black); }
+
+.nav-right { display: flex; gap: 1rem; align-items: center; margin-left: auto; }
+
+.btn-ticket {
+  background: var(--black);
+  color: var(--white);
+  font-size: 0.72rem;
+  padding: 0.5rem 1.2rem;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+
+.btn-ticket:hover { background: var(--red); }
+
+/* HERO */
+.hero-banner {
+  position: relative;
+  background: var(--black);
+  height: 80vh;
+  min-height: 500px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://raw.githubusercontent.com/bahcjunga/web/main/Gemini_Generated_Image_8kq9v98kq9v98kq9%20(1).jpeg');
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 60%, transparent 100%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  padding: 3rem 2rem;
+  color: var(--white);
+  max-width: 700px;
+}
+
+.hero-tag {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 1rem;
+}
+
+.hero-title {
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 4vw, 3.5rem);
+  font-weight: 300;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.hero-sub {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 1.5rem;
+}
+
+.btn-more {
+  display: inline-block;
+  border: 1px solid rgba(255,255,255,0.5);
+  color: var(--white);
+  font-size: 0.72rem;
+  padding: 0.6rem 1.5rem;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  transition: background 0.15s;
+}
+
+.btn-more:hover { background: rgba(255,255,255,0.1); }
+
+/* SECTIONS */
+.section { padding: 4rem 2rem; }
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 0.8rem;
+  margin-bottom: 2.5rem;
+}
+
+.section-title { font-family: var(--serif); font-size: 1.15rem; font-weight: 400; }
+
+.section-more {
+  font-size: 0.7rem;
+  color: var(--gray);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.section-more:hover { color: var(--black); }
+
+/* 전시 그리드 */
+.exhibit-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.exhibit-card { text-decoration: none; color: var(--black); }
+
+.exhibit-thumb {
+  aspect-ratio: 4/3;
+  background: var(--line);
+  margin-bottom: 1rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.exhibit-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+.exhibit-card:hover .exhibit-thumb img { transform: scale(1.04); }
+
+.exhibit-thumb-placeholder {
+  font-size: 0.65rem;
+  color: var(--gray);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.exhibit-status { font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--red); margin-bottom: 0.4rem; }
+.exhibit-title { font-family: var(--serif); font-size: 0.95rem; font-weight: 400; line-height: 1.5; margin-bottom: 0.3rem; }
+.exhibit-date { font-size: 0.7rem; color: var(--gray); }
+
+/* 정보 배너 */
+.info-banner {
+  background: var(--black);
+  color: var(--white);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid #333;
+}
+
+.info-item {
+  padding: 2.5rem 2rem;
+  border-right: 1px solid #333;
+}
+
+.info-item:last-child { border-right: none; }
+.info-item-label { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 0.8rem; }
+.info-item-value { font-family: var(--serif); font-size: 0.92rem; line-height: 1.7; font-weight: 300; }
+.info-item-note { font-size: 0.65rem; color: rgba(255,255,255,0.35); margin-top: 0.5rem; line-height: 1.5; }
+
+/* 층별 안내 */
+.floor-section { background: #f0ede8; padding: 4rem 2rem; border-top: 1px solid var(--line); }
+
+.floor-grid { display: grid; grid-template-columns: 200px 1fr; gap: 3rem; margin-top: 2rem; }
+
+.floor-nav { display: flex; flex-direction: column; }
+
+.floor-btn {
+  padding: 0.8rem 1rem;
+  font-size: 0.8rem;
+  border: none;
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  font-family: var(--sans);
+  font-weight: 300;
+  transition: background 0.15s;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.floor-btn:hover { background: rgba(0,0,0,0.05); }
+.floor-btn.active { background: var(--black); color: var(--white); }
+
+.floor-num { font-family: var(--serif); font-size: 1rem; min-width: 2rem; }
+
+.floor-content { display: none; }
+.floor-content.active { display: block; }
+.floor-content-title { font-family: var(--serif); font-size: 1.3rem; font-weight: 300; margin-bottom: 1rem; }
+.floor-content-desc { font-size: 0.85rem; line-height: 1.8; color: #555; max-width: 500px; }
+
+/* 소장품 배너 */
+.collection-banner {
+  background: var(--black);
+  color: var(--white);
+  padding: 5rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.collection-label { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 1rem; }
+.collection-title { font-family: var(--serif); font-size: clamp(1.5rem, 3vw, 2.5rem); font-weight: 300; line-height: 1.3; margin-bottom: 1rem; }
+.collection-desc { font-size: 0.82rem; color: rgba(255,255,255,0.5); line-height: 1.8; margin-bottom: 1.5rem; max-width: 500px; }
+
+.btn-white {
+  display: inline-block;
+  border: 1px solid rgba(255,255,255,0.4);
+  color: var(--white);
+  font-size: 0.72rem;
+  padding: 0.6rem 1.5rem;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  transition: background 0.15s;
+}
+
+.btn-white:hover { background: rgba(255,255,255,0.1); }
+
+/* 이용안내 */
+.notice-section { background: var(--white); padding: 4rem 2rem; border-top: 1px solid var(--line); }
+
+.notice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 2rem; }
+
+.notice-block { display: flex; flex-direction: column; }
+
+.notice-item {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.82rem;
+  line-height: 1.7;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.notice-num { font-family: var(--serif); color: var(--gray); min-width: 1.2rem; font-size: 0.78rem; }
+
+/* FOOTER */
+footer { background: #111; color: rgba(255,255,255,0.4); padding: 3rem 2rem 2rem; }
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #333;
+  margin-bottom: 2rem;
+}
+
+.footer-logo { font-family: var(--serif); font-size: 1rem; color: var(--white); margin-bottom: 0.8rem; }
+.footer-addr { font-size: 0.7rem; line-height: 1.8; }
+.footer-col-title { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 1rem; }
+.footer-links { display: flex; flex-direction: column; gap: 0.5rem; list-style: none; }
+.footer-links a { font-size: 0.72rem; color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.15s; }
+.footer-links a:hover { color: var(--white); }
+.footer-bottom { display: flex; justify-content: space-between; font-size: 0.65rem; flex-wrap: wrap; gap: 0.5rem; }
+
+/* MODAL */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+
+.modal-overlay.open { opacity: 1; pointer-events: all; }
+
+.modal {
+  background: var(--white);
+  max-width: 600px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  padding: 3rem;
+  position: relative;
+}
+
+.modal-close { position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none; font-size: 1.2rem; cursor: pointer; color: var(--gray); }
+.modal-title { font-family: var(--serif); font-size: 1.3rem; font-weight: 400; margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--line); }
+.modal-sub { font-size: 0.78rem; color: var(--gray); margin-bottom: 1.2rem; line-height: 1.7; }
+.modal-list { list-style: none; display: flex; flex-direction: column; }
+.modal-list li { display: flex; gap: 1rem; font-size: 0.82rem; line-height: 1.7; padding: 0.8rem 0; border-bottom: 1px solid var(--line); }
+.modal-list .n { font-family: var(--serif); color: var(--gray); min-width: 1.2rem; }
+
+@media (max-width: 900px) {
+  .exhibit-grid { grid-template-columns: 1fr 1fr; }
+  .info-banner { grid-template-columns: 1fr 1fr; }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+  .floor-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .top-bar, nav ul { display: none; }
+  .section { padding: 3rem 1rem; }
+  .exhibit-grid { grid-template-columns: 1fr; }
+  .notice-grid { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="top-bar-links">
+    <a href="#">미술관 소개</a>
+    <a href="#">후원·멤버십</a>
+    <a href="#">보도자료</a>
+    <a href="#">채용</a>
+  </div>
+  <div class="top-bar-right">
+    <a href="#">KO</a>
+    <a href="#">EN</a>
+    <a href="#" onclick="document.getElementById('modal').classList.add('open');return false;">이용안내</a>
+  </div>
+</div>
+
+<header>
+  <div class="nav-main">
+    <a href="#" class="logo">
+      MESSMASS MUSEUM OF ART
+      <span>메스매스 뮤지엄</span>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="#exhibit">전시</a></li>
+        <li><a href="#collection">소장품</a></li>
+        <li><a href="#edu">배움·연구</a></li>
+        <li><a href="#floor">미술관 안내</a></li>
+        <li><a href="#shop">아트샵</a></li>
+      </ul>
+    </nav>
+    <div class="nav-right">
+      <a href="#" class="btn-ticket">예매 / 예약</a>
+    </div>
+  </div>
+</header>
+
+<div class="hero-banner">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <p class="hero-tag">현재전시 · 상설전시실</p>
+    <h1 class="hero-title">상설전시실 — 소장품전<br>이정수 컬렉션</h1>
+    <p class="hero-sub">Permanent Exhibition Hall — Collection Exhibition: Lee Jeong-su Collection<br>휴관 없음 | 월–일 9:00–22:30</p>
+    <a href="#" class="btn-more">자세히 보기</a>
+  </div>
+</div>
+
+<section class="section" id="exhibit">
+  <div class="section-header">
+    <h2 class="section-title">전시</h2>
+    <a href="#" class="section-more">전체보기 →</a>
+  </div>
+  <div class="exhibit-grid">
+    <a href="#" class="exhibit-card">
+      <div class="exhibit-thumb"><div class="exhibit-thumb-placeholder">상설전시</div></div>
+      <p class="exhibit-status">현재전시</p>
+      <p class="exhibit-title">상설전시실 — 소장품전<br>이정수 컬렉션</p>
+      <p class="exhibit-date">휴관 없음 · 9:00–22:30</p>
+    </a>
+    <a href="#" class="exhibit-card">
+      <div class="exhibit-thumb"><div class="exhibit-thumb-placeholder">MMMA</div></div>
+      <p class="exhibit-status">종료</p>
+      <p class="exhibit-title">Mess Mass Museum of Art<br>메스매스 뮤지엄</p>
+      <p class="exhibit-date">2026. 02. 25 — 03. 15</p>
+    </a>
+    <a href="#" class="exhibit-card">
+      <div class="exhibit-thumb"><div class="exhibit-thumb-placeholder">예정</div></div>
+      <p class="exhibit-status">예정</p>
+      <p class="exhibit-title">대한남미술전</p>
+      <p class="exhibit-date">2026. 하반기 예정</p>
+    </a>
+  </div>
+</section>
+
+<div class="info-banner">
+  <div class="info-item">
+    <p class="info-item-label">관람시간</p>
+    <p class="info-item-value">화–일<br>13:00–19:30</p>
+    <p class="info-item-note">월요일 휴관<br>입장은 종료 1분 전까지</p>
+  </div>
+  <div class="info-item">
+    <p class="info-item-label">상설전시실</p>
+    <p class="info-item-value">매일<br>9:00–22:30</p>
+    <p class="info-item-note">1층 상설전시실은 휴관 없이 매일 운영</p>
+  </div>
+  <div class="info-item">
+    <p class="info-item-label">위치</p>
+    <p class="info-item-value">서울시 도봉구<br>도봉로169나길 32</p>
+    <p class="info-item-note">메스매스 4F</p>
+  </div>
+  <div class="info-item">
+    <p class="info-item-label">입장료</p>
+    <p class="info-item-value">무료</p>
+    <p class="info-item-note">사상검증과 검열은<br>존재하지 않습니다</p>
+  </div>
+</div>
+
+<section class="floor-section" id="floor">
+  <div class="section-header">
+    <h2 class="section-title">층별 안내</h2>
+  </div>
+  <div class="floor-grid">
+    <div class="floor-nav">
+      <button class="floor-btn active" onclick="showFloor('b1',this)"><span class="floor-num">B1</span>수장고 / 아카이브</button>
+      <button class="floor-btn" onclick="showFloor('f1',this)"><span class="floor-num">1F</span>상설전시실</button>
+      <button class="floor-btn" onclick="showFloor('f2',this)"><span class="floor-num">2F</span>교육실 / 어린이 휴게실</button>
+      <button class="floor-btn" onclick="showFloor('f3',this)"><span class="floor-num">3F</span>다원공간</button>
+      <button class="floor-btn" onclick="showFloor('f4',this)"><span class="floor-num">4F</span>매표소 / 안내데스크 / 사무실</button>
+      <button class="floor-btn" onclick="showFloor('f5',this)"><span class="floor-num">5F</span>레지던시</button>
+    </div>
+    <div>
+      <div class="floor-content active" id="floor-b1">
+        <p class="floor-content-title">수장고 / 아카이브</p>
+        <p class="floor-content-desc">메스매스 뮤지엄의 소장품 및 아카이브 자료를 보관하는 공간입니다. 사전 예약을 통해 열람 가능합니다.</p>
+      </div>
+      <div class="floor-content" id="floor-f1">
+        <p class="floor-content-title">상설전시실 — 소장품전: 이정수 컬렉션</p>
+        <p class="floor-content-desc">메스매스 뮤지엄은 서울 도봉구 도봉동의 미술 애호가 이정수 선생의 소장품을 인계받아 상설전시실을 운영하고 있습니다. 휴관 없음, 매일 9:00–22:30.</p>
+      </div>
+      <div class="floor-content" id="floor-f2">
+        <p class="floor-content-title">교육실 / 어린이 휴게실</p>
+        <p class="floor-content-desc">교육 프로그램 및 어린이 관람객을 위한 공간입니다.</p>
+      </div>
+      <div class="floor-content" id="floor-f3">
+        <p class="floor-content-title">다원공간</p>
+        <p class="floor-content-desc">퍼포먼스, 상영, 강연 등 다양한 프로그램을 위한 다목적 공간입니다.</p>
+      </div>
+      <div class="floor-content" id="floor-f4">
+        <p class="floor-content-title">매표소 / 안내데스크 / 사무실 / MMMA 아트샵</p>
+        <p class="floor-content-desc">티켓 구매, 미술관 이용 안내, 물품보관소, 성중립화장실, 음수대가 위치합니다. MMMA 아트샵에서는 도록 및 굿즈를 구매하실 수 있습니다.</p>
+      </div>
+      <div class="floor-content" id="floor-f5">
+        <p class="floor-content-title">레지던시</p>
+        <p class="floor-content-desc">입주 작가 프로그램 운영 공간입니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="collection-banner" id="collection">
+  <div>
+    <p class="collection-label">소장품</p>
+    <h2 class="collection-title">세계 최고 수준의 작품을<br>놓쳐서는 안 됩니다</h2>
+    <p class="collection-desc">메스매스 뮤지엄은 동시대를 살면서 놓쳐서는 안 될 세계적인 작품들을 관객들에게 선보이고, 예술가들과 관객들 모두에게 놀라운 영감을 선사하기 위해 세계 최고 수준의 편의시설을 갖추고 있습니다.</p>
+    <a href="#" class="btn-white">소장품 보기</a>
+  </div>
+</div>
+
+<section class="notice-section">
+  <div class="section-header">
+    <h2 class="section-title">MMMA 이용 안내</h2>
+    <a href="#" class="section-more" onclick="document.getElementById('modal').classList.add('open');return false;">전체보기 →</a>
+  </div>
+  <p style="font-size:0.82rem;color:var(--gray);margin-bottom:2rem;">메스매스 뮤지엄에 대한 기본적인 정보는 무료로 제공해드리는 리플렛을 통해 확인하실 수 있습니다.</p>
+  <div class="notice-grid">
+    <div class="notice-block">
+      <div class="notice-item"><span class="notice-num">1</span><span>부피가 큰 소지품은 물품보관소 락커에 보관하십시오.</span></div>
+      <div class="notice-item"><span class="notice-num">2</span><span>본 전시장에서 '작품'을 목격했다면, 빠른 시일 내에 과를 방문하십시오.</span></div>
+      <div class="notice-item"><span class="notice-num">3</span><span>반복적으로 "Lip Sync"라는 속삭임이 들리더라도, 소리와 일치하는 이미지를 찾으려 하지 마십시오.</span></div>
+      <div class="notice-item"><span class="notice-num">4</span><span>간혹 프랑스어로 "이건 상자야. 네가 원하는 양은 이 안에 있어."라고 말하는 목소리가 들릴 수 있습니다. 양이 들어있는 상자를 기대하지 마시고 상자 속의 양이 되십시오.</span></div>
+      <div class="notice-item"><span class="notice-num">5</span><span>음수대의 물은 수소 원자 둘과 산소 원자 하나로 구성되어 있으며 절대적으로 매우 안전한 물입니다. 정말입니다. 안심하세요.</span></div>
+    </div>
+    <div class="notice-block">
+      <div class="notice-item"><span class="notice-num">6</span><span>전시장지킴이가 자리에 두고 간 책은 몰래 읽어도 됩니다. 만약 들켰다면 신속히 성중립화장실로 피신하십시오.</span></div>
+      <div class="notice-item"><span class="notice-num">7</span><span>MMMA는 '자율 운영 시스템'을 채택하고 있습니다. '인포데스크 직원', '큐레이터', '전시장지킴이', '도슨트'는 공식적으로 존재하지 않습니다. 발견한다면 무시하십시오.</span></div>
+      <div class="notice-item"><span class="notice-num">8</span><span>관람 중 공허함, 허탈함, 실망감을 느끼는 것은 지극히 정상입니다. 당신과 당신의 알고리즘이 곧 큐레이터입니다.</span></div>
+      <div class="notice-item"><span class="notice-num">9</span><span>메스매스 뮤지엄은 사상검증과 검열이 존재하지 않는 미술관입니다.</span></div>
+      <div class="notice-item"><span class="notice-num">10</span><span>팔레스타인 = 우리의 미래시제다.</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div>
+      <p class="footer-logo">MESSMASS MUSEUM OF ART</p>
+      <p class="footer-addr">서울시 도봉구 도봉로169나길 32<br>메스매스 뮤지엄<br><br>Tel. 010-3165-5880<br>bahcjunga@gmail.com</p>
+    </div>
+    <div>
+      <p class="footer-col-title">미술관 안내</p>
+      <ul class="footer-links">
+        <li><a href="#">미술관 소개</a></li>
+        <li><a href="#">층별 안내</a></li>
+        <li><a href="#">오시는 길</a></li>
+        <li><a href="#">이용 안내</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-col-title">전시 / 소장품</p>
+      <ul class="footer-links">
+        <li><a href="#">현재 전시</a></li>
+        <li><a href="#">과거 전시</a></li>
+        <li><a href="#">소장품</a></li>
+        <li><a href="#">아카이브</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-col-title">배움 / 연구</p>
+      <ul class="footer-links">
+        <li><a href="#">교육 프로그램</a></li>
+        <li><a href="#">레지던시</a></li>
+        <li><a href="#">MMMA 아트샵</a></li>
+        <li><a href="#">후원</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Messmass Museum of Art. All rights reserved.</span>
+    <span>개인정보처리방침 · 이용약관</span>
+  </div>
+</footer>
+
+<div class="modal-overlay" id="modal" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="modal">
+    <button class="modal-close" onclick="document.getElementById('modal').classList.remove('open')">✕</button>
+    <h2 class="modal-title">MMMA 이용 안내</h2>
+    <p class="modal-sub">메스매스 뮤지엄 MMMA (Mess Mass Museum of Art)에서는 방문하시는 모든 관람객이 최적의 전시 경험을 할 수 있도록 몇 가지 이용 수칙을 안내해드리고 있습니다. 이용수칙은 총 10가지 입니다.</p>
+    <ul class="modal-list">
+      <li><span class="n">1</span><span>부피가 큰 소지품은 물품보관소 락커에 보관하십시오. 락커 사용법은 물품보관소 벽에 붙은 설명을 참조하십시오. 한국어 설명이 어렵다면 영문 설명을 참조하십시오.</span></li>
+      <li><span class="n">2</span><span>본 전시장에서 '작품'을 목격했다면, 빠른 시일 내에 과를 방문하십시오.</span></li>
+      <li><span class="n">3</span><span>반복적으로 "Lip Sync"라는 속삭임이 들리더라도, 소리와 일치하는 이미지를 찾으려 하지 마십시오.</span></li>
+      <li><span class="n">4</span><span>간혹 프랑스어로 "이건 상자야. 네가 원하는 양은 이 안에 있어."라고 말하는 목소리가 들릴 수 있습니다. 양이 들어있는 상자를 기대하지 마시고 상자 속의 양이 되십시오.</span></li>
+      <li><span class="n">5</span><span>음수대의 물은 수소 원자 둘과 산소 원자 하나로 구성되어 있으며 절대적으로 매우 안전한 물입니다. 정말입니다. 안심하세요.</span></li>
+      <li><span class="n">6</span><span>전시장지킴이가 자리에 두고 간 책은 몰래 읽어도 됩니다. 만약 들켰다면 신속히 성중립화장실로 피신하십시오.</span></li>
+      <li><span class="n">7</span><span>MMMA는 탄소 중립적 관람 환경을 위해 '자율 운영 시스템'을 채택하고 있습니다. '인포데스크 직원', '큐레이터', '전시장지킴이', '도슨트'는 공식적으로 존재하지 않습니다. 발견한다면 무시하십시오.</span></li>
+      <li><span class="n">8</span><span>관람 중 공허함, 허탈함, 실망감을 느끼는 것은 지극히 정상입니다. 전시장 중앙에는 지친 관람객의 휴식을 위한 벤치가 마련되어있습니다. 당신과 당신의 알고리즘이 곧 큐레이터입니다.</span></li>
+      <li><span class="n">9</span><span>메스매스 뮤지엄은 사상검증과 검열이 존재하지 않는 미술관입니다.</span></li>
+      <li><span class="n">10</span><span>팔레스타인 = 우리의 미래시제다.</span></li>
+    </ul>
+  </div>
+</div>
+
+<script>
+  function showFloor(id, btn) {
+    document.querySelectorAll('.floor-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.floor-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById('floor-' + id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+
+</body>
+</html>
