@@ -221,10 +221,11 @@ footer{background:#111;color:rgba(255,255,255,.4);padding:3rem 2rem 2rem}
     <p class="info-item-note">메스매스 4F</p>
   </div>
   <div class="info-item">
-    <p class="info-item-label">입장료</p>
-    <p class="info-item-value">무료</p>
-    <p class="info-item-note">사상검증과 검열은<br>존재하지 않습니다</p>
-  </div>
+  <p class="info-item-label">입장료</p>
+  <p class="info-item-value">무료<br><span style="font-size:.72rem;opacity:.6;">유료관람 대상자 20,000원</span></p>
+  <p class="info-item-note" style="cursor:pointer;text-decoration:underline;" onclick="document.getElementById('ticketModal').classList.add('open')">유료관람 대상자 확인 →</p>
+</div>
+
 </div>
 
 <section class="floor-section" id="floor">
@@ -342,6 +343,23 @@ footer{background:#111;color:rgba(255,255,255,.4);padding:3rem 2rem 2rem}
       <li><span class="n">9</span><span>메스매스 뮤지엄은 사상검증과 검열이 존재하지 않는 미술관입니다.</span></li>
       <li><span class="n">10</span><span>&nbsp;</span></li>
     </ul>
+  </div>
+</div>
+<div class="modal-overlay" id="ticketModal" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="modal">
+    <button class="modal-close" onclick="document.getElementById('ticketModal').classList.remove('open')">✕</button>
+    <h2 class="modal-title">유료관람 대상자 <span style="font-size:.85rem;font-weight:300;font-family:var(--sans);margin-left:.5rem;">| 20,000원</span></h2>
+    <ul class="modal-list">
+      <li><span class="n">—</span><span>문화체육관광부 및 한국예술위원회 소속 및 관계자</span></li>
+      <li><span class="n">—</span><span>서울문화재단 및 삼성 등 각종 문화재단 소속 및 관계자</span></li>
+      <li><span class="n">—</span><span>터너 프라이즈 / 휴고 보스 / 베니스 비엔날레 황금사자상 등 해외 미술상 수상자</span></li>
+      <li><span class="n">—</span><span>올해의 작가상 / 이달의 작가상 / 오늘의 작가상 / 송은미술대상 / 에르메스 미술상 등 국내 미술상 수상자</span></li>
+      <li><span class="n">—</span><span>다주택자</span></li>
+      <li><span class="n">—</span><span>연 소득이 1055만원의 500%를 상회하는 자</span></li>
+      <li><span class="n">—</span><span>예술인 패스 소지자</span></li>
+      <li><span class="n">—</span><span>방탄소년단 RM, 널 위한 문화예술 등 팔로워 10만명 이상 보유한 예술애호가</span></li>
+    </ul>
+    <p style="font-size:.75rem;color:var(--gray);margin-top:1.5rem;line-height:1.7;">* 대상자는 명함 또는 증빙자료를 제시해 주시기 바랍니다.</p>
   </div>
 </div>
 
