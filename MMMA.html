@@ -31,8 +31,14 @@ nav ul li a:hover{border-bottom-color:var(--black)}
 .mobile-menu a{padding:.9rem 1.5rem;font-size:.85rem;color:var(--black);text-decoration:none;border-bottom:1px solid var(--line)}
 .mobile-menu.open{display:flex}
 .hero-banner{position:relative;background:var(--black);height:80vh;min-height:400px;display:flex;align-items:flex-end;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background-image:url('https://raw.githubusercontent.com/bahcjunga/web/main/Gemini_Generated_Image_8kq9v98kq9v98kq9%20(1).jpeg');background-size:cover;background-position:center}
-.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.85) 0%,rgba(0,0,0,.2) 60%,transparent 100%)}
+..hero-slides{position:absolute;inset:0}
+.hero-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity .8s ease}
+.hero-slide.active{opacity:1}
+.hero-slide::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.85) 0%,rgba(0,0,0,.2) 60%,transparent 100%)}
+.hero-slide-dots{position:absolute;bottom:1.5rem;right:1.5rem;display:flex;gap:.5rem;z-index:2}
+.hero-dot{width:6px;height:6px;background:rgba(255,255,255,.4);border:none;cursor:pointer;padding:0;transition:background .2s}
+.hero-dot.active{background:var(--white)}
+
 .hero-content{position:relative;z-index:1;padding:2.5rem 1.5rem;color:var(--white);max-width:700px}
 .hero-tag{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:.8rem}
 .hero-title{font-family:var(--serif);font-size:clamp(1.5rem,4vw,3.5rem);font-weight:300;line-height:1.2;margin-bottom:1rem}
@@ -173,14 +179,22 @@ footer{background:#111;color:rgba(255,255,255,.4);padding:3rem 2rem 2rem}
 </header>
 
 <div class="hero-banner">
-  <div class="hero-bg"></div>
+  <div class="hero-slides">
+    <div class="hero-slide active" style="background-image:url('https://raw.githubusercontent.com/bahcjunga/web/main/IMG_6629%20(1).jpeg')"></div>
+    <div class="hero-slide" style="background-image:url('https://raw.githubusercontent.com/bahcjunga/web/main/Gemini_Generated_Image_8kq9v98kq9v98kq9%20(1).jpeg')"></div>
+  </div>
+  <div class="hero-slide-dots">
+    <button class="hero-dot active" onclick="goHero(0)"></button>
+    <button class="hero-dot" onclick="goHero(1)"></button>
+  </div>
   <div class="hero-content">
-    <p class="hero-tag">현재전시 · 상설전시실</p>
-    <h1 class="hero-title">상설전시실 — 소장품전<br>이정수 컬렉션</h1>
-    <p class="hero-sub">Permanent Exhibition Hall — Collection Exhibition: Lee Jeong-su Collection<br>휴관 없음 | 월–일 9:00–22:30</p>
-    <a href="#" class="btn-more">자세히 보기</a>
+    <p class="hero-tag">건축 · JINI KIM</p>
+    <h1 class="hero-title">MESSMASS<br>Museum of Art</h1>
+    <p class="hero-sub">무수골 계곡의 청정수가 흐르는 도봉산자락, 배산임수의 지세를 지닌 도봉동에 자리하고 있습니다. 건축 설계는 세계적인 건축가 JINI KIM이 맡았습니다.</p>
+    <a href="#floor" class="btn-more">층별 안내 보기</a>
   </div>
 </div>
+
 
 <section class="section" id="exhibit">
   <div class="section-header">
@@ -374,6 +388,20 @@ document.getElementById('hamburger').addEventListener('click',()=>{
   document.getElementById('mobileMenu').classList.toggle('open');
 });
 function closeMobileMenu(){document.getElementById('mobileMenu').classList.remove('open')}
+
+ let heroCurrent = 0;
+const heroSlides = document.querySelectorAll('.hero-slide');
+const heroDots = document.querySelectorAll('.hero-dot');
+function goHero(n) {
+  heroSlides[heroCurrent].classList.remove('active');
+  heroDots[heroCurrent].classList.remove('active');
+  heroCurrent = n;
+  heroSlides[heroCurrent].classList.add('active');
+  heroDots[heroCurrent].classList.add('active');
+}
+setInterval(() => goHero((heroCurrent + 1) % heroSlides.length), 5000);
+ 
+  
 </script>
 </body>
 </html>
