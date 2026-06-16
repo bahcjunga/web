@@ -4,159 +4,472 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MESSMASS Museum of Art 메스매스 뮤지엄</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;300;400&family=Noto+Sans+KR:wght@300;400;500&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#f8f7f4;--black:#1a1a1a;--gray:#767676;--line:#d8d5cf;--white:#ffffff;--red:#c8391a;--serif:'Noto Serif KR',serif;--sans:'Noto Sans KR',sans-serif}
+:root{
+  --black:#0a0a0a;
+  --white:#ffffff;
+  --gray:#888;
+  --line:#e0e0e0;
+  --bg:#ffffff;
+  --bg2:#f5f5f5;
+  --red:#c8391a;
+  --serif:'Noto Serif KR',serif;
+  --sans:'Inter','Noto Sans KR',sans-serif;
+}
 html{font-size:15px;scroll-behavior:smooth}
 body{background:var(--bg);color:var(--black);font-family:var(--sans);font-weight:300;line-height:1.6}
 
 /* ── TOP BAR ── */
-.top-bar{background:var(--black);color:var(--white);display:flex;justify-content:space-between;align-items:center;padding:.5rem 2rem;font-size:.7rem;letter-spacing:.05em;position:relative;z-index:200}
-.top-bar-right{display:flex;gap:1.5rem;align-items:center}
-.top-bar-right a{color:rgba(255,255,255,.55);text-decoration:none;transition:color .15s}
-.top-bar-right a:hover{color:var(--white)}
-.lang-btn{background:none;border:none;color:rgba(255,255,255,.55);font-size:.7rem;cursor:pointer;font-family:var(--sans);letter-spacing:.05em;padding:0;transition:color .15s}
-.lang-btn.active,.lang-btn:hover{color:var(--white)}
-.lang-sep{color:rgba(255,255,255,.2)}
-
-/* 탑바 드롭다운 */
+.top-bar{
+  background:var(--black);
+  color:var(--white);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:.45rem 2.5rem;
+  font-size:.68rem;
+  letter-spacing:.08em;
+}
 .top-bar-links{display:flex;gap:0}
-.top-bar-item{position:relative}
-.top-bar-item>a{display:block;padding:.5rem .9rem;color:rgba(255,255,255,.55);text-decoration:none;transition:color .15s;font-size:.7rem;letter-spacing:.05em}
+.top-bar-item>a{
+  display:block;
+  padding:.3rem .9rem;
+  color:rgba(255,255,255,.5);
+  text-decoration:none;
+  transition:color .15s;
+  font-size:.68rem;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
 .top-bar-item>a:hover{color:var(--white)}
-.top-bar-dropdown{position:absolute;top:100%;left:0;background:#111;min-width:150px;display:none;flex-direction:column;z-index:300;border:1px solid #333;border-top:none}
-.top-bar-item:hover .top-bar-dropdown{display:flex}
-.top-bar-dropdown a{padding:.6rem 1rem;font-size:.68rem;color:rgba(255,255,255,.5);text-decoration:none;white-space:nowrap;transition:background .15s,color .15s;border-bottom:1px solid #222}
-.top-bar-dropdown a:last-child{border-bottom:none}
-.top-bar-dropdown a:hover{background:#222;color:var(--white)}
+.top-bar-right{display:flex;gap:1.2rem;align-items:center}
+.top-bar-right a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;transition:color .15s}
+.top-bar-right a:hover{color:var(--white)}
+.lang-btn{background:none;border:none;color:rgba(255,255,255,.5);font-size:.68rem;cursor:pointer;font-family:var(--sans);letter-spacing:.06em;padding:0;transition:color .15s;text-transform:uppercase}
+.lang-btn.active{color:var(--white)}
+.lang-sep{color:rgba(255,255,255,.2);font-size:.6rem}
 
 /* ── HEADER ── */
-header{background:var(--white);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:100}
-.nav-main{display:flex;align-items:center;padding:0 2rem;height:64px;gap:2rem}
-.logo{font-family:var(--serif);font-size:1.05rem;font-weight:600;color:var(--black);text-decoration:none;white-space:nowrap;display:flex;flex-direction:column;line-height:1.2;flex-shrink:0}
-.logo span{font-size:.6rem;font-weight:300;color:var(--gray);letter-spacing:.1em;font-family:var(--sans)}
-nav ul{display:flex;list-style:none}
-nav ul li a{display:flex;align-items:center;height:64px;padding:0 1rem;font-size:.75rem;color:var(--black);text-decoration:none;border-bottom:2px solid transparent;transition:border-color .15s;white-space:nowrap}
+header{
+  background:var(--white);
+  border-bottom:1px solid var(--line);
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+.nav-main{
+  display:flex;
+  align-items:center;
+  padding:0 2.5rem;
+  height:72px;
+  gap:3rem;
+}
+.logo{
+  display:flex;
+  align-items:center;
+  text-decoration:none;
+  flex-shrink:0;
+}
+.logo img{
+  height:32px;
+  width:auto;
+  display:block;
+}
+nav ul{display:flex;list-style:none;gap:0}
+nav ul li a{
+  display:flex;
+  align-items:center;
+  height:72px;
+  padding:0 1.1rem;
+  font-size:.72rem;
+  font-family:var(--sans);
+  font-weight:400;
+  color:var(--black);
+  text-decoration:none;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  border-bottom:2px solid transparent;
+  transition:border-color .15s;
+}
 nav ul li a:hover{border-bottom-color:var(--black)}
 .nav-right{display:flex;gap:1rem;align-items:center;margin-left:auto;flex-shrink:0}
-.btn-ticket{background:var(--black);color:var(--white);font-size:.72rem;padding:.5rem 1.2rem;text-decoration:none;letter-spacing:.05em;transition:background .15s;white-space:nowrap}
-.btn-ticket:hover{background:var(--red)}
+.btn-ticket{
+  background:var(--black);
+  color:var(--white);
+  font-size:.68rem;
+  font-family:var(--sans);
+  padding:.5rem 1.4rem;
+  text-decoration:none;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  transition:opacity .15s;
+  white-space:nowrap;
+}
+.btn-ticket:hover{opacity:.75}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:.5rem;margin-left:auto;background:none;border:none}
 .hamburger span{display:block;width:22px;height:1.5px;background:var(--black)}
-
-/* ── 모바일 메뉴 ── */
 .mobile-menu{display:none;flex-direction:column;background:var(--white);border-top:1px solid var(--line)}
 .mobile-menu.open{display:flex}
-.mobile-menu>a{padding:.9rem 1.5rem;font-size:.85rem;color:var(--black);text-decoration:none;border-bottom:1px solid var(--line)}
-.mobile-cat{border-bottom:1px solid var(--line)}
-.mobile-cat-btn{width:100%;padding:.9rem 1.5rem;font-size:.85rem;color:var(--black);background:none;border:none;text-align:left;font-family:var(--sans);font-weight:400;display:flex;justify-content:space-between;align-items:center;cursor:pointer}
-.mobile-cat-btn::after{content:'+';font-size:1rem;color:var(--gray)}
-.mobile-cat-btn.open::after{content:'−'}
-.mobile-sub{display:none;flex-direction:column;background:#f5f5f5}
-.mobile-sub.open{display:flex}
-.mobile-sub a{padding:.75rem 1.5rem .75rem 2rem;font-size:.78rem;color:var(--gray);text-decoration:none;border-bottom:1px solid var(--line)}
+.mobile-menu>a{padding:.9rem 2rem;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--black);text-decoration:none;border-bottom:1px solid var(--line)}
+.mobile-divider{height:1px;background:var(--line)}
+.mobile-menu>.mobile-util{color:var(--gray);font-size:.72rem}
 
 /* ── HERO ── */
-.hero-banner{position:relative;background:var(--black);height:80vh;min-height:400px;display:flex;align-items:flex-end;overflow:hidden}
+.hero-banner{
+  position:relative;
+  background:var(--black);
+  height:92vh;
+  min-height:560px;
+  display:flex;
+  align-items:flex-end;
+  overflow:hidden;
+}
 .hero-slides{position:absolute;inset:0}
-.hero-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity .8s ease}
+.hero-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1s ease}
 .hero-slide.active{opacity:1}
-.hero-slide::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.85) 0%,rgba(0,0,0,.2) 60%,transparent 100%)}
-.hero-slide-dots{position:absolute;bottom:1.5rem;right:1.5rem;display:flex;gap:.5rem;z-index:2}
-.hero-dot{width:6px;height:6px;background:rgba(255,255,255,.4);border:none;cursor:pointer;padding:0;transition:background .2s}
+.hero-slide::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.8) 0%,rgba(0,0,0,.15) 55%,transparent 100%)}
+.hero-slide-dots{position:absolute;bottom:2rem;right:2.5rem;display:flex;gap:.5rem;z-index:2}
+.hero-dot{width:5px;height:5px;background:rgba(255,255,255,.35);border:none;cursor:pointer;padding:0;transition:background .2s;border-radius:0}
 .hero-dot.active{background:var(--white)}
-.hero-content{position:relative;z-index:1;padding:2.5rem 1.5rem;color:var(--white);max-width:700px}
-.hero-tag{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:.8rem}
-.hero-title{font-family:var(--serif);font-size:clamp(1.5rem,4vw,3.5rem);font-weight:300;line-height:1.2;margin-bottom:1rem}
-.hero-sub{font-size:.82rem;color:rgba(255,255,255,.6);margin-bottom:1.5rem;line-height:1.6}
-.btn-more{display:inline-block;border:1px solid rgba(255,255,255,.5);color:var(--white);font-size:.72rem;padding:.6rem 1.5rem;text-decoration:none;letter-spacing:.1em;transition:background .15s}
-.btn-more:hover{background:rgba(255,255,255,.1)}
+.hero-content{
+  position:relative;
+  z-index:1;
+  padding:3.5rem 2.5rem;
+  color:var(--white);
+  max-width:680px;
+}
+.hero-tag{
+  font-size:.62rem;
+  letter-spacing:.25em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.45);
+  margin-bottom:1.2rem;
+  font-family:var(--sans);
+}
+.hero-title{
+  font-family:var(--serif);
+  font-size:clamp(2rem,5vw,4.5rem);
+  font-weight:200;
+  line-height:1.1;
+  margin-bottom:1.2rem;
+  letter-spacing:-.02em;
+}
+.hero-sub{
+  font-size:.82rem;
+  color:rgba(255,255,255,.55);
+  margin-bottom:2rem;
+  line-height:1.7;
+  max-width:480px;
+}
+.btn-more{
+  display:inline-block;
+  border:1px solid rgba(255,255,255,.45);
+  color:var(--white);
+  font-size:.65rem;
+  padding:.65rem 1.8rem;
+  text-decoration:none;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  transition:background .15s,border-color .15s;
+  font-family:var(--sans);
+}
+.btn-more:hover{background:rgba(255,255,255,.1);border-color:var(--white)}
+
+/* ── 건축 섹션 ── */
+#architecture{background:var(--black);color:var(--white)}
+.arch-hero-img{width:100%;height:65vh;object-fit:cover;display:block;opacity:.7}
+.arch-overlay{
+  position:relative;
+}
+.arch-overlay-text{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to right,rgba(0,0,0,.7) 0%,transparent 60%);
+  display:flex;
+  align-items:flex-end;
+  padding:3rem 2.5rem;
+}
+.arch-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid #222}
+.arch-col{padding:4rem 2.5rem}
+.arch-col:first-child{border-right:1px solid #222}
+.arch-label{font-size:.58rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:1.5rem;font-family:var(--sans)}
+.arch-heading{font-family:var(--serif);font-size:1.6rem;font-weight:200;line-height:1.35;margin-bottom:1.5rem}
+.arch-body{font-size:.85rem;line-height:1.9;color:rgba(255,255,255,.55)}
+.arch-body+.arch-body{margin-top:1rem}
+.arch-interior-img{width:100%;height:50vh;object-fit:cover;display:block;opacity:.75}
+.arch-credits{
+  padding:2.5rem 2.5rem;
+  border-top:1px solid #222;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  flex-wrap:wrap;
+  gap:2rem;
+}
+.arch-credit-item{}
+.arch-credit-label{font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.4rem;font-family:var(--sans)}
+.arch-credit-value{font-family:var(--serif);font-size:1rem;font-weight:200}
 
 /* ── SECTIONS ── */
-.section{padding:4rem 2rem}
-.section-header{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:.8rem;margin-bottom:2.5rem}
-.section-title{font-family:var(--serif);font-size:1.15rem;font-weight:400}
-.section-more{font-size:.7rem;color:var(--gray);text-decoration:none;transition:color .15s}
+.section{padding:5rem 2.5rem}
+.section-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  border-bottom:1px solid var(--line);
+  padding-bottom:1rem;
+  margin-bottom:3rem;
+}
+.section-title{
+  font-family:var(--sans);
+  font-size:.72rem;
+  font-weight:500;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+}
+.section-more{font-size:.65rem;color:var(--gray);text-decoration:none;letter-spacing:.08em;text-transform:uppercase;transition:color .15s}
 .section-more:hover{color:var(--black)}
-.exhibit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
-.exhibit-card{text-decoration:none;color:var(--black)}
-.exhibit-thumb{aspect-ratio:4/3;background:var(--line);margin-bottom:1rem;overflow:hidden;display:flex;align-items:center;justify-content:center}
-.exhibit-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
-.exhibit-card:hover .exhibit-thumb img{transform:scale(1.04)}
-.exhibit-thumb-placeholder{font-size:.65rem;color:var(--gray);letter-spacing:.1em;text-transform:uppercase}
-.exhibit-status{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--red);margin-bottom:.4rem}
-.exhibit-title{font-family:var(--serif);font-size:.95rem;font-weight:400;line-height:1.5;margin-bottom:.3rem}
-.exhibit-date{font-size:.7rem;color:var(--gray)}
-.info-banner{background:var(--black);color:var(--white);display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #333}
-.info-item{padding:2.5rem 2rem;border-right:1px solid #333}
+
+/* ── 전시 그리드 ── */
+.exhibit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem}
+.exhibit-card{text-decoration:none;color:var(--black);display:block}
+.exhibit-thumb{
+  aspect-ratio:3/2;
+  background:var(--bg2);
+  margin-bottom:1.2rem;
+  overflow:hidden;
+}
+.exhibit-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;display:block}
+.exhibit-card:hover .exhibit-thumb img{transform:scale(1.03)}
+.exhibit-status{
+  font-size:.6rem;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--gray);
+  margin-bottom:.5rem;
+  font-family:var(--sans);
+}
+.exhibit-status.on{color:var(--black)}
+.exhibit-title{
+  font-family:var(--serif);
+  font-size:1rem;
+  font-weight:300;
+  line-height:1.5;
+  margin-bottom:.4rem;
+}
+.exhibit-date{font-size:.7rem;color:var(--gray);font-family:var(--sans)}
+
+/* ── 정보 배너 ── */
+.info-banner{
+  background:var(--black);
+  color:var(--white);
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+}
+.info-item{padding:3rem 2.5rem;border-right:1px solid #1f1f1f}
 .info-item:last-child{border-right:none}
-.info-item-label{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:.8rem}
-.info-item-value{font-family:var(--serif);font-size:.92rem;line-height:1.7;font-weight:300}
-.info-item-note{font-size:.65rem;color:rgba(255,255,255,.35);margin-top:.5rem;line-height:1.5}
-.floor-section{background:#f0ede8;padding:4rem 2rem;border-top:1px solid var(--line)}
-.floor-grid{display:grid;grid-template-columns:200px 1fr;gap:3rem;margin-top:2rem}
+.info-item-label{
+  font-size:.55rem;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.3);
+  margin-bottom:1rem;
+  font-family:var(--sans);
+}
+.info-item-value{
+  font-family:var(--serif);
+  font-size:1rem;
+  line-height:1.7;
+  font-weight:200;
+}
+.info-item-note{
+  font-size:.65rem;
+  color:rgba(255,255,255,.3);
+  margin-top:.6rem;
+  line-height:1.6;
+  font-family:var(--sans);
+}
+
+/* ── 층별 안내 ── */
+.floor-section{background:var(--bg2);padding:5rem 2.5rem;border-top:1px solid var(--line)}
+.floor-grid{display:grid;grid-template-columns:220px 1fr;gap:4rem;margin-top:2.5rem}
 .floor-nav{display:flex;flex-direction:column}
-.floor-btn{padding:.8rem 1rem;font-size:.8rem;border:none;border-bottom:1px solid var(--line);background:transparent;text-align:left;cursor:pointer;font-family:var(--sans);font-weight:300;transition:background .15s;display:flex;align-items:center;gap:.8rem}
-.floor-btn:hover{background:rgba(0,0,0,.05)}
+.floor-btn{
+  padding:.85rem 1rem;
+  font-size:.7rem;
+  border:none;
+  border-bottom:1px solid var(--line);
+  background:transparent;
+  text-align:left;
+  cursor:pointer;
+  font-family:var(--sans);
+  font-weight:400;
+  letter-spacing:.06em;
+  transition:background .15s;
+  display:flex;
+  align-items:center;
+  gap:1rem;
+  color:var(--gray);
+}
+.floor-btn:hover{background:rgba(0,0,0,.04);color:var(--black)}
 .floor-btn.active{background:var(--black);color:var(--white)}
-.floor-num{font-family:var(--serif);font-size:1rem;min-width:2rem}
+.floor-num{font-family:var(--sans);font-size:.72rem;font-weight:500;min-width:2rem;letter-spacing:.05em}
 .floor-content{display:none}
 .floor-content.active{display:block}
-.floor-content-title{font-family:var(--serif);font-size:1.3rem;font-weight:300;margin-bottom:1rem}
-.floor-content-desc{font-size:.85rem;line-height:1.8;color:#555;max-width:500px}
-.collection-banner{background:var(--black);color:var(--white);padding:5rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
-.collection-label{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:1rem}
-.collection-title{font-family:var(--serif);font-size:clamp(1.5rem,3vw,2.5rem);font-weight:300;line-height:1.3;margin-bottom:1rem}
-.collection-desc{font-size:.82rem;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:1.5rem;max-width:500px}
-.btn-white{display:inline-block;border:1px solid rgba(255,255,255,.4);color:var(--white);font-size:.72rem;padding:.6rem 1.5rem;text-decoration:none;letter-spacing:.1em;transition:background .15s}
-.btn-white:hover{background:rgba(255,255,255,.1)}
-.notice-section{background:var(--white);padding:4rem 2rem;border-top:1px solid var(--line)}
-.notice-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:2rem}
+.floor-content-title{
+  font-family:var(--serif);
+  font-size:1.6rem;
+  font-weight:200;
+  margin-bottom:1.2rem;
+  line-height:1.3;
+}
+.floor-content-desc{font-size:.85rem;line-height:1.9;color:#555;max-width:520px}
+
+/* ── 소장품 배너 ── */
+.collection-banner{
+  background:var(--black);
+  color:var(--white);
+  padding:7rem 2.5rem;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:4rem;
+  align-items:center;
+}
+.collection-label{font-size:.55rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:1.2rem;font-family:var(--sans)}
+.collection-title{
+  font-family:var(--serif);
+  font-size:clamp(1.8rem,3.5vw,3rem);
+  font-weight:200;
+  line-height:1.2;
+  margin-bottom:1.5rem;
+}
+.collection-desc{font-size:.85rem;color:rgba(255,255,255,.45);line-height:1.9;margin-bottom:2rem}
+.btn-white{
+  display:inline-block;
+  border:1px solid rgba(255,255,255,.35);
+  color:var(--white);
+  font-size:.65rem;
+  padding:.65rem 1.8rem;
+  text-decoration:none;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  transition:background .15s;
+  font-family:var(--sans);
+}
+.btn-white:hover{background:rgba(255,255,255,.08)}
+
+/* ── 이용 안내 ── */
+.notice-section{background:var(--white);padding:5rem 2.5rem;border-top:1px solid var(--line)}
+.notice-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:2.5rem}
 .notice-block{display:flex;flex-direction:column}
-.notice-item{display:flex;gap:1rem;font-size:.82rem;line-height:1.7;padding:.9rem 0;border-bottom:1px solid var(--line)}
-.notice-num{font-family:var(--serif);color:var(--gray);min-width:1.2rem;font-size:.78rem}
-footer{background:#111;color:rgba(255,255,255,.4);padding:3rem 2rem 2rem}
-.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2rem;padding-bottom:2rem;border-bottom:1px solid #333;margin-bottom:2rem}
-.footer-logo{font-family:var(--serif);font-size:1rem;color:var(--white);margin-bottom:.8rem}
-.footer-addr{font-size:.7rem;line-height:1.8}
-.footer-col-title{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:1rem}
-.footer-links{display:flex;flex-direction:column;gap:.5rem;list-style:none}
-.footer-links a{font-size:.72rem;color:rgba(255,255,255,.35);text-decoration:none;transition:color .15s}
-.footer-links a:hover{color:var(--white)}
-.footer-bottom{display:flex;justify-content:space-between;font-size:.65rem;flex-wrap:wrap;gap:.5rem}
+.notice-item{
+  display:flex;
+  gap:1.5rem;
+  font-size:.82rem;
+  line-height:1.8;
+  padding:1rem 0;
+  border-bottom:1px solid var(--line);
+  color:#444;
+}
+.notice-num{
+  font-family:var(--sans);
+  color:#bbb;
+  min-width:1.2rem;
+  font-size:.7rem;
+  font-weight:500;
+  padding-top:.15rem;
+}
+
+/* ── FOOTER ── */
+footer{background:var(--black);color:rgba(255,255,255,.35);padding:4rem 2.5rem 2.5rem}
+.footer-top{
+  display:grid;
+  grid-template-columns:1.8fr 1fr 1fr 1fr;
+  gap:3rem;
+  padding-bottom:3rem;
+  border-bottom:1px solid #1f1f1f;
+  margin-bottom:2rem;
+}
+.footer-logo img{height:28px;width:auto;display:block;margin-bottom:1.5rem;opacity:.9}
+.footer-addr{font-size:.7rem;line-height:2;color:rgba(255,255,255,.3)}
+.footer-col-title{
+  font-size:.55rem;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.5);
+  margin-bottom:1.2rem;
+  font-family:var(--sans);
+}
+.footer-links{display:flex;flex-direction:column;gap:.6rem;list-style:none}
+.footer-links a{font-size:.72rem;color:rgba(255,255,255,.3);text-decoration:none;transition:color .15s;letter-spacing:.02em}
+.footer-links a:hover{color:rgba(255,255,255,.8)}
+.footer-bottom{display:flex;justify-content:space-between;font-size:.62rem;flex-wrap:wrap;gap:.5rem;letter-spacing:.04em}
 
 /* ── MODAL ── */
-.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9999;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .2s}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:9999;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .2s}
 .modal-overlay.open{opacity:1;pointer-events:all}
-.modal{background:var(--white);max-width:600px;width:90%;max-height:80vh;overflow-y:auto;padding:2.5rem;position:relative}
-.modal-close{position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;font-size:1.2rem;cursor:pointer;color:var(--gray)}
-.modal-title{font-family:var(--serif);font-size:1.3rem;font-weight:400;margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid var(--line)}
-.modal-sub{font-size:.78rem;color:var(--gray);margin-bottom:1.2rem;line-height:1.7}
+.modal{background:var(--white);max-width:620px;width:92%;max-height:82vh;overflow-y:auto;padding:3rem;position:relative}
+.modal-close{position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;font-size:1.1rem;cursor:pointer;color:#aaa;font-family:var(--sans)}
+.modal-close:hover{color:var(--black)}
+.modal-title{
+  font-family:var(--serif);
+  font-size:1.4rem;
+  font-weight:300;
+  margin-bottom:1rem;
+  padding-bottom:1.2rem;
+  border-bottom:1px solid var(--line);
+}
+.modal-sub{font-size:.78rem;color:var(--gray);margin-bottom:1.5rem;line-height:1.8}
 .modal-list{list-style:none;display:flex;flex-direction:column}
-.modal-list li{display:flex;gap:1rem;font-size:.82rem;line-height:1.7;padding:.8rem 0;border-bottom:1px solid var(--line)}
-.modal-list .n{font-family:var(--serif);color:var(--gray);min-width:1.2rem}
-
-/* ── 건축 그리드 ── */
-.arch-grid{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.modal-list li{display:flex;gap:1.2rem;font-size:.82rem;line-height:1.8;padding:.9rem 0;border-bottom:1px solid var(--line);color:#444}
+.modal-list .n{font-family:var(--sans);color:#ccc;min-width:1.2rem;font-size:.7rem;font-weight:500;padding-top:.15rem}
 
 /* ── RESPONSIVE ── */
-@media(max-width:1024px){.footer-top{grid-template-columns:1fr 1fr}nav ul li a{padding:0 .7rem;font-size:.7rem}}
-@media(max-width:900px){.exhibit-grid{grid-template-columns:1fr 1fr}.info-banner{grid-template-columns:1fr 1fr}.info-item{border-right:none;border-bottom:1px solid #333}.info-item:nth-child(odd){border-right:1px solid #333}.floor-grid{grid-template-columns:160px 1fr;gap:1.5rem}}
+@media(max-width:1024px){
+  .footer-top{grid-template-columns:1fr 1fr}
+  .collection-banner{grid-template-columns:1fr;gap:2rem;padding:5rem 2rem}
+  nav ul li a{padding:0 .75rem;font-size:.68rem}
+}
+@media(max-width:900px){
+  .exhibit-grid{grid-template-columns:1fr 1fr}
+  .info-banner{grid-template-columns:1fr 1fr}
+  .info-item{border-right:none;border-bottom:1px solid #1f1f1f}
+  .info-item:nth-child(odd){border-right:1px solid #1f1f1f}
+  .floor-grid{grid-template-columns:180px 1fr;gap:2rem}
+  .arch-grid{grid-template-columns:1fr}
+  .arch-col:first-child{border-right:none;border-bottom:1px solid #222}
+}
 @media(max-width:640px){
   .top-bar{display:none}
-  nav{display:none}.nav-right{display:none}.hamburger{display:flex}.nav-main{padding:0 1rem}
-  .hero-banner{height:60vh;min-height:320px}.hero-sub{display:none}
-  .section,.floor-section,.notice-section{padding:2.5rem 1rem}.collection-banner{padding:3rem 1rem}
-  .exhibit-grid{grid-template-columns:1fr}
-  .info-banner{grid-template-columns:1fr 1fr}.info-item{padding:1.5rem 1rem}
-  .floor-grid{grid-template-columns:1fr}.floor-nav{flex-direction:row;flex-wrap:wrap;gap:.4rem;margin-bottom:1.5rem}.floor-btn{border:1px solid var(--line);font-size:.68rem;padding:.4rem .7rem}
+  nav{display:none}.nav-right{display:none}.hamburger{display:flex}
+  .nav-main{padding:0 1.2rem;height:60px}
+  .logo img{height:26px}
+  .hero-banner{height:70vh;min-height:400px}
+  .hero-content{padding:2.5rem 1.5rem}
+  .hero-sub{display:none}
+  .hero-title{font-size:clamp(1.8rem,7vw,2.8rem)}
+  .section{padding:3.5rem 1.5rem}
+  .floor-section{padding:3.5rem 1.5rem}
+  .notice-section{padding:3.5rem 1.5rem}
+  .collection-banner{padding:4rem 1.5rem}
+  .exhibit-grid{grid-template-columns:1fr;gap:2rem}
+  .info-banner{grid-template-columns:1fr 1fr}
+  .info-item{padding:2rem 1.5rem}
+  .floor-grid{grid-template-columns:1fr}
+  .floor-nav{flex-direction:row;flex-wrap:wrap;gap:.4rem;margin-bottom:2rem}
+  .floor-btn{border:1px solid var(--line);font-size:.62rem;padding:.4rem .7rem;color:var(--black)}
   .notice-grid{grid-template-columns:1fr;gap:0}
-  footer{padding:2rem 1rem}.footer-top{grid-template-columns:1fr;gap:1.5rem}.footer-bottom{flex-direction:column}
+  footer{padding:3rem 1.5rem 2rem}
+  .footer-top{grid-template-columns:1fr;gap:2rem}
+  .footer-bottom{flex-direction:column;gap:.3rem}
   .arch-grid{grid-template-columns:1fr}
-  .arch-grid>div{border-right:none!important;border-bottom:1px solid #333}
-  #architecture img{height:45vw!important}
-  #architecture [style*="justify-content:space-between"]{flex-direction:column;gap:1.5rem}
+  .arch-col{padding:3rem 1.5rem}
+  .arch-col:first-child{border-right:none;border-bottom:1px solid #222}
+  .arch-hero-img{height:45vw}
+  .arch-interior-img{height:40vw}
+  .arch-credits{flex-direction:column;gap:1.5rem;padding:2rem 1.5rem}
 }
 </style>
 </head>
@@ -186,35 +499,38 @@ footer{background:#111;color:rgba(255,255,255,.4);padding:3rem 2rem 2rem}
 <!-- HEADER -->
 <header>
   <div class="nav-main">
-    <a href="#" class="logo">MESSMASS MUSEUM OF ART<span data-ko="메스매스 뮤지엄" data-en="Messmass Museum of Art">메스매스 뮤지엄</span></a>
+    <a href="#" class="logo">
+      <img src="https://raw.githubusercontent.com/bahcjunga/web/main/MMMAimg/MMMAlogo.png" alt="MESSMASS Museum of Art">
+    </a>
     <nav>
       <ul>
         <li><a href="#exhibit" data-ko="전시" data-en="Exhibition">전시</a></li>
         <li><a href="#collection" data-ko="소장품" data-en="Collection">소장품</a></li>
         <li><a href="#architecture" data-ko="건축" data-en="Architecture">건축</a></li>
         <li><a href="#floor" data-ko="층별 안내" data-en="Floor Guide">층별 안내</a></li>
-        <li><a href="#" onclick="document.getElementById('modal').classList.add('open');return false;" data-ko="이용 안내" data-en="Visitor Info">이용 안내</a></li>
+        <li><a href="#notice" data-ko="이용 안내" data-en="Visitor Info">이용 안내</a></li>
       </ul>
     </nav>
-    <div class="nav-right"><a href="#" class="btn-ticket" data-ko="예매 / 예약" data-en="Tickets">예매 / 예약</a></div>
+    <div class="nav-right">
+      <a href="#" class="btn-ticket" data-ko="예매 / 예약" data-en="Tickets">예매 / 예약</a>
+    </div>
     <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
   </div>
-  <!-- 모바일 메뉴 -->
   <div class="mobile-menu" id="mobileMenu">
     <a href="#exhibit" onclick="closeMobileMenu()" data-ko="전시" data-en="Exhibition">전시</a>
     <a href="#collection" onclick="closeMobileMenu()" data-ko="소장품" data-en="Collection">소장품</a>
     <a href="#architecture" onclick="closeMobileMenu()" data-ko="건축" data-en="Architecture">건축</a>
     <a href="#floor" onclick="closeMobileMenu()" data-ko="층별 안내" data-en="Floor Guide">층별 안내</a>
-    <a href="#" onclick="document.getElementById('modal').classList.add('open');closeMobileMenu();return false;" data-ko="이용 안내" data-en="Visitor Info">이용 안내</a>
-    <div style="height:1px;background:var(--line);"></div>
-    <a href="#" onclick="document.getElementById('aboutModal').classList.add('open');closeMobileMenu();return false;" data-ko="미술관 소개" data-en="About">미술관 소개</a>
-    <a href="https://www.artscene.co.kr/2100" target="_blank" onclick="closeMobileMenu()" data-ko="보도자료" data-en="Press">보도자료</a>
-    <a href="#" onclick="document.getElementById('ticketModal').classList.add('open');closeMobileMenu();return false;" data-ko="관람료 안내" data-en="Admission">관람료 안내</a>
-    <a href="#" onclick="document.getElementById('modal').classList.add('open');closeMobileMenu();return false;" data-ko="예매 / 예약" data-en="Tickets">예매 / 예약</a>
-    <div style="display:flex;gap:1rem;padding:.9rem 1.5rem;border-bottom:1px solid var(--line);">
-      <button class="lang-btn active" onclick="setLang('ko')" style="color:var(--black);font-size:.85rem;">KO</button>
-      <span style="color:#ccc;">|</span>
-      <button class="lang-btn" onclick="setLang('en')" style="color:var(--black);font-size:.85rem;">EN</button>
+    <a href="#notice" onclick="closeMobileMenu()" data-ko="이용 안내" data-en="Visitor Info">이용 안내</a>
+    <div class="mobile-divider"></div>
+    <a href="#" class="mobile-util" onclick="document.getElementById('aboutModal').classList.add('open');closeMobileMenu();return false;" data-ko="미술관 소개" data-en="About">미술관 소개</a>
+    <a href="https://www.artscene.co.kr/2100" target="_blank" class="mobile-util" onclick="closeMobileMenu()" data-ko="보도자료" data-en="Press">보도자료</a>
+    <a href="#" class="mobile-util" onclick="document.getElementById('ticketModal').classList.add('open');closeMobileMenu();return false;" data-ko="관람료 안내" data-en="Admission">관람료 안내</a>
+    <a href="#" class="mobile-util" onclick="document.getElementById('modal').classList.add('open');closeMobileMenu();return false;" data-ko="예매 / 예약" data-en="Tickets">예매 / 예약</a>
+    <div style="display:flex;gap:1rem;padding:.9rem 2rem;border-bottom:1px solid var(--line);">
+      <button class="lang-btn active" onclick="setLang('ko')" style="color:var(--black)">KO</button>
+      <span style="color:#ccc;font-size:.6rem">|</span>
+      <button class="lang-btn" onclick="setLang('en')" style="color:var(--black)">EN</button>
     </div>
   </div>
 </header>
@@ -237,48 +553,55 @@ footer{background:#111;color:rgba(255,255,255,.4);padding:3rem 2rem 2rem}
   </div>
 </div>
 
-<!-- 건축 소개 -->
-<section id="architecture" style="background:var(--black);color:var(--white);">
-  <div style="position:relative;overflow:hidden;">
-    <img src="https://raw.githubusercontent.com/bahcjunga/web/main/IMG_6629%20(1).jpeg" alt="MMMA 건축 외관" style="width:100%;height:70vh;object-fit:cover;display:block;opacity:.75;">
-    <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,.75) 0%,rgba(0,0,0,.1) 100%);display:flex;align-items:flex-end;padding:3rem 2rem;">
+<!-- 건축 -->
+<section id="architecture">
+  <div class="arch-overlay">
+    <img class="arch-hero-img" src="https://raw.githubusercontent.com/bahcjunga/web/main/IMG_6629%20(1).jpeg" alt="MMMA 외관">
+    <div class="arch-overlay-text">
       <div>
-        <p style="font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:.8rem;" data-ko="건축 · Architecture" data-en="Architecture">건축 · Architecture</p>
-        <h2 style="font-family:var(--serif);font-size:clamp(1.8rem,4vw,3.5rem);font-weight:300;line-height:1.1;">MESSMASS<br>Museum of Art</h2>
-        <p style="font-size:.82rem;color:rgba(255,255,255,.55);margin-top:.8rem;">Architect : JINI KIM</p>
+        <p class="arch-label" data-ko="건축 · Architecture" data-en="Architecture">건축 · Architecture</p>
+        <h2 style="font-family:var(--serif);font-size:clamp(2rem,4vw,3.5rem);font-weight:200;line-height:1.1;color:var(--white);">MESSMASS<br>Museum of Art</h2>
+        <p style="font-size:.78rem;color:rgba(255,255,255,.5);margin-top:.8rem;font-family:var(--sans);letter-spacing:.05em;">Architect : JINI KIM</p>
       </div>
     </div>
   </div>
-  <div class="arch-grid" style="border-top:1px solid #333;">
-    <div style="padding:4rem 2rem;border-right:1px solid #333;">
-      <p style="font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:1.5rem;" data-ko="외관 · Exterior" data-en="Exterior">외관 · Exterior</p>
-      <h3 style="font-family:var(--serif);font-size:1.3rem;font-weight:300;line-height:1.4;margin-bottom:1.5rem;" data-ko="텍토닉 건축 —<br>MASS를 MESS하다" data-en="Tectonic Architecture —<br>MESSing the MASS">텍토닉 건축 —<br>MASS를 MESS하다</h3>
-      <p style="font-size:.85rem;line-height:1.9;color:rgba(255,255,255,.6);" data-ko="거대한 콘크리트 덩어리 Mass들이 서로 맞물리고 엇갈리는 형태, MASS를 MESS하게 적층시키는 실험적 설계는 텍토닉 건축을 실현합니다. 노출 콘크리트로 동양적 미학에서의 여백의 미를 형상화했으며, 재료의 선택과 건축이 어우러지며 절제된 기품이 드러납니다." data-en="The experimental design, where massive concrete masses interlock and intersect in a MESSY manner, realizes tectonic architecture. Exposed concrete embodies the Eastern aesthetic of the beauty of empty space. The harmonious integration of material selection and architecture reveals a restrained elegance.">거대한 콘크리트 덩어리 Mass들이 서로 맞물리고 엇갈리는 형태, MASS를 MESS하게 적층시키는 실험적 설계는 텍토닉 건축을 실현합니다. 노출 콘크리트로 동양적 미학에서의 여백의 미를 형상화했으며, 재료의 선택과 건축이 어우러지며 절제된 기품이 드러납니다.</p>
-      <p style="font-size:.85rem;line-height:1.9;color:rgba(255,255,255,.6);margin-top:1rem;" data-ko="화려한 장식을 배제하고 재료 본연의 질감을 드러낸 모습은 선비의 담백미 淡白美 를 닮아 있습니다. JINI KIM은 한국의 전통적인 미학과 선비 정신을 메스매스 뮤지엄의 건축으로 승화시켰습니다." data-en="By eschewing ornate decoration and revealing the inherent texture of the materials, it resembles the scholar's simple beauty 淡白美. JINI KIM sublimated Korea's traditional aesthetics and scholar spirit into the architecture of MESSMASS Museum.">화려한 장식을 배제하고 재료 본연의 질감을 드러낸 모습은 선비의 담백미 淡白美 를 닮아 있습니다. JINI KIM은 한국의 전통적인 미학과 선비 정신을 메스매스 뮤지엄의 건축으로 승화시켰습니다.</p>
+  <div class="arch-grid">
+    <div class="arch-col">
+      <p class="arch-label" data-ko="외관 · Exterior" data-en="Exterior">외관 · Exterior</p>
+      <h3 class="arch-heading" data-ko="텍토닉 건축 —<br>MASS를 MESS하다" data-en="Tectonic Architecture —<br>MESSing the MASS">텍토닉 건축 —<br>MASS를 MESS하다</h3>
+      <p class="arch-body" data-ko="거대한 콘크리트 덩어리 Mass들이 서로 맞물리고 엇갈리는 형태, MASS를 MESS하게 적층시키는 실험적 설계는 텍토닉 건축을 실현합니다. 노출 콘크리트로 동양적 미학에서의 여백의 미를 형상화했으며, 재료의 선택과 건축이 어우러지며 절제된 기품이 드러납니다." data-en="The experimental design, where massive concrete masses interlock and intersect in a MESSY manner, realizes tectonic architecture. Exposed concrete embodies the Eastern aesthetic of the beauty of empty space. The harmonious integration of material selection and architecture reveals a restrained elegance.">거대한 콘크리트 덩어리 Mass들이 서로 맞물리고 엇갈리는 형태, MASS를 MESS하게 적층시키는 실험적 설계는 텍토닉 건축을 실현합니다. 노출 콘크리트로 동양적 미학에서의 여백의 미를 형상화했으며, 재료의 선택과 건축이 어우러지며 절제된 기품이 드러납니다.</p>
+      <p class="arch-body" style="margin-top:1rem" data-ko="화려한 장식을 배제하고 재료 본연의 질감을 드러낸 모습은 선비의 담백미 淡白美를 닮아 있습니다. JINI KIM은 한국의 전통적인 미학과 선비 정신을 메스매스 뮤지엄의 건축으로 승화시켰습니다." data-en="By eschewing ornate decoration and revealing the inherent texture of the materials, it resembles the scholar's simple beauty 淡白美. JINI KIM sublimated Korea's traditional aesthetics and scholar spirit into the architecture of MESSMASS Museum.">화려한 장식을 배제하고 재료 본연의 질감을 드러낸 모습은 선비의 담백미 淡白美를 닮아 있습니다. JINI KIM은 한국의 전통적인 미학과 선비 정신을 메스매스 뮤지엄의 건축으로 승화시켰습니다.</p>
     </div>
-    <div style="padding:4rem 2rem;">
-      <p style="font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:1.5rem;" data-ko="내부 · Interior" data-en="Interior">내부 · Interior</p>
-      <h3 style="font-family:var(--serif);font-size:1.3rem;font-weight:300;line-height:1.4;margin-bottom:1.5rem;" data-ko="빛과 여백 —<br>비워냄으로써 채워지다" data-en="Light and Void —<br>Filled by Emptying">빛과 여백 —<br>비워냄으로써 채워지다</h3>
-      <p style="font-size:.85rem;line-height:1.9;color:rgba(255,255,255,.6);" data-ko="MASS 사이로 스며드는 빛은 시간의 흐름에 따라 내부의 표정을 바꿉니다. 이는 비워냄으로써 채워지는 여백의 미를 현대적으로 재해석한 결과입니다. 하늘을 향해 뻗은 캔틸레버 구조와 단단한 직선의 조화는 타협하지 않는 선비의 강직함을 떠올리게 합니다." data-en="Light filtering through the MASS changes the interior's expression over time. This is a modern reinterpretation of the beauty of emptiness, filled by the act of emptying. The harmony between the cantilever structure reaching toward the sky and the solid straight lines evokes the uncompromising integrity of a scholar.">MASS 사이로 스며드는 빛은 시간의 흐름에 따라 내부의 표정을 바꿉니다. 이는 비워냄으로써 채워지는 여백의 미를 현대적으로 재해석한 결과입니다. 하늘을 향해 뻗은 캔틸레버 구조와 단단한 직선의 조화는 타협하지 않는 선비의 강직함을 떠올리게 합니다.</p>
-      <p style="font-size:.85rem;line-height:1.9;color:rgba(255,255,255,.6);margin-top:1rem;" data-ko="메스매스 뮤지엄은 또한 지속가능한 환경을 위해 세계 최초로 탄소 배출이 없는 Zero CO2 無탄소 無동력 엘리베이터를 도입했습니다. 인위적인 에너지 소모를 최소화하려는 철학이 담긴 공간 설계는 현대적 의미의 청렴함(탄소 중립)을 건축적으로 실현하고 있습니다." data-en="MESSMASS Museum has also introduced the world's first Zero CO2 elevator—emission-free and powerless. Its space design, embodying a philosophy of minimizing artificial energy consumption, architecturally realizes modern integrity (carbon neutrality).">메스매스 뮤지엄은 또한 지속가능한 환경을 위해 세계 최초로 탄소 배출이 없는 Zero CO2 無탄소 無동력 엘리베이터를 도입했습니다. 인위적인 에너지 소모를 최소화하려는 철학이 담긴 공간 설계는 현대적 의미의 청렴함(탄소 중립)을 건축적으로 실현하고 있습니다.</p>
-    </div>
-  </div>
-  <div style="position:relative;">
-    <img src="https://raw.githubusercontent.com/bahcjunga/web/main/Gemini_Generated_Image_8kq9v98kq9v98kq9%20(1).jpeg" alt="MMMA 내부" style="width:100%;height:55vh;object-fit:cover;display:block;opacity:.8;">
-    <div style="position:absolute;bottom:2rem;right:2rem;">
-      <p style="font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.45);" data-ko="메스매스 뮤지엄 내부 전경" data-en="Interior view of MESSMASS Museum">메스매스 뮤지엄 내부 전경</p>
+    <div class="arch-col">
+      <p class="arch-label" data-ko="내부 · Interior" data-en="Interior">내부 · Interior</p>
+      <h3 class="arch-heading" data-ko="빛과 여백 —<br>비워냄으로써 채워지다" data-en="Light and Void —<br>Filled by Emptying">빛과 여백 —<br>비워냄으로써 채워지다</h3>
+      <p class="arch-body" data-ko="MASS 사이로 스며드는 빛은 시간의 흐름에 따라 내부의 표정을 바꿉니다. 이는 비워냄으로써 채워지는 여백의 미를 현대적으로 재해석한 결과입니다. 하늘을 향해 뻗은 캔틸레버 구조와 단단한 직선의 조화는 타협하지 않는 선비의 강직함을 떠올리게 합니다." data-en="Light filtering through the MASS changes the interior's expression over time. This is a modern reinterpretation of the beauty of emptiness, filled by the act of emptying. The harmony between the cantilever structure reaching toward the sky and the solid straight lines evokes the uncompromising integrity of a scholar.">MASS 사이로 스며드는 빛은 시간의 흐름에 따라 내부의 표정을 바꿉니다. 이는 비워냄으로써 채워지는 여백의 미를 현대적으로 재해석한 결과입니다. 하늘을 향해 뻗은 캔틸레버 구조와 단단한 직선의 조화는 타협하지 않는 선비의 강직함을 떠올리게 합니다.</p>
+      <p class="arch-body" style="margin-top:1rem" data-ko="메스매스 뮤지엄은 또한 지속가능한 환경을 위해 세계 최초로 탄소 배출이 없는 Zero CO2 無탄소 無동력 엘리베이터를 도입했습니다." data-en="MESSMASS Museum has also introduced the world's first Zero CO2 elevator—emission-free and powerless—for a sustainable environment.">메스매스 뮤지엄은 또한 지속가능한 환경을 위해 세계 최초로 탄소 배출이 없는 Zero CO2 無탄소 無동력 엘리베이터를 도입했습니다.</p>
     </div>
   </div>
-  <div style="padding:3rem 2rem;border-top:1px solid #333;display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:1rem;">
-    <div><p style="font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.5rem;" data-ko="건축가" data-en="Architect">건축가</p><p style="font-family:var(--serif);font-size:1.5rem;font-weight:300;">JINI KIM</p></div>
-    <div><p style="font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.5rem;" data-ko="위치" data-en="Location">위치</p><p style="font-size:.85rem;color:rgba(255,255,255,.6);" data-ko="서울시 도봉구 도봉로169나길 32" data-en="32 Dobongro 169na-gil, Dobong-gu, Seoul">서울시 도봉구 도봉로169나길 32</p></div>
-    <div><p style="font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.5rem;" data-ko="개관" data-en="Opened">개관</p><p style="font-size:.85rem;color:rgba(255,255,255,.6);">2026</p></div>
-    <div><p style="font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.5rem;" data-ko="특징" data-en="Feature">특징</p><p style="font-size:.85rem;color:rgba(255,255,255,.6);" data-ko="세계 최초 Zero CO2 無동력 엘리베이터" data-en="World's First Zero CO2 Powerless Elevator">세계 최초 Zero CO2 無동력 엘리베이터</p></div>
+  <img class="arch-interior-img" src="https://raw.githubusercontent.com/bahcjunga/web/main/Gemini_Generated_Image_8kq9v98kq9v98kq9%20(1).jpeg" alt="MMMA 내부">
+  <div class="arch-credits">
+    <div class="arch-credit-item">
+      <p class="arch-credit-label" data-ko="건축가" data-en="Architect">건축가</p>
+      <p class="arch-credit-value">JINI KIM</p>
+    </div>
+    <div class="arch-credit-item">
+      <p class="arch-credit-label" data-ko="위치" data-en="Location">위치</p>
+      <p class="arch-credit-value" style="font-size:.85rem" data-ko="서울시 도봉구 도봉로169나길 32" data-en="32 Dobongro 169na-gil, Dobong-gu, Seoul">서울시 도봉구 도봉로169나길 32</p>
+    </div>
+    <div class="arch-credit-item">
+      <p class="arch-credit-label" data-ko="개관" data-en="Opened">개관</p>
+      <p class="arch-credit-value">2026</p>
+    </div>
+    <div class="arch-credit-item">
+      <p class="arch-credit-label" data-ko="특징" data-en="Feature">특징</p>
+      <p class="arch-credit-value" style="font-size:.82rem" data-ko="세계 최초 Zero CO2 無동력 엘리베이터" data-en="World's First Zero CO2 Powerless Elevator">세계 최초 Zero CO2 無동력 엘리베이터</p>
+    </div>
   </div>
 </section>
 
 <!-- 전시 -->
-<section class="section" id="exhibit">
+<section class="section" id="exhibit" style="background:var(--white)">
   <div class="section-header">
     <h2 class="section-title" data-ko="전시" data-en="Exhibition">전시</h2>
     <a href="#" class="section-more" data-ko="전체보기 →" data-en="View All →">전체보기 →</a>
@@ -286,9 +609,9 @@ footer{background:#111;color:rgba(255,255,255,.4);padding:3rem 2rem 2rem}
   <div class="exhibit-grid">
     <a href="#" class="exhibit-card">
       <div class="exhibit-thumb"><img src="https://raw.githubusercontent.com/bahcjunga/web/main/IMG_6629%20(1).jpeg" alt="상설전시실"></div>
-      <p class="exhibit-status" data-ko="현재전시" data-en="On View">현재전시</p>
+      <p class="exhibit-status on" data-ko="현재전시" data-en="On View">현재전시</p>
       <p class="exhibit-title" data-ko="상설전시실 — 소장품전&lt;br&gt;이정수 컬렉션" data-en="Permanent Exhibition Hall&lt;br&gt;Lee Jeong-su Collection">상설전시실 — 소장품전<br>이정수 컬렉션</p>
-      <p class="exhibit-date">No closure · 9:00–22:30</p>
+      <p class="exhibit-date">휴관 없음 · 9:00–22:30</p>
     </a>
     <a href="#" class="exhibit-card">
       <div class="exhibit-thumb"><img src="https://raw.githubusercontent.com/bahcjunga/web/main/Gemini_Generated_Image_8kq9v98kq9v98kq9%20(1).jpeg" alt="MMMA"></div>
@@ -299,17 +622,17 @@ footer{background:#111;color:rgba(255,255,255,.4);padding:3rem 2rem 2rem}
   </div>
 </section>
 
-<!-- 관람 정보 배너 -->
+<!-- 관람 정보 -->
 <div class="info-banner">
   <div class="info-item">
     <p class="info-item-label" data-ko="관람시간" data-en="Hours">관람시간</p>
     <p class="info-item-value" data-ko="화–일&lt;br&gt;13:00–19:30" data-en="Tue–Sun&lt;br&gt;13:00–19:30">화–일<br>13:00–19:30</p>
-    <p class="info-item-note" data-ko="월요일 휴관&lt;br&gt;입장은 종료 1분 전까지" data-en="Closed Mondays&lt;br&gt;Last entry 1 min before closing">월요일 휴관<br>입장은 종료 1분 전까지</p>
+    <p class="info-item-note" data-ko="월요일 휴관 / 입장은 종료 1분 전까지" data-en="Closed Mondays / Last entry 1 min before closing">월요일 휴관 / 입장은 종료 1분 전까지</p>
   </div>
   <div class="info-item">
     <p class="info-item-label" data-ko="상설전시실" data-en="Permanent Hall">상설전시실</p>
     <p class="info-item-value" data-ko="매일&lt;br&gt;9:00–22:30" data-en="Daily&lt;br&gt;9:00–22:30">매일<br>9:00–22:30</p>
-    <p class="info-item-note" data-ko="1층 상설전시실은 휴관 없이 매일 운영" data-en="1F permanent hall open daily without closure">1층 상설전시실은 휴관 없이 매일 운영</p>
+    <p class="info-item-note" data-ko="휴관 없이 매일 운영" data-en="Open daily without closure">휴관 없이 매일 운영</p>
   </div>
   <div class="info-item">
     <p class="info-item-label" data-ko="위치" data-en="Location">위치</p>
@@ -318,14 +641,16 @@ footer{background:#111;color:rgba(255,255,255,.4);padding:3rem 2rem 2rem}
   </div>
   <div class="info-item">
     <p class="info-item-label" data-ko="입장료" data-en="Admission">입장료</p>
-    <p class="info-item-value" data-ko="무료&lt;br&gt;&lt;span style='font-size:.72rem;opacity:.6;'&gt;유료관람 대상자 20,000원&lt;/span&gt;" data-en="Free&lt;br&gt;&lt;span style='font-size:.72rem;opacity:.6;'&gt;Paid visitors 20,000 KRW&lt;/span&gt;">무료<br><span style="font-size:.72rem;opacity:.6;">유료관람 대상자 20,000원</span></p>
+    <p class="info-item-value" data-ko="무료&lt;br&gt;&lt;span style='font-size:.72rem;opacity:.5;'&gt;유료관람 대상자 20,000원&lt;/span&gt;" data-en="Free&lt;br&gt;&lt;span style='font-size:.72rem;opacity:.5;'&gt;Paid visitors 20,000 KRW&lt;/span&gt;">무료<br><span style="font-size:.72rem;opacity:.5;">유료관람 대상자 20,000원</span></p>
     <p class="info-item-note" style="cursor:pointer;text-decoration:underline;" onclick="document.getElementById('ticketModal').classList.add('open')" data-ko="유료관람 대상자 확인 →" data-en="Paid visitor info →">유료관람 대상자 확인 →</p>
   </div>
 </div>
 
 <!-- 층별 안내 -->
 <section class="floor-section" id="floor">
-  <div class="section-header"><h2 class="section-title" data-ko="층별 안내" data-en="Floor Guide">층별 안내</h2></div>
+  <div class="section-header">
+    <h2 class="section-title" data-ko="층별 안내" data-en="Floor Guide">층별 안내</h2>
+  </div>
   <div class="floor-grid">
     <div class="floor-nav">
       <button class="floor-btn active" onclick="showFloor('b1',this)"><span class="floor-num">B1</span><span data-ko="수장고 / 아카이브" data-en="Storage / Archives">수장고 / 아카이브</span></button>
@@ -340,7 +665,7 @@ footer{background:#111;color:rgba(255,255,255,.4);padding:3rem 2rem 2rem}
       <div class="floor-content" id="floor-f1"><p class="floor-content-title" data-ko="상설전시실 — 소장품전: 이정수 컬렉션" data-en="Permanent Exhibition Hall — Lee Jeong-su Collection">상설전시실 — 소장품전: 이정수 컬렉션</p><p class="floor-content-desc" data-ko="메스매스 뮤지엄은 서울 도봉구 도봉동의 미술 애호가 이정수 선생의 소장품을 인계받아 상설전시실을 운영하고 있습니다. 휴관 없음, 매일 9:00–22:30." data-en="The museum operates a permanent exhibition featuring the collection of art enthusiast Lee Jeong-su. No closure, daily 9:00–22:30.">메스매스 뮤지엄은 서울 도봉구 도봉동의 미술 애호가 이정수 선생의 소장품을 인계받아 상설전시실을 운영하고 있습니다. 휴관 없음, 매일 9:00–22:30.</p></div>
       <div class="floor-content" id="floor-f2"><p class="floor-content-title" data-ko="교육실 / 어린이 휴게실" data-en="Education Center / Kids Room">교육실 / 어린이 휴게실</p><p class="floor-content-desc" data-ko="교육 프로그램 및 어린이 관람객을 위한 공간입니다." data-en="Space for educational programs and young visitors.">교육 프로그램 및 어린이 관람객을 위한 공간입니다.</p></div>
       <div class="floor-content" id="floor-f3"><p class="floor-content-title" data-ko="다원공간" data-en="Multi-Project Hall">다원공간</p><p class="floor-content-desc" data-ko="간판에 원이 많아 다원공간입니다. 국제식 대대 구비." data-en="Multi-purpose space for performances, screenings, and lectures. International-grade facilities.">간판에 원이 많아 다원공간입니다. 국제식 대대 구비.</p></div>
-      <div class="floor-content" id="floor-f4"><p class="floor-content-title" data-ko="매표소 / 안내데스크 / 사무실 / MMMA 아트샵 / 기획전시실 / 성중립화장실 / 음수대 / 물품보관소" data-en="Ticket / Information Desk / Office / MMMA Art Shop / Project Exhibition Hall / All-Gender Restroom / Water Station / Locker Room">매표소 / 안내데스크 / 사무실 / MMMA 아트샵 / 기획전시실 / 성중립화장실 / 음수대 / 물품보관소</p><p class="floor-content-desc" data-ko="티켓 구매, 미술관 이용 안내, 물품보관소, 성중립화장실, 음수대를 이용하실 수 있습니다." data-en="Tickets, visitor information, lockers, all-gender restrooms, and water station available on this floor.">티켓 구매, 미술관 이용 안내, 물품보관소, 성중립화장실, 음수대를 이용하실 수 있습니다.</p></div>
+      <div class="floor-content" id="floor-f4"><p class="floor-content-title" data-ko="매표소 / 안내데스크 / 사무실 / MMMA 아트샵 / 기획전시실 / 성중립화장실 / 음수대 / 물품보관소" data-en="Ticket / Information Desk / Office / MMMA Art Shop / Project Hall / All-Gender Restroom / Water Station / Locker Room">매표소 / 안내데스크 / 사무실 / MMMA 아트샵 / 기획전시실 / 성중립화장실 / 음수대 / 물품보관소</p><p class="floor-content-desc" data-ko="티켓 구매, 미술관 이용 안내, 물품보관소, 성중립화장실, 음수대를 이용하실 수 있습니다." data-en="Tickets, visitor information, lockers, all-gender restrooms, and water station available on this floor.">티켓 구매, 미술관 이용 안내, 물품보관소, 성중립화장실, 음수대를 이용하실 수 있습니다.</p></div>
       <div class="floor-content" id="floor-f5"><p class="floor-content-title" data-ko="레지던시" data-en="Residency">레지던시</p><p class="floor-content-desc" data-ko="작가 거주 공간입니다. 올라가지 마세요." data-en="Artist residency space. Do not go up.">작가 거주 공간입니다. 올라가지 마세요.</p></div>
     </div>
   </div>
@@ -350,32 +675,35 @@ footer{background:#111;color:rgba(255,255,255,.4);padding:3rem 2rem 2rem}
 <div class="collection-banner" id="collection">
   <div>
     <p class="collection-label" data-ko="소장품" data-en="Collection">소장품</p>
-    <h2 class="collection-title" data-ko="세계 최고 수준의 작품을&lt;br&gt;놓쳐서는 안 됩니다" data-en="World-class works&lt;br&gt;not to be missed">세계 최고 수준의 작품을<br>놓쳐서는 안 됩니다</h2>
-    <p class="collection-desc" data-ko="메스매스 뮤지엄은 동시대를 살면서 놓쳐서는 안 될 세계적인 작품들을 관객들에게 선보이고, 예술가들과 관객들 모두에게 놀라운 영감을 선사하기 위해 세계 최고 수준의 편의시설을 갖추고 있습니다." data-en="Messmass Museum presents world-class works that must not be missed by contemporary audiences. Equipped with world-class amenities, it delivers astonishing inspiration to both artists and visitors alike.">메스매스 뮤지엄은 동시대를 살면서 놓쳐서는 안 될 세계적인 작품들을 관객들에게 선보이고, 예술가들과 관객들 모두에게 놀라운 영감을 선사하기 위해 세계 최고 수준의 편의시설을 갖추고 있습니다.</p>
+    <h2 class="collection-title" data-ko="세계 최고 수준의 작품을 놓쳐서는 안 됩니다" data-en="World-class works not to be missed">세계 최고 수준의 작품을 놓쳐서는 안 됩니다</h2>
+    <p class="collection-desc" data-ko="메스매스 뮤지엄은 동시대를 살면서 놓쳐서는 안 될 세계적인 작품들을 관객들에게 선보이고, 예술가들과 관객들 모두에게 놀라운 영감을 선사하기 위해 세계 최고 수준의 편의시설을 갖추고 있습니다." data-en="Messmass Museum presents world-class works that must not be missed by contemporary audiences, equipped with world-class amenities to deliver astonishing inspiration to both artists and visitors.">메스매스 뮤지엄은 동시대를 살면서 놓쳐서는 안 될 세계적인 작품들을 관객들에게 선보이고, 예술가들과 관객들 모두에게 놀라운 영감을 선사하기 위해 세계 최고 수준의 편의시설을 갖추고 있습니다.</p>
     <a href="#" class="btn-white" data-ko="소장품 보기" data-en="View Collection">소장품 보기</a>
+  </div>
+  <div style="opacity:.08;font-family:var(--serif);font-size:clamp(4rem,8vw,7rem);font-weight:200;line-height:1;color:var(--white);text-align:right;pointer-events:none;user-select:none;">
+    MMMA
   </div>
 </div>
 
 <!-- 이용 안내 -->
-<section class="notice-section">
+<section class="notice-section" id="notice">
   <div class="section-header">
     <h2 class="section-title">MMMA <span data-ko="이용 안내" data-en="Visitor Guide">이용 안내</span></h2>
     <a href="#" class="section-more" onclick="document.getElementById('modal').classList.add('open');return false;" data-ko="전체보기 →" data-en="View All →">전체보기 →</a>
   </div>
-  <p style="font-size:.82rem;color:var(--gray);margin-bottom:2rem;" data-ko="메스매스 뮤지엄에 대한 기본적인 정보는 무료로 제공해드리는 리플렛을 통해 확인하실 수 있습니다." data-en="Basic information about Messmass Museum is available in our free leaflet.">메스매스 뮤지엄에 대한 기본적인 정보는 무료로 제공해드리는 리플렛을 통해 확인하실 수 있습니다.</p>
+  <p style="font-size:.82rem;color:var(--gray);margin-bottom:2.5rem;line-height:1.8;" data-ko="메스매스 뮤지엄에 대한 기본적인 정보는 무료로 제공해드리는 리플렛을 통해 확인하실 수 있습니다." data-en="Basic information about Messmass Museum is available in our free leaflet.">메스매스 뮤지엄에 대한 기본적인 정보는 무료로 제공해드리는 리플렛을 통해 확인하실 수 있습니다.</p>
   <div class="notice-grid">
     <div class="notice-block">
-      <div class="notice-item"><span class="notice-num">1</span><span data-ko="부피가 큰 소지품은 물품보관소 락커에 보관하십시오." data-en="Please store large items in the locker room.">부피가 큰 소지품은 물품보관소 락커에 보관하십시오.</span></div>
-      <div class="notice-item"><span class="notice-num">2</span><span data-ko="본 전시장에서 '작품'을 목격했다면, 빠른 시일 내에 과를 방문하십시오." data-en="If you witness a 'work' in this gallery, please visit the department promptly.">본 전시장에서 '작품'을 목격했다면, 빠른 시일 내에 과를 방문하십시오.</span></div>
-      <div class="notice-item"><span class="notice-num">3</span><span data-ko="반복적으로 'Lip Sync'라는 속삭임이 들리더라도, 소리와 일치하는 이미지를 찾으려 하지 마십시오." data-en="Even if you repeatedly hear the whisper 'Lip Sync,' do not try to find an image matching the sound.">반복적으로 "Lip Sync"라는 속삭임이 들리더라도, 소리와 일치하는 이미지를 찾으려 하지 마십시오.</span></div>
-      <div class="notice-item"><span class="notice-num">4</span><span data-ko="간혹 프랑스어로 '이건 상자야. 네가 원하는 양은 이 안에 있어.'라고 말하는 목소리가 들릴 수 있습니다. 상자 속의 양이 되십시오." data-en="You may occasionally hear a voice in French saying 'It's a box. The sheep you want is inside.' Please become the sheep inside the box.">간혹 프랑스어로 "이건 상자야. 네가 원하는 양은 이 안에 있어."라고 말하는 목소리가 들릴 수 있습니다. 상자 속의 양이 되십시오.</span></div>
-      <div class="notice-item"><span class="notice-num">5</span><span data-ko="음수대의 물은 수소 원자 둘과 산소 원자 하나로 구성되어 있으며 절대적으로 매우 안전한 물입니다. 정말입니다. 안심하세요." data-en="The water fountain water is composed of two hydrogen atoms and one oxygen atom and is absolutely very safe. Really. Please be reassured.">음수대의 물은 수소 원자 둘과 산소 원자 하나로 구성되어 있으며 절대적으로 매우 안전한 물입니다. 정말입니다. 안심하세요.</span></div>
+      <div class="notice-item"><span class="notice-num">01</span><span data-ko="부피가 큰 소지품은 물품보관소 락커에 보관하십시오." data-en="Please store large items in the locker room.">부피가 큰 소지품은 물품보관소 락커에 보관하십시오.</span></div>
+      <div class="notice-item"><span class="notice-num">02</span><span data-ko="본 전시장에서 '작품'을 목격했다면, 빠른 시일 내에 과를 방문하십시오." data-en="If you witness a 'work' in this gallery, please visit the department promptly.">본 전시장에서 '작품'을 목격했다면, 빠른 시일 내에 과를 방문하십시오.</span></div>
+      <div class="notice-item"><span class="notice-num">03</span><span data-ko="반복적으로 'Lip Sync'라는 속삭임이 들리더라도, 소리와 일치하는 이미지를 찾으려 하지 마십시오." data-en="Even if you repeatedly hear the whisper 'Lip Sync,' do not try to find an image matching the sound.">반복적으로 "Lip Sync"라는 속삭임이 들리더라도, 소리와 일치하는 이미지를 찾으려 하지 마십시오.</span></div>
+      <div class="notice-item"><span class="notice-num">04</span><span data-ko="간혹 프랑스어로 '이건 상자야. 네가 원하는 양은 이 안에 있어.'라고 말하는 목소리가 들릴 수 있습니다. 상자 속의 양이 되십시오." data-en="You may occasionally hear a voice in French saying 'It's a box. The sheep you want is inside.' Please become the sheep inside the box.">간혹 프랑스어로 "이건 상자야. 네가 원하는 양은 이 안에 있어."라고 말하는 목소리가 들릴 수 있습니다. 상자 속의 양이 되십시오.</span></div>
+      <div class="notice-item"><span class="notice-num">05</span><span data-ko="음수대의 물은 수소 원자 둘과 산소 원자 하나로 구성되어 있으며 절대적으로 매우 안전한 물입니다. 정말입니다. 안심하세요." data-en="The water fountain water is composed of two hydrogen atoms and one oxygen atom and is absolutely very safe. Really. Please be reassured.">음수대의 물은 수소 원자 둘과 산소 원자 하나로 구성되어 있으며 절대적으로 매우 안전한 물입니다. 정말입니다. 안심하세요.</span></div>
     </div>
     <div class="notice-block">
-      <div class="notice-item"><span class="notice-num">6</span><span data-ko="전시장지킴이가 자리에 두고 간 책은 몰래 읽어도 됩니다. 만약 들켰다면 신속히 성중립화장실로 피신하십시오." data-en="You may secretly read the book left by the gallery attendant. If caught, flee immediately to the all-gender restroom.">전시장지킴이가 자리에 두고 간 책은 몰래 읽어도 됩니다. 만약 들켰다면 신속히 성중립화장실로 피신하십시오.</span></div>
-      <div class="notice-item"><span class="notice-num">7</span><span data-ko="MMMA는 '자율 운영 시스템'을 채택하고 있습니다. '인포데스크 직원', '큐레이터', '전시장지킴이', '도슨트'는 공식적으로 존재하지 않습니다. 발견한다면 무시하십시오." data-en="MMMA operates a 'self-governing system.' Staff, curators, gallery attendants, and docents do not officially exist. If encountered, please ignore them.">MMMA는 '자율 운영 시스템'을 채택하고 있습니다. '인포데스크 직원', '큐레이터', '전시장지킴이', '도슨트'는 공식적으로 존재하지 않습니다. 발견한다면 무시하십시오.</span></div>
-      <div class="notice-item"><span class="notice-num">8</span><span data-ko="관람 중 공허함, 허탈함, 실망감을 느끼는 것은 지극히 정상입니다. 당신과 당신의 알고리즘이 곧 큐레이터입니다." data-en="Feeling emptiness, letdown, or disappointment during your visit is perfectly normal. You and your algorithm are the curator.">관람 중 공허함, 허탈함, 실망감을 느끼는 것은 지극히 정상입니다. 당신과 당신의 알고리즘이 곧 큐레이터입니다.</span></div>
-      <div class="notice-item"><span class="notice-num">9</span><span data-ko="메스매스 뮤지엄은 사상검증과 검열이 존재하지 않는 미술관입니다." data-en="Messmass Museum is a museum where ideological screening and censorship do not exist.">메스매스 뮤지엄은 사상검증과 검열이 존재하지 않는 미술관입니다.</span></div>
+      <div class="notice-item"><span class="notice-num">06</span><span data-ko="전시장지킴이가 자리에 두고 간 책은 몰래 읽어도 됩니다. 만약 들켰다면 신속히 성중립화장실로 피신하십시오." data-en="You may secretly read the book left by the gallery attendant. If caught, flee immediately to the all-gender restroom.">전시장지킴이가 자리에 두고 간 책은 몰래 읽어도 됩니다. 만약 들켰다면 신속히 성중립화장실로 피신하십시오.</span></div>
+      <div class="notice-item"><span class="notice-num">07</span><span data-ko="MMMA는 '자율 운영 시스템'을 채택하고 있습니다. '인포데스크 직원', '큐레이터', '전시장지킴이', '도슨트'는 공식적으로 존재하지 않습니다. 발견한다면 무시하십시오." data-en="MMMA operates a 'self-governing system.' Staff, curators, gallery attendants, and docents do not officially exist. If encountered, please ignore them.">MMMA는 '자율 운영 시스템'을 채택하고 있습니다. '인포데스크 직원', '큐레이터', '전시장지킴이', '도슨트'는 공식적으로 존재하지 않습니다. 발견한다면 무시하십시오.</span></div>
+      <div class="notice-item"><span class="notice-num">08</span><span data-ko="관람 중 공허함, 허탈함, 실망감을 느끼는 것은 지극히 정상입니다. 당신과 당신의 알고리즘이 곧 큐레이터입니다." data-en="Feeling emptiness, letdown, or disappointment during your visit is perfectly normal. You and your algorithm are the curator.">관람 중 공허함, 허탈함, 실망감을 느끼는 것은 지극히 정상입니다. 당신과 당신의 알고리즘이 곧 큐레이터입니다.</span></div>
+      <div class="notice-item"><span class="notice-num">09</span><span data-ko="메스매스 뮤지엄은 사상검증과 검열이 존재하지 않는 미술관입니다." data-en="Messmass Museum is a museum where ideological screening and censorship do not exist.">메스매스 뮤지엄은 사상검증과 검열이 존재하지 않는 미술관입니다.</span></div>
       <div class="notice-item"><span class="notice-num">10</span><span>&nbsp;</span></div>
     </div>
   </div>
@@ -385,7 +713,9 @@ footer{background:#111;color:rgba(255,255,255,.4);padding:3rem 2rem 2rem}
 <footer>
   <div class="footer-top">
     <div>
-      <p class="footer-logo">MESSMASS MUSEUM OF ART</p>
+      <div class="footer-logo">
+        <img src="https://raw.githubusercontent.com/bahcjunga/web/main/MMMAimg/MMMAlogow.png" alt="MESSMASS Museum of Art">
+      </div>
       <p class="footer-addr" data-ko="서울시 도봉구 도봉로169나길 32&lt;br&gt;메스매스 뮤지엄&lt;br&gt;&lt;br&gt;Tel. 010-3165-5880&lt;br&gt;bahcjunga@gmail.com" data-en="32 Dobongro 169na-gil&lt;br&gt;Dobong-gu, Seoul, Korea&lt;br&gt;&lt;br&gt;Tel. 010-3165-5880&lt;br&gt;bahcjunga@gmail.com">서울시 도봉구 도봉로169나길 32<br>메스매스 뮤지엄<br><br>Tel. 010-3165-5880<br>bahcjunga@gmail.com</p>
     </div>
     <div>
@@ -394,7 +724,7 @@ footer{background:#111;color:rgba(255,255,255,.4);padding:3rem 2rem 2rem}
         <li><a href="#" onclick="document.getElementById('aboutModal').classList.add('open');return false;" data-ko="미술관 소개" data-en="About">미술관 소개</a></li>
         <li><a href="#floor" data-ko="층별 안내" data-en="Floor Guide">층별 안내</a></li>
         <li><a href="#" data-ko="오시는 길" data-en="Directions">오시는 길</a></li>
-        <li><a href="#" onclick="document.getElementById('modal').classList.add('open');return false;" data-ko="이용 안내" data-en="Visitor Info">이용 안내</a></li>
+        <li><a href="#notice" data-ko="이용 안내" data-en="Visitor Info">이용 안내</a></li>
       </ul>
     </div>
     <div>
@@ -427,17 +757,17 @@ footer{background:#111;color:rgba(255,255,255,.4);padding:3rem 2rem 2rem}
   <div class="modal">
     <button class="modal-close" onclick="document.getElementById('modal').classList.remove('open')">✕</button>
     <h2 class="modal-title" data-ko="MMMA 이용 안내" data-en="MMMA Visitor Guide">MMMA 이용 안내</h2>
-    <p class="modal-sub" data-ko="이용수칙은 총 10가지 입니다." data-en="10 visitor guidelines.">이용수칙은 총 10가지 입니다.</p>
+    <p class="modal-sub" data-ko="이용수칙은 총 10가지입니다." data-en="10 visitor guidelines.">이용수칙은 총 10가지입니다.</p>
     <ul class="modal-list">
-      <li><span class="n">1</span><span data-ko="부피가 큰 소지품은 물품보관소 락커에 보관하십시오. 락커 사용법은 물품보관소 벽에 붙은 설명을 참조하십시오." data-en="Please store large items in the locker room. Refer to the instructions on the locker room wall for usage.">부피가 큰 소지품은 물품보관소 락커에 보관하십시오. 락커 사용법은 물품보관소 벽에 붙은 설명을 참조하십시오.</span></li>
-      <li><span class="n">2</span><span data-ko="본 전시장에서 '작품'을 목격했다면, 빠른 시일 내에 과를 방문하십시오." data-en="If you witness a 'work' in this gallery, please visit the department promptly.">본 전시장에서 '작품'을 목격했다면, 빠른 시일 내에 과를 방문하십시오.</span></li>
-      <li><span class="n">3</span><span data-ko="반복적으로 'Lip Sync'라는 속삭임이 들리더라도, 소리와 일치하는 이미지를 찾으려 하지 마십시오." data-en="Even if you repeatedly hear the whisper 'Lip Sync,' do not try to find an image matching the sound.">반복적으로 "Lip Sync"라는 속삭임이 들리더라도, 소리와 일치하는 이미지를 찾으려 하지 마십시오.</span></li>
-      <li><span class="n">4</span><span data-ko="간혹 프랑스어로 '이건 상자야. 네가 원하는 양은 이 안에 있어.'라고 말하는 목소리가 들릴 수 있습니다. 양이 들어있는 상자를 기대하지 마시고 상자 속의 양이 되십시오." data-en="You may occasionally hear a voice in French saying 'It's a box. The sheep you want is inside.' Do not expect a box containing a sheep—please become the sheep inside the box.">간혹 프랑스어로 "이건 상자야. 네가 원하는 양은 이 안에 있어."라고 말하는 목소리가 들릴 수 있습니다. 양이 들어있는 상자를 기대하지 마시고 상자 속의 양이 되십시오.</span></li>
-      <li><span class="n">5</span><span data-ko="음수대의 물은 수소 원자 둘과 산소 원자 하나로 구성되어 있으며 절대적으로 매우 안전한 물입니다. 정말입니다. 안심하세요." data-en="The water fountain water is composed of two hydrogen atoms and one oxygen atom and is absolutely very safe. Really. Please be reassured.">음수대의 물은 수소 원자 둘과 산소 원자 하나로 구성되어 있으며 절대적으로 매우 안전한 물입니다. 정말입니다. 안심하세요.</span></li>
-      <li><span class="n">6</span><span data-ko="전시장지킴이가 자리에 두고 간 책은 몰래 읽어도 됩니다. 만약 들켰다면 신속히 성중립화장실로 피신하십시오." data-en="You may secretly read the book left by the gallery attendant. If caught, flee immediately to the all-gender restroom.">전시장지킴이가 자리에 두고 간 책은 몰래 읽어도 됩니다. 만약 들켰다면 신속히 성중립화장실로 피신하십시오.</span></li>
-      <li><span class="n">7</span><span data-ko="MMMA는 탄소 중립적 관람 환경을 위해 '자율 운영 시스템'을 채택하고 있습니다. '인포데스크 직원', '큐레이터', '전시장지킴이', '도슨트'는 공식적으로 존재하지 않습니다. 발견한다면 무시하십시오." data-en="MMMA has adopted a 'self-governing system' for a carbon-neutral visiting environment. Staff, curators, gallery attendants, and docents do not officially exist. If encountered, please ignore them.">MMMA는 탄소 중립적 관람 환경을 위해 '자율 운영 시스템'을 채택하고 있습니다. '인포데스크 직원', '큐레이터', '전시장지킴이', '도슨트'는 공식적으로 존재하지 않습니다. 발견한다면 무시하십시오.</span></li>
-      <li><span class="n">8</span><span data-ko="관람 중 공허함, 허탈함, 실망감을 느끼는 것은 지극히 정상입니다. 전시장 중앙에는 지친 관람객의 휴식을 위한 벤치가 마련되어있습니다. 당신과 당신의 알고리즘이 곧 큐레이터입니다." data-en="Feeling emptiness, letdown, or disappointment during your visit is perfectly normal. A bench is provided for tired visitors. You and your algorithm are the curator.">관람 중 공허함, 허탈함, 실망감을 느끼는 것은 지극히 정상입니다. 전시장 중앙에는 지친 관람객의 휴식을 위한 벤치가 마련되어있습니다. 당신과 당신의 알고리즘이 곧 큐레이터입니다.</span></li>
-      <li><span class="n">9</span><span data-ko="메스매스 뮤지엄은 사상검증과 검열이 존재하지 않는 미술관입니다." data-en="Messmass Museum is a museum where ideological screening and censorship do not exist.">메스매스 뮤지엄은 사상검증과 검열이 존재하지 않는 미술관입니다.</span></li>
+      <li><span class="n">01</span><span data-ko="부피가 큰 소지품은 물품보관소 락커에 보관하십시오." data-en="Please store large items in the locker room.">부피가 큰 소지품은 물품보관소 락커에 보관하십시오.</span></li>
+      <li><span class="n">02</span><span data-ko="본 전시장에서 '작품'을 목격했다면, 빠른 시일 내에 과를 방문하십시오." data-en="If you witness a 'work' in this gallery, please visit the department promptly.">본 전시장에서 '작품'을 목격했다면, 빠른 시일 내에 과를 방문하십시오.</span></li>
+      <li><span class="n">03</span><span data-ko="반복적으로 'Lip Sync'라는 속삭임이 들리더라도, 소리와 일치하는 이미지를 찾으려 하지 마십시오." data-en="Even if you repeatedly hear the whisper 'Lip Sync,' do not try to find an image matching the sound.">반복적으로 "Lip Sync"라는 속삭임이 들리더라도, 소리와 일치하는 이미지를 찾으려 하지 마십시오.</span></li>
+      <li><span class="n">04</span><span data-ko="간혹 프랑스어로 '이건 상자야. 네가 원하는 양은 이 안에 있어.'라고 말하는 목소리가 들릴 수 있습니다. 양이 들어있는 상자를 기대하지 마시고 상자 속의 양이 되십시오." data-en="You may hear a voice in French saying 'It's a box. The sheep you want is inside.' Do not expect a box with a sheep—please become the sheep inside the box.">간혹 프랑스어로 "이건 상자야. 네가 원하는 양은 이 안에 있어."라고 말하는 목소리가 들릴 수 있습니다. 양이 들어있는 상자를 기대하지 마시고 상자 속의 양이 되십시오.</span></li>
+      <li><span class="n">05</span><span data-ko="음수대의 물은 수소 원자 둘과 산소 원자 하나로 구성되어 있으며 절대적으로 매우 안전한 물입니다. 정말입니다. 안심하세요." data-en="The water fountain water is absolutely very safe. Really. Please be reassured.">음수대의 물은 수소 원자 둘과 산소 원자 하나로 구성되어 있으며 절대적으로 매우 안전한 물입니다. 정말입니다. 안심하세요.</span></li>
+      <li><span class="n">06</span><span data-ko="전시장지킴이가 자리에 두고 간 책은 몰래 읽어도 됩니다. 만약 들켰다면 신속히 성중립화장실로 피신하십시오." data-en="You may secretly read the book left by the gallery attendant. If caught, flee immediately to the all-gender restroom.">전시장지킴이가 자리에 두고 간 책은 몰래 읽어도 됩니다. 만약 들켰다면 신속히 성중립화장실로 피신하십시오.</span></li>
+      <li><span class="n">07</span><span data-ko="MMMA는 탄소 중립적 관람 환경을 위해 '자율 운영 시스템'을 채택하고 있습니다. 직원, 큐레이터, 전시장지킴이, 도슨트는 공식적으로 존재하지 않습니다. 발견한다면 무시하십시오." data-en="MMMA has adopted a 'self-governing system.' Staff, curators, attendants, and docents do not officially exist. If encountered, please ignore them.">MMMA는 탄소 중립적 관람 환경을 위해 '자율 운영 시스템'을 채택하고 있습니다. 직원, 큐레이터, 전시장지킴이, 도슨트는 공식적으로 존재하지 않습니다. 발견한다면 무시하십시오.</span></li>
+      <li><span class="n">08</span><span data-ko="관람 중 공허함, 허탈함, 실망감을 느끼는 것은 지극히 정상입니다. 당신과 당신의 알고리즘이 곧 큐레이터입니다." data-en="Feeling emptiness, letdown, or disappointment during your visit is perfectly normal. You and your algorithm are the curator.">관람 중 공허함, 허탈함, 실망감을 느끼는 것은 지극히 정상입니다. 당신과 당신의 알고리즘이 곧 큐레이터입니다.</span></li>
+      <li><span class="n">09</span><span data-ko="메스매스 뮤지엄은 사상검증과 검열이 존재하지 않는 미술관입니다." data-en="Messmass Museum is a museum where ideological screening and censorship do not exist.">메스매스 뮤지엄은 사상검증과 검열이 존재하지 않는 미술관입니다.</span></li>
       <li><span class="n">10</span><span>&nbsp;</span></li>
     </ul>
   </div>
@@ -447,7 +777,7 @@ footer{background:#111;color:rgba(255,255,255,.4);padding:3rem 2rem 2rem}
 <div class="modal-overlay" id="ticketModal" onclick="if(event.target===this)this.classList.remove('open')">
   <div class="modal">
     <button class="modal-close" onclick="document.getElementById('ticketModal').classList.remove('open')">✕</button>
-    <h2 class="modal-title" data-ko="유료관람 대상자" data-en="Paid Admission">유료관람 대상자 <span style="font-size:.85rem;font-weight:300;font-family:var(--sans);margin-left:.5rem;">| 20,000원</span></h2>
+    <h2 class="modal-title" data-ko="유료관람 대상자" data-en="Paid Admission">유료관람 대상자 <span style="font-size:.85rem;font-weight:300;font-family:var(--sans);margin-left:.5rem;color:var(--gray)">| 20,000원</span></h2>
     <ul class="modal-list">
       <li><span class="n">—</span><span data-ko="문화체육관광부 및 한국예술위원회 소속 및 관계자" data-en="Staff and affiliates of the Ministry of Culture and the Arts Council Korea">문화체육관광부 및 한국예술위원회 소속 및 관계자</span></li>
       <li><span class="n">—</span><span data-ko="서울문화재단 및 삼성 등 각종 문화재단 소속 및 관계자" data-en="Staff and affiliates of Seoul Foundation for Arts and Culture, Samsung, and other cultural foundations">서울문화재단 및 삼성 등 각종 문화재단 소속 및 관계자</span></li>
@@ -458,7 +788,7 @@ footer{background:#111;color:rgba(255,255,255,.4);padding:3rem 2rem 2rem}
       <li><span class="n">—</span><span data-ko="예술인 패스 소지자" data-en="Holders of the Artist Pass">예술인 패스 소지자</span></li>
       <li><span class="n">—</span><span data-ko="방탄소년단 RM, 널 위한 문화예술 등 팔로워 10만명 이상 보유한 예술애호가" data-en="Art enthusiasts with over 100,000 followers, such as BTS RM and Art for You">방탄소년단 RM, 널 위한 문화예술 등 팔로워 10만명 이상 보유한 예술애호가</span></li>
     </ul>
-    <p style="font-size:.75rem;color:var(--gray);margin-top:1.5rem;line-height:1.7;" data-ko="* 대상자는 명함 또는 증빙자료를 제시해 주시기 바랍니다." data-en="* Please present a business card or supporting documentation.">* 대상자는 명함 또는 증빙자료를 제시해 주시기 바랍니다.</p>
+    <p style="font-size:.72rem;color:var(--gray);margin-top:1.5rem;line-height:1.8;" data-ko="* 대상자는 명함 또는 증빙자료를 제시해 주시기 바랍니다." data-en="* Please present a business card or supporting documentation.">* 대상자는 명함 또는 증빙자료를 제시해 주시기 바랍니다.</p>
   </div>
 </div>
 
@@ -470,9 +800,9 @@ footer{background:#111;color:rgba(255,255,255,.4);padding:3rem 2rem 2rem}
     <p class="modal-sub" data-ko="이 페이지를 보고 계신 분들께 솔직히 말씀드립니다." data-en="An honest note to those viewing this page.">이 페이지를 보고 계신 분들께 솔직히 말씀드립니다.</p>
     <ul class="modal-list">
       <li><span class="n">1</span><span data-ko="메스매스 뮤지엄(MMMA)은 실제 미술관이 아닙니다. 2026년 2월, 서울 도봉구의 신생 예술공간 '메스매스'에서 열린 프로젝트성 전시입니다. 물리적으로 존재하는 작은 공간에 미술관의 외피(로고, 이용수칙, 층별 안내, 소장품 등)를 구현하는 것이 작업의 핵심이었습니다." data-en="MESSMASS Museum (MMMA) is not a real museum. It was a project-based exhibition held in February 2026 at 'Messmass,' an emerging art space in Dobong-gu, Seoul. The core of the work was implementing the outer shell of a museum — logo, visitor guidelines, floor guide, collection — within a small physical space.">메스매스 뮤지엄(MMMA)은 실제 미술관이 아닙니다. 2026년 2월, 서울 도봉구의 신생 예술공간 '메스매스'에서 열린 프로젝트성 전시입니다. 물리적으로 존재하는 작은 공간에 미술관의 외피(로고, 이용수칙, 층별 안내, 소장품 등)를 구현하는 것이 작업의 핵심이었습니다.</span></li>
-      <li><span class="n">2</span><span data-ko="이 사이트에 사용된 미술관 건축 이미지(외관 및 내부 전경)는 실제 건축물이 아니라 AI로 생성된 이미지입니다. 세계적인 건축가 JINI KIM도 존재하지 않습니다." data-en="The architectural images used on this site — exterior and interior views — are not real buildings. They are AI-generated images. The world-renowned architect JINI KIM does not exist.">이 사이트에 사용된 미술관 건축 이미지(외관 및 내부 전경)는 실제 건축물이 아니라 AI로 생성된 이미지입니다. 세계적인 건축가 JINI KIM도 존재하지 않습니다.</span></li>
+      <li><span class="n">2</span><span data-ko="이 사이트에 사용된 미술관 건축 이미지는 실제 건축물이 아니라 AI로 생성된 이미지입니다. 세계적인 건축가 JINI KIM도 존재하지 않습니다." data-en="The architectural images used on this site are AI-generated, not photographs of an actual building. The world-renowned architect JINI KIM does not exist.">이 사이트에 사용된 미술관 건축 이미지는 실제 건축물이 아니라 AI로 생성된 이미지입니다. 세계적인 건축가 JINI KIM도 존재하지 않습니다.</span></li>
       <li><span class="n">3</span><span data-ko="이 웹사이트는 이미 종료된 전시의 아카이브 작업입니다. 제도권 미술관의 시각 언어와 기관적 권위를 차용하여, 허세와 제도비판 사이 어딘가에 존재하는 유사-미술관을 온라인에 구현합니다." data-en="This website is an archive of a concluded exhibition. It borrows the visual language and institutional authority of established museums, constructing an online quasi-museum that exists somewhere between bluffing and institutional critique.">이 웹사이트는 이미 종료된 전시의 아카이브 작업입니다. 제도권 미술관의 시각 언어와 기관적 권위를 차용하여, 허세와 제도비판 사이 어딘가에 존재하는 유사-미술관을 온라인에 구현합니다.</span></li>
-      <li><span class="n">4</span><span data-ko="기획 및 제작 : 박정아 × JINI KIM (with 메스매스 MESS-MASS)" data-en="Concept &amp; Production : Bahc Jung A × JINI KIM (with Messmass)">기획 및 제작 : 박정아 × JINI KIM (with 메스매스 MESS-MASS)</span></li>
+      <li><span class="n">4</span><span data-ko="기획 및 제작 : 박정아 × JINI KIM (with 메스매스 MESS-MASS)" data-en="Concept & Production : Bahc Jung A × JINI KIM (with Messmass)">기획 및 제작 : 박정아 × JINI KIM (with 메스매스 MESS-MASS)</span></li>
     </ul>
   </div>
 </div>
@@ -485,37 +815,17 @@ footer{background:#111;color:rgba(255,255,255,.4);padding:3rem 2rem 2rem}
     <p class="modal-sub" data-ko="이 웹사이트를 방문하시기 전에 아래 안내를 확인해 주시기 바랍니다." data-en="Before exploring this website, please read the following notice.">이 웹사이트를 방문하시기 전에 아래 안내를 확인해 주시기 바랍니다.</p>
     <ul class="modal-list">
       <li><span class="n">1</span><span data-ko="본 웹사이트는 2026년 2월 서울 도봉구에서 개최된 전시 《메스매스 뮤지엄》의 아카이브입니다. 현재 운영 중인 미술관의 공식 홈페이지가 아닙니다." data-en="This website is an archive of the exhibition 《Messmass Museum of Art》, held in February 2026 in Dobong-gu, Seoul. It is not the official website of a currently operating museum.">본 웹사이트는 2026년 2월 서울 도봉구에서 개최된 전시 《메스매스 뮤지엄》의 아카이브입니다. 현재 운영 중인 미술관의 공식 홈페이지가 아닙니다.</span></li>
-      <li><span class="n">2</span><span data-ko="《메스매스 뮤지엄》은 소규모 독립 예술공간 '메스매스'에서 열린 기획 전시로, 대형 미술관의 외형적 언어(건축, 층별 안내, 이용 수칙, 소장품 등)를 소규모 공간 안에 구현하는 것을 목적으로 한 프로젝트입니다. 사이트에 사용된 건축 이미지는 실제 건물이 아닌 AI 생성 이미지입니다." data-en="《Messmass Museum of Art》 was a project-based exhibition held at 'Messmass,' a small independent art space. The project aimed to embody the visual and institutional language of a large museum within a small space. The architectural images on this site are AI-generated, not photographs of an actual building.">《메스매스 뮤지엄》은 소규모 독립 예술공간 '메스매스'에서 열린 기획 전시로, 대형 미술관의 외형적 언어(건축, 층별 안내, 이용 수칙, 소장품 등)를 소규모 공간 안에 구현하는 것을 목적으로 한 프로젝트입니다. 사이트에 사용된 건축 이미지는 실제 건물이 아닌 AI 생성 이미지입니다.</span></li>
+      <li><span class="n">2</span><span data-ko="《메스매스 뮤지엄》은 소규모 독립 예술공간 '메스매스'에서 열린 기획 전시로, 대형 미술관의 외형적 언어를 소규모 공간 안에 구현하는 것을 목적으로 한 프로젝트입니다. 사이트에 사용된 건축 이미지는 AI 생성 이미지입니다." data-en="《Messmass Museum of Art》 was a project-based exhibition at a small independent art space, aiming to embody the visual and institutional language of a large museum within a small space. The architectural images on this site are AI-generated.">《메스매스 뮤지엄》은 소규모 독립 예술공간 '메스매스'에서 열린 기획 전시로, 대형 미술관의 외형적 언어를 소규모 공간 안에 구현하는 것을 목적으로 한 프로젝트입니다. 사이트에 사용된 건축 이미지는 AI 생성 이미지입니다.</span></li>
       <li><span class="n">3</span><span data-ko="현재 동일한 장소에서는 독립 예술공간 '메스매스'의 전시가 계속 진행되고 있습니다. 현재 전시 정보는 아래 링크를 통해 확인하실 수 있습니다." data-en="Independent art space 'Messmass' continues to present exhibitions at the same venue. For current exhibition information, please refer to the link below.">현재 동일한 장소에서는 독립 예술공간 '메스매스'의 전시가 계속 진행되고 있습니다. 현재 전시 정보는 아래 링크를 통해 확인하실 수 있습니다.</span></li>
     </ul>
     <div style="margin-top:1.5rem;padding-top:1.2rem;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;">
-      <a href="https://www.instagram.com/messmass2025" target="_blank" style="font-size:.78rem;color:var(--black);text-decoration:none;border-bottom:1px solid var(--black);" data-ko="현재 전시 정보 확인 →" data-en="Current Exhibition Info →">현재 전시 정보 확인 →</a>
-      <button onclick="document.getElementById('welcomeModal').classList.remove('open')" style="background:var(--black);color:var(--white);border:none;font-family:var(--sans);font-size:.72rem;letter-spacing:.08em;padding:.6rem 1.5rem;cursor:pointer;" data-ko="계속 관람하기" data-en="Continue">계속 관람하기</button>
+      <a href="https://www.instagram.com/messmass2025" target="_blank" style="font-size:.75rem;color:var(--black);text-decoration:none;border-bottom:1px solid var(--black);letter-spacing:.05em;" data-ko="현재 전시 정보 확인 →" data-en="Current Exhibition Info →">현재 전시 정보 확인 →</a>
+      <button onclick="document.getElementById('welcomeModal').classList.remove('open')" style="background:var(--black);color:var(--white);border:none;font-family:var(--sans);font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;padding:.65rem 1.8rem;cursor:pointer;" data-ko="계속 관람하기" data-en="Continue">계속 관람하기</button>
     </div>
   </div>
 </div>
 
 <script>
-// 탑바 드롭다운 — 터치/클릭 지원 (아이패드 등)
-document.querySelectorAll('.top-bar-item>a').forEach(link => {
-  link.addEventListener('click', e => {
-    const item = link.parentElement;
-    const dropdown = item.querySelector('.top-bar-dropdown');
-    if (!dropdown) return; // 드롭다운 없으면 그냥 통과
-    e.preventDefault();
-    const isOpen = dropdown.style.display === 'flex';
-    document.querySelectorAll('.top-bar-dropdown').forEach(d => d.style.display = '');
-    if (!isOpen) dropdown.style.display = 'flex';
-  });
-});
-// 바깥 클릭 시 닫기
-document.addEventListener('click', e => {
-  if (!e.target.closest('.top-bar-item')) {
-    document.querySelectorAll('.top-bar-dropdown').forEach(d => d.style.display = '');
-  }
-});
-
-// 언어 전환
 let currentLang = 'ko';
 function setLang(lang) {
   currentLang = lang;
@@ -527,33 +837,18 @@ function setLang(lang) {
     if (val !== null) el.innerHTML = val;
   });
 }
-
-// 층별 안내
 function showFloor(id, btn) {
   document.querySelectorAll('.floor-content').forEach(el => el.classList.remove('active'));
   document.querySelectorAll('.floor-btn').forEach(el => el.classList.remove('active'));
   document.getElementById('floor-' + id).classList.add('active');
   btn.classList.add('active');
 }
-
-// 모바일 아코디언
-function toggleMobileCat(btn) {
-  const sub = btn.nextElementSibling;
-  const isOpen = sub.classList.contains('open');
-  document.querySelectorAll('.mobile-sub').forEach(el => el.classList.remove('open'));
-  document.querySelectorAll('.mobile-cat-btn').forEach(el => el.classList.remove('open'));
-  if (!isOpen) { sub.classList.add('open'); btn.classList.add('open'); }
-}
-
-// 햄버거
 document.getElementById('hamburger').addEventListener('click', () => {
   document.getElementById('mobileMenu').classList.toggle('open');
 });
 function closeMobileMenu() {
   document.getElementById('mobileMenu').classList.remove('open');
 }
-
-// 히어로 슬라이드
 let heroCurrent = 0;
 const heroSlides = document.querySelectorAll('.hero-slide');
 const heroDots = document.querySelectorAll('.hero-dot');
