@@ -536,6 +536,28 @@ footer{background:#111;color:rgba(255,255,255,.4);padding:3rem 2rem 2rem}
 </div>
 
 <script>
+// 탑바 드롭다운 — 터치/클릭 지원 (아이패드 등)
+document.querySelectorAll('.top-bar-item>a').forEach(link => {
+  link.addEventListener('click', e => {
+    const item = link.parentElement;
+    const dropdown = item.querySelector('.top-bar-dropdown');
+    if (!dropdown) return;
+    // 드롭다운이 있는 링크면 클릭 시 토글
+    e.preventDefault();
+    const isOpen = dropdown.style.display === 'flex';
+    // 모두 닫기
+    document.querySelectorAll('.top-bar-dropdown').forEach(d => d.style.display = '');
+    // 클릭한 것만 열기
+    if (!isOpen) dropdown.style.display = 'flex';
+  });
+});
+// 바깥 클릭 시 닫기
+document.addEventListener('click', e => {
+  if (!e.target.closest('.top-bar-item')) {
+    document.querySelectorAll('.top-bar-dropdown').forEach(d => d.style.display = '');
+  }
+});
+
 // 언어 전환
 let currentLang = 'ko';
 function setLang(lang) {
