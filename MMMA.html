@@ -117,6 +117,14 @@ footer{background:#111;color:rgba(255,255,255,.4);padding:3rem 2rem 2rem}
 #architecture img{height:45vw!important}
 #architecture [style*="justify-content:space-between"]{flex-direction:column;gap:1.5rem}
 }
+  .mobile-cat{border-bottom:1px solid var(--line)}
+.mobile-cat-btn{width:100%;padding:.9rem 1.5rem;font-size:.85rem;color:var(--black);background:none;border:none;text-align:left;font-family:var(--sans);font-weight:400;display:flex;justify-content:space-between;align-items:center;cursor:pointer}
+.mobile-cat-btn::after{content:'+';font-size:1rem;color:var(--gray)}
+.mobile-cat-btn.open::after{content:'−'}
+.mobile-sub{display:none;flex-direction:column;background:#f5f5f5}
+.mobile-sub.open{display:flex}
+.mobile-sub a{padding:.75rem 1.5rem .75rem 2rem;font-size:.78rem;color:var(--gray);text-decoration:none;border-bottom:1px solid var(--line)}
+
 </style>
 </head>
 <body>
@@ -151,22 +159,43 @@ footer{background:#111;color:rgba(255,255,255,.4);padding:3rem 2rem 2rem}
     <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
   </div>
   <div class="mobile-menu" id="mobileMenu">
-    <a href="#exhibit" onclick="closeMobileMenu()" data-ko="전시" data-en="Exhibition">전시</a>
-    <a href="#collection" onclick="closeMobileMenu()" data-ko="소장품" data-en="Collection">소장품</a>
-    <a href="https://c-straw.com/posts/7513" onclick="closeMobileMenu()" data-ko="배움·연구" data-en="Learn">배움·연구</a>
-    <a href="#floor" onclick="closeMobileMenu()" data-ko="미술관 안내" data-en="Visit">미술관 안내</a>
-    <a href="#shop" onclick="closeMobileMenu()" data-ko="아트샵" data-en="Art Shop">아트샵</a>
-    <a href="#" onclick="document.getElementById('modal').classList.add('open');closeMobileMenu();return false;" data-ko="예매 / 예약" data-en="Tickets">예매 / 예약</a>
-    <div style="height:1px;background:#eee;margin:.3rem 0;"></div>
-    <a href="#" onclick="document.getElementById('aboutModal').classList.add('open');closeMobileMenu();return false;" data-ko="미술관 소개" data-en="About">미술관 소개</a>
-    <a href="#" onclick="closeMobileMenu()" data-ko="후원·멤버십" data-en="Support">후원·멤버십</a>
-    <a href="https://www.artscene.co.kr/2100" onclick="closeMobileMenu()" data-ko="보도자료" data-en="Press">보도자료</a>
-    <a href="#" onclick="document.getElementById('modal').classList.add('open');closeMobileMenu();return false;" data-ko="이용안내" data-en="Visitor Info">이용안내</a>
-    <div style="height:1px;background:#eee;margin:.3rem 0;"></div>
-    <div style="display:flex;gap:1rem;padding:.9rem 1.5rem;">
-      <button class="lang-btn active" id="btnKO" onclick="setLang('ko')" style="color:#1a1a1a;font-size:.85rem;">KO</button>
-      <span style="color:#ccc;">|</span>
-      <button class="lang-btn" id="btnEN" onclick="setLang('en')" style="color:#1a1a1a;font-size:.85rem;">EN</button>
+    <div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-cat">
+    <button class="mobile-cat-btn" onclick="toggleMobileCat(this)">전시 / 소장품</button>
+    <div class="mobile-sub">
+      <a href="#exhibit" onclick="closeMobileMenu()">현재 전시</a>
+      <a href="#exhibit" onclick="closeMobileMenu()">과거 전시</a>
+      <a href="#collection" onclick="closeMobileMenu()">소장품</a>
+      <a href="#" onclick="closeMobileMenu()">아카이브</a>
+    </div>
+  </div>
+  <div class="mobile-cat">
+    <button class="mobile-cat-btn" onclick="toggleMobileCat(this)">미술관 안내</button>
+    <div class="mobile-sub">
+      <a href="#" onclick="document.getElementById('aboutModal').classList.add('open');closeMobileMenu();return false;">미술관 소개</a>
+      <a href="#floor" onclick="closeMobileMenu()">층별 안내</a>
+      <a href="#" onclick="closeMobileMenu()">오시는 길</a>
+      <a href="#" onclick="document.getElementById('modal').classList.add('open');closeMobileMenu();return false;">이용 안내</a>
+    </div>
+  </div>
+  <div class="mobile-cat">
+    <button class="mobile-cat-btn" onclick="toggleMobileCat(this)">배움 / 연구</button>
+    <div class="mobile-sub">
+      <a href="https://c-straw.com/posts/7513" target="_blank" onclick="closeMobileMenu()">교육 프로그램</a>
+      <a href="#" onclick="closeMobileMenu()">레지던시</a>
+      <a href="#" onclick="closeMobileMenu()">MMMA 아트샵</a>
+      <a href="#" onclick="closeMobileMenu()">후원</a>
+    </div>
+  </div>
+  <a href="https://www.artscene.co.kr/2100" target="_blank" onclick="closeMobileMenu()">보도자료</a>
+  <a href="#" onclick="document.getElementById('modal').classList.add('open');closeMobileMenu();return false;">예매 / 예약</a>
+  <div style="display:flex;gap:1rem;padding:.9rem 1.5rem;border-bottom:1px solid var(--line);">
+    <button class="lang-btn active" onclick="setLang('ko')" style="color:var(--black);font-size:.85rem;">KO</button>
+    <span style="color:#ccc;">|</span>
+    <button class="lang-btn" onclick="setLang('en')" style="color:var(--black);font-size:.85rem;">EN</button>
+  </div>
+</div>
+
     </div>
   </div>
 </header>
@@ -548,6 +577,18 @@ function goHero(n) {
   heroDots[heroCurrent].classList.add('active');
 }
 setInterval(() => goHero((heroCurrent + 1) % heroSlides.length), 5000);
+
+  function toggleMobileCat(btn) {
+  const sub = btn.nextElementSibling;
+  const isOpen = sub.classList.contains('open');
+  document.querySelectorAll('.mobile-sub').forEach(el => el.classList.remove('open'));
+  document.querySelectorAll('.mobile-cat-btn').forEach(el => el.classList.remove('open'));
+  if (!isOpen) {
+    sub.classList.add('open');
+    btn.classList.add('open');
+  }
+}
+
 </script>
 </body>
 </html>
