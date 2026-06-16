@@ -7,7 +7,6 @@
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 :root {
   --blue: #0029FF;
   --green: #00D632;
@@ -15,16 +14,8 @@
   --black: #000000;
   --sans: 'Pretendard', sans-serif;
 }
-
 html { scroll-behavior: smooth; }
-
-body {
-  font-family: var(--sans);
-  background: var(--white);
-  color: var(--black);
-  overflow-x: hidden;
-}
-
+body { font-family: var(--sans); background: var(--white); color: var(--black); overflow-x: hidden; }
 nav {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -35,42 +26,12 @@ nav {
   align-items: center;
   padding: 0.7rem 1.5rem;
 }
-
-.nav-id {
-  font-size: 0.72rem;
-  color: var(--white);
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-decoration: none;
-}
-
-.nav-back {
-  font-size: 0.65rem;
-  color: var(--white);
-  text-decoration: none;
-  opacity: 0.5;
-  transition: opacity 0.15s;
-}
-
+.nav-id { font-size: 0.72rem; color: var(--white); font-weight: 700; letter-spacing: 0.05em; text-decoration: none; }
+.nav-back { font-size: 0.65rem; color: var(--white); text-decoration: none; opacity: 0.5; transition: opacity 0.15s; }
 .nav-back:hover { opacity: 1; }
-
-/* ── HERO ── */
-.hero {
-  background: var(--blue);
-  padding-top: 3rem;
-}
-
-.hero-video {
-  width: 100%;
-  border: none;
-}
-
-.hero-video iframe {
-  width: 100%;
-  aspect-ratio: 16/9;
-  display: block;
-}
-
+.hero { background: var(--blue); padding-top: 3rem; }
+.hero-video { width: 100%; }
+.hero-video iframe { width: 100%; aspect-ratio: 16/9; display: block; border: none; }
 .hero-left {
   display: flex;
   flex-direction: row;
@@ -80,137 +41,27 @@ nav {
   gap: 1rem;
   padding: 1.5rem;
 }
-
-.hero-index {
-  font-size: 0.65rem;
-  color: rgba(255,255,255,0.4);
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  font-weight: 400;
-}
-
-.hero-title {
-  font-size: clamp(1.5rem, 4vw, 3rem);
-  font-weight: 900;
-  color: var(--white);
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-}
-
-.hero-specs {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 0.3rem;
-}
-
-.label {
-  display: inline-block;
-  background: var(--white);
-  color: var(--black);
-  font-size: 0.72rem;
-  font-weight: 400;
-  padding: 4px 8px;
-  line-height: 1.4;
-}
-
+.hero-index { font-size: 0.65rem; color: rgba(255,255,255,0.4); letter-spacing: 0.15em; text-transform: uppercase; font-weight: 400; }
+.hero-title { font-size: clamp(1.5rem, 4vw, 3rem); font-weight: 900; color: var(--white); line-height: 1.05; letter-spacing: -0.02em; }
+.hero-specs { display: flex; flex-direction: row; flex-wrap: wrap; gap: 0.3rem; }
+.label { display: inline-block; background: var(--white); color: var(--black); font-size: 0.72rem; font-weight: 400; padding: 4px 8px; line-height: 1.4; }
 .label-bold { font-weight: 700; }
-
-/* ── CONTENT ── */
-.content-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  border-top: 2px solid var(--black);
-}
-
-.content-left {
-  padding: 3rem 2rem 3rem 1.5rem;
-  border-right: 1px solid rgba(0,0,0,0.12);
-}
-
-.content-right {
-  padding: 3rem 1.5rem 3rem 2rem;
-}
-
-.block-label {
-  font-size: 0.58rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  opacity: 0.4;
-  margin-bottom: 1rem;
-  font-weight: 400;
-}
-
-.description {
-  font-size: 0.95rem;
-  line-height: 1.85;
-  word-break: keep-all;
-}
-
+.content-grid { display: grid; grid-template-columns: 1fr 1fr; border-top: 2px solid var(--black); }
+.content-left { padding: 3rem 2rem 3rem 1.5rem; border-right: 1px solid rgba(0,0,0,0.12); }
+.content-right { padding: 3rem 1.5rem 3rem 2rem; }
+.block-label { font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.4; margin-bottom: 1rem; font-weight: 400; }
+.description { font-size: 0.95rem; line-height: 1.85; word-break: keep-all; }
 .description + .description { margin-top: 1.2rem; }
-
 .credits { display: flex; flex-direction: column; gap: 0.8rem; }
-
-.credit-row {
-  display: flex;
-  gap: 1rem;
-  border-bottom: 1px solid rgba(0,0,0,0.08);
-  padding-bottom: 0.8rem;
-  align-items: baseline;
-}
-
-.credit-key {
-  font-size: 0.65rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  opacity: 0.4;
-  min-width: 5rem;
-  font-weight: 400;
-}
-
-.credit-val {
-  font-size: 0.9rem;
-  font-weight: 700;
-}
-
-/* ── NEXT ── */
-.section-green {
-  background: var(--green);
-  padding: 3rem 1.5rem;
-  border-top: 2px solid var(--black);
-}
-
+.credit-row { display: flex; gap: 1rem; border-bottom: 1px solid rgba(0,0,0,0.08); padding-bottom: 0.8rem; align-items: baseline; }
+.credit-key { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.4; min-width: 5rem; font-weight: 400; }
+.credit-val { font-size: 0.9rem; font-weight: 700; }
+.section-green { background: var(--green); padding: 3rem 1.5rem; border-top: 2px solid var(--black); }
 .section-green .block-label { opacity: 0.5; }
-
-.next-link {
-  display: inline-flex;
-  align-items: center;
-  text-decoration: none;
-  color: var(--black);
-  margin-top: 1.5rem;
-}
-
-.next-title {
-  font-size: clamp(1.5rem, 4vw, 3rem);
-  font-weight: 900;
-  line-height: 1;
-  border-bottom: 3px solid var(--black);
-  transition: opacity 0.15s;
-}
-
+.next-link { display: inline-flex; align-items: center; text-decoration: none; color: var(--black); margin-top: 1.5rem; }
+.next-title { font-size: clamp(1.5rem, 4vw, 3rem); font-weight: 900; line-height: 1; border-bottom: 3px solid var(--black); transition: opacity 0.15s; }
 .next-link:hover .next-title { opacity: 0.5; }
-
-footer {
-  background: var(--black);
-  color: rgba(255,255,255,0.35);
-  padding: 1rem 1.5rem;
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.6rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
+footer { background: var(--black); color: rgba(255,255,255,0.35); padding: 1rem 1.5rem; display: flex; justify-content: space-between; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; }
 @media (max-width: 768px) {
   .hero-left { flex-direction: column; gap: 1rem; }
   .content-grid { grid-template-columns: 1fr; }
@@ -226,18 +77,16 @@ footer {
   <a href="index.html#works" class="nav-back">← Works</a>
 </nav>
 
-<!-- HERO -->
 <div class="hero">
   <div class="hero-video">
     <iframe
-      src="https://youtu.be/KRMo8221ZJE"
+      src="https://www.youtube.com/embed/KRMo8221ZJE"
       title="Sabotage"
       frameborder="0"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
       allowfullscreen>
     </iframe>
   </div>
-
   <div class="hero-left">
     <div>
       <p class="hero-index">Works — 05</p>
@@ -245,7 +94,7 @@ footer {
     </div>
     <div class="hero-specs">
       <div>
-        <span class="label label-bold"> Live performance + Documentation . 1 channel video . FHD (16:9) . 3min .</span>
+        <span class="label label-bold">Live performance + Documentation . 1 channel video . FHD (16:9) . 3min .</span>
       </div>
       <div>
         <span class="label">2021</span>
@@ -254,18 +103,16 @@ footer {
   </div>
 </div>
 
-<!-- 설명 + 크레딧 -->
 <div class="content-grid">
   <div class="content-left">
     <p class="block-label">작품 설명</p>
-    
   </div>
   <div class="content-right">
     <p class="block-label">크레딧</p>
     <div class="credits">
       <div class="credit-row">
         <span class="credit-key">형식</span>
-        <span class="credit-val">Live Performance + Documentaion ( 1 channel video ) </span>
+        <span class="credit-val">Live Performance + Documentation ( 1 channel video )</span>
       </div>
       <div class="credit-row">
         <span class="credit-key">해상도</span>
@@ -283,7 +130,6 @@ footer {
   </div>
 </div>
 
-<!-- 다음 작업 -->
 <div class="section-green">
   <p class="block-label">다음 작업</p>
   <a href="visiontest.html" class="next-link">
@@ -300,6 +146,5 @@ footer {
   document.addEventListener('contextmenu', e => e.preventDefault());
   document.addEventListener('dragstart', e => e.preventDefault());
 </script>
-
 </body>
 </html>
