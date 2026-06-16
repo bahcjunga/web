@@ -1,14 +1,134 @@
 <!DOCTYPE html>
-<html lang = "kor">
+<html lang="kor">
   <head>
     <meta name="viewport", charset="UTF-8", content="width=device-width, initial-scale = 1.0">
-    <link rel="icon" href="favicon.ico" type="favicon.ico">
-    <title> 사보타주 </title>
+  <link rel="icon" href="favicon.ico" type="favicon.ico">
+  <link rel="stylesheet" href="redbro.css">
+  <title> 왜 나는 조그만 일에만 분개하는가 </title>
+  
+</head>
 
-  </head>
+<body>
 
-  <body>
-    <h1>사보타주</h1>
-    
+<nav>
+  <a href="index.html" class="nav-id">박정아 / Bahc Jung A</a>
+  <a href="index.html#works" class="nav-back">← Works</a>
+</nav>
 
-  </body>
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-slider-wrap">
+    <div class="slider" id="slider">
+      <div class="slide active">
+        <img src="https://bahcjunga.github.io/web/rbimg/IMG_1039.PNG" alt="왜 나는 조그만 일에만 분개하는가">
+      </div>
+      <div class="slide">
+        <img src="https://bahcjunga.github.io/web/rbimg/IMG_1042.PNG" alt="왜 나는 조그만 일에만 분개하는가">
+      </div>
+      <div class="slide">
+        <img src="https://bahcjunga.github.io/web/rbimg/IMG_1040.PNG" alt="왜 나는 조그만 일에만 분개하는가">
+      </div>
+      <div class="slide">
+        <img src="https://bahcjunga.github.io/web/rbimg/IMG_1041.PNG" alt="왜 나는 조그만 일에만 분개하는가">
+      </div>
+      <div class="slide">
+        <img src="https://bahcjunga.github.io/web/rbimg/IMG_1044.PNG" alt="왜 나는 조그만 일에만 분개하는가">
+      </div>
+    </div>
+    <div class="slider-arrows">
+      <button class="slider-btn" id="prev">←</button>
+      <button class="slider-btn" id="next">→</button>
+    </div>
+    <div class="slider-nav" id="dots"></div>
+  </div>
+
+  <div class="hero-left">
+    <div>
+      <p class="hero-index">Works — 06</p>
+      <h1 class="hero-title">왜 나는 조그만 일에만 분개하는가</h1>
+    </div>
+    <div class="hero-specs">
+      <div>
+        <span class="label label-bold">1 channel video . FHD (16:9) . 11min 33sec .</span>
+      </div>
+      <div>
+        <span class="label">2021</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 설명 + 크레딧 -->
+<div class="content-grid">
+  <div class="content-left">
+    <p class="block-label">작품 설명</p>
+    <p class="description">사회운동을 하겠다며 18살에 집을 나가 당원들과 공동생활을 하던 동생을 취재한 다큐멘터리. 영상은 이태호 작가의 판화를 비추며 시작한다. 저항 시인 김수영의 초상과 "왜 너는 조그만 일에만 분개하는가"라는 문구가 보인다.</p>
+    <p class="description">영상은 판화 속 문구처럼 '너'(=동생)를 비판하는 듯 이어진다. 그러나 마지막에 판화를 확대한 이미지에서 '너'처럼 보였던 글씨는 사실 '나'였음이 밝혀진다.</p>
+    <p class="description">영상에서 동생은 올바르고 이상적인 이야기를 한다. 하지만 그의 정의로운 행보를 지탱하고 있는 것은 어머니의 보이지 않는 노동이다. 영상 말미에 등장하는 '나'는 동생의 대척점에 있지만 마찬가지로 철없고 속물적이다. '나'와 동생의 대립은 한국에 내재한 분열의 축소판같기도 하다.</p>
+  </div>
+  <div class="content-right">
+    <p class="block-label">크레딧</p>
+    <div class="credits">
+      <div class="credit-row">
+        <span class="credit-key">형식</span>
+        <span class="credit-val">1 channel video</span>
+      </div>
+      <div class="credit-row">
+        <span class="credit-key">해상도</span>
+        <span class="credit-val">FHD (16:9)</span>
+      </div>
+      <div class="credit-row">
+        <span class="credit-key">러닝타임</span>
+        <span class="credit-val">11분 33초</span>
+      </div>
+      <div class="credit-row">
+        <span class="credit-key">제작연도</span>
+        <span class="credit-val">2021</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 다음 작업 -->
+<div class="section-green">
+  <p class="block-label">다음 작업</p>
+  <a href="sabotage.html" class="next-link">
+    <span class="next-title">Sabotage →</span>
+  </a>
+</div>
+
+<footer>
+  <span>박정아 © 2026</span>
+  <span>Seoul, Korea</span>
+</footer>
+
+<script>
+  document.addEventListener('contextmenu', e => e.preventDefault());
+  document.addEventListener('dragstart', e => e.preventDefault());
+
+  const slides = document.querySelectorAll('.slide');
+  const dotsContainer = document.getElementById('dots');
+  let current = 0;
+
+  slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+    dot.addEventListener('click', () => goTo(i));
+    dotsContainer.appendChild(dot);
+  });
+
+  function goTo(n) {
+    slides[current].classList.remove('active');
+    dotsContainer.children[current].classList.remove('active');
+    current = (n + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    dotsContainer.children[current].classList.add('active');
+  }
+
+  document.getElementById('prev').addEventListener('click', () => goTo(current - 1));
+  document.getElementById('next').addEventListener('click', () => goTo(current + 1));
+  setInterval(() => goTo(current + 1), 4000);
+</script>
+
+</body>
+</html>
