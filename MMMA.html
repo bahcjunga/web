@@ -108,13 +108,13 @@ footer{background:#111;color:rgba(255,255,255,.4);padding:3rem 2rem 2rem}
 .modal-list{list-style:none;display:flex;flex-direction:column}
 .modal-list li{display:flex;gap:1rem;font-size:.82rem;line-height:1.7;padding:.8rem 0;border-bottom:1px solid var(--line)}
 .modal-list .n{font-family:var(--serif);color:var(--gray);min-width:1.2rem}
+.arch-grid{display:grid;grid-template-columns:1fr 1fr;gap:0}
 @media(max-width:1024px){.footer-top{grid-template-columns:1fr 1fr}nav ul li a{padding:0 .7rem;font-size:.7rem}}
 @media(max-width:900px){.exhibit-grid{grid-template-columns:1fr 1fr}.info-banner{grid-template-columns:1fr 1fr}.info-item{border-right:none;border-bottom:1px solid #333}.info-item:nth-child(odd){border-right:1px solid #333}.floor-grid{grid-template-columns:160px 1fr;gap:1.5rem}}
 @media(max-width:640px){.top-bar{display:none}nav{display:none}.nav-right{display:none}.hamburger{display:flex}.nav-main{padding:0 1rem}.hero-banner{height:60vh;min-height:320px}.hero-sub{display:none}.section,.floor-section,.notice-section{padding:2.5rem 1rem}.collection-banner{padding:3rem 1rem}.exhibit-grid{grid-template-columns:1fr}.info-banner{grid-template-columns:1fr 1fr}.info-item{padding:1.5rem 1rem}.floor-grid{grid-template-columns:1fr}.floor-nav{flex-direction:row;flex-wrap:wrap;gap:.4rem;margin-bottom:1.5rem}.floor-btn{border:1px solid var(--line);font-size:.68rem;padding:.4rem .7rem}.notice-grid{grid-template-columns:1fr;gap:0}footer{padding:2rem 1rem}.footer-top{grid-template-columns:1fr;gap:1.5rem}.footer-bottom{flex-direction:column}
-#architecture [style*="grid-template-columns:1fr 1fr"]{display:block}
-#architecture [style*="grid-template-columns:1fr 1fr"] > div{border-right:none!important;border-bottom:1px solid #333}
-#architecture img[style*="height:70vh"]{height:50vw}
-#architecture img[style*="height:55vh"]{height:45vw}
+.arch-grid{grid-template-columns:1fr}
+.arch-grid>div{border-right:none!important;border-bottom:1px solid #333}
+#architecture img{height:45vw!important}
 #architecture [style*="justify-content:space-between"]{flex-direction:column;gap:1.5rem}
 }
 </style>
@@ -123,15 +123,15 @@ footer{background:#111;color:rgba(255,255,255,.4);padding:3rem 2rem 2rem}
 
 <div class="top-bar">
   <div class="top-bar-links">
-    <a href="#" data-ko="미술관 소개" data-en="About">미술관 소개</a>
+    <a href="#" data-ko="미술관 소개" data-en="About" onclick="document.getElementById('aboutModal').classList.add('open');return false;">미술관 소개</a>
     <a href="#" data-ko="후원·멤버십" data-en="Support">후원·멤버십</a>
-    <a href="https://www.artscene.co.kr/2100" data-ko="보도자료" data-en="Press">보도자료</a>
-    
+    <a href="#" data-ko="보도자료" data-en="Press">보도자료</a>
+    <a href="#" data-ko="채용" data-en="Careers">채용</a>
   </div>
   <div class="top-bar-right">
-    <button class="lang-btn active" id="btnKO" onclick="setLang('ko')">KO</button>
+    <button class="lang-btn active" onclick="setLang('ko')">KO</button>
     <span class="lang-sep">|</span>
-    <button class="lang-btn" id="btnEN" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" onclick="setLang('en')">EN</button>
     <a href="#" onclick="document.getElementById('modal').classList.add('open');return false;" data-ko="이용안내" data-en="Visitor Info">이용안내</a>
   </div>
 </div>
@@ -143,7 +143,7 @@ footer{background:#111;color:rgba(255,255,255,.4);padding:3rem 2rem 2rem}
       <ul>
         <li><a href="#exhibit" data-ko="전시" data-en="Exhibition">전시</a></li>
         <li><a href="#collection" data-ko="소장품" data-en="Collection">소장품</a></li>
-        <li><a href="https://c-straw.com/posts/7513" data-ko="배움·연구" data-en="Learn">배움·연구</a></li>
+        <li><a href="#edu" data-ko="배움·연구" data-en="Learn">배움·연구</a></li>
         <li><a href="#floor" data-ko="미술관 안내" data-en="Visit">미술관 안내</a></li>
         <li><a href="#shop" data-ko="아트샵" data-en="Art Shop">아트샵</a></li>
       </ul>
@@ -154,10 +154,21 @@ footer{background:#111;color:rgba(255,255,255,.4);padding:3rem 2rem 2rem}
   <div class="mobile-menu" id="mobileMenu">
     <a href="#exhibit" onclick="closeMobileMenu()" data-ko="전시" data-en="Exhibition">전시</a>
     <a href="#collection" onclick="closeMobileMenu()" data-ko="소장품" data-en="Collection">소장품</a>
-    <a href="#edu" onclick="closeMobileMenu()" data-ko="배움·연구" data-en="Learn">배움·연구</a>
+    <a href="https://c-straw.com/posts/7513" onclick="closeMobileMenu()" data-ko="배움·연구" data-en="Learn">배움·연구</a>
     <a href="#floor" onclick="closeMobileMenu()" data-ko="미술관 안내" data-en="Visit">미술관 안내</a>
     <a href="#shop" onclick="closeMobileMenu()" data-ko="아트샵" data-en="Art Shop">아트샵</a>
     <a href="#" onclick="document.getElementById('modal').classList.add('open');closeMobileMenu();return false;" data-ko="예매 / 예약" data-en="Tickets">예매 / 예약</a>
+    <div style="height:1px;background:#eee;margin:.3rem 0;"></div>
+    <a href="#" onclick="document.getElementById('aboutModal').classList.add('open');closeMobileMenu();return false;" data-ko="미술관 소개" data-en="About">미술관 소개</a>
+    <a href="#" onclick="closeMobileMenu()" data-ko="후원·멤버십" data-en="Support">후원·멤버십</a>
+    <a href="https://www.artscene.co.kr/2100" onclick="closeMobileMenu()" data-ko="보도자료" data-en="Press">보도자료</a>
+    <a href="#" onclick="document.getElementById('modal').classList.add('open');closeMobileMenu();return false;" data-ko="이용안내" data-en="Visitor Info">이용안내</a>
+    <div style="height:1px;background:#eee;margin:.3rem 0;"></div>
+    <div style="display:flex;gap:1rem;padding:.9rem 1.5rem;">
+      <button class="lang-btn active" id="btnKO" onclick="setLang('ko')" style="color:#1a1a1a;font-size:.85rem;">KO</button>
+      <span style="color:#ccc;">|</span>
+      <button class="lang-btn" id="btnEN" onclick="setLang('en')" style="color:#1a1a1a;font-size:.85rem;">EN</button>
+    </div>
   </div>
 </header>
 
@@ -196,7 +207,7 @@ footer{background:#111;color:rgba(255,255,255,.4);padding:3rem 2rem 2rem}
   </div>
 
   <!-- 건축 설명 — 2단 -->
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid #333;">
+  <div class="arch-grid" style="border-top:1px solid #333;">
 
     <div style="padding:4rem 2rem;border-right:1px solid #333;">
       <p style="font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:1.5rem;" data-ko="외관 · Exterior" data-en="Exterior">외관 · Exterior</p>
@@ -443,14 +454,41 @@ footer{background:#111;color:rgba(255,255,255,.4);padding:3rem 2rem 2rem}
   </div>
 </div>
 
+<div class="modal-overlay" id="aboutModal" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="modal">
+    <button class="modal-close" onclick="document.getElementById('aboutModal').classList.remove('open')">✕</button>
+    <h2 class="modal-title" data-ko="메스매스 뮤지엄에 대하여" data-en="About MESSMASS Museum">메스매스 뮤지엄에 대하여</h2>
+    <p class="modal-sub" data-ko="이 페이지를 보고 계신 분들께 솔직히 말씀드립니다." data-en="An honest note to those viewing this page.">이 페이지를 보고 계신 분들께 솔직히 말씀드립니다.</p>
+    <ul class="modal-list">
+      <li>
+        <span class="n">1</span>
+        <span data-ko="메스매스 뮤지엄(MMMA)은 실제 미술관이 아닙니다. 2026년 2월, 서울 도봉구의 신생 예술공간 '메스매스'에서 열린 프로젝트성 전시입니다. 물리적으로 존재하는 작은 공간에 미술관의 외피(로고, 이용수칙, 층별 안내, 소장품 등)를 구현하는 것이 작업의 핵심이었습니다." data-en="MESSMASS Museum (MMMA) is not a real museum. It was a project-based exhibition held in February 2026 at 'Messmass,' an emerging art space in Dobong-gu, Seoul. The core of the work was implementing the outer shell of a museum — logo, visitor guidelines, floor guide, collection — within a small physical space.">메스매스 뮤지엄(MMMA)은 실제 미술관이 아닙니다. 2026년 2월, 서울 도봉구의 신생 예술공간 '메스매스'에서 열린 프로젝트성 전시입니다. 물리적으로 존재하는 작은 공간에 미술관의 외피(로고, 이용수칙, 층별 안내, 소장품 등)를 구현하는 것이 작업의 핵심이었습니다.</span>
+      </li>
+      <li>
+        <span class="n">2</span>
+        <span data-ko="이 사이트에 사용된 미술관 건축 이미지(외관 및 내부 전경)는 실제 건축물이 아니라 AI로 생성된 이미지입니다. 세계적인 건축가 JINI KIM도 존재하지 않습니다." data-en="The architectural images used on this site — exterior and interior views — are not real buildings. They are AI-generated images. The world-renowned architect JINI KIM does not exist.">이 사이트에 사용된 미술관 건축 이미지(외관 및 내부 전경)는 실제 건축물이 아니라 AI로 생성된 이미지입니다. 세계적인 건축가 JINI KIM도 존재하지 않습니다.</span>
+      </li>
+      <li>
+        <span class="n">3</span>
+        <span data-ko="이 웹사이트는 전시의 연장선에 있는 작업입니다. 리움미술관 등 제도권 미술관의 시각 언어와 기관적 권위를 차용하여, 허세와 제도비판 사이 어딘가에 존재하는 유사-미술관을 온라인에 구현합니다." data-en="This website is an extension of the exhibition. It borrows the visual language and institutional authority of established museums such as Leeum, constructing an online quasi-museum that exists somewhere between bluffing and institutional critique.">이 웹사이트는 전시의 연장선에 있는 작업입니다. 리움미술관 등 제도권 미술관의 시각 언어와 기관적 권위를 차용하여, 허세와 제도비판 사이 어딘가에 존재하는 유사-미술관을 온라인에 구현합니다.</span>
+      </li>
+      <li>
+        <span class="n">4</span>
+        <span data-ko="기획 및 제작 : 박정아 × JINI KIM (with JINI KIM)" data-en="Concept &amp; Production : Bahc Jung A × JINI KIM (with JINI KIM)">기획 및 제작 : 박정아 × JINI KIM (with JINI KIM)</span>
+      </li>
+    </ul>
+  </div>
+</div>
+
 <script>
 // ── 언어 전환 ──
 let currentLang = 'ko';
 
 function setLang(lang) {
   currentLang = lang;
-  document.getElementById('btnKO').classList.toggle('active', lang === 'ko');
-  document.getElementById('btnEN').classList.toggle('active', lang === 'en');
+  document.querySelectorAll('.lang-btn').forEach((btn, i) => {
+    btn.classList.toggle('active', i % 2 === (lang === 'ko' ? 0 : 1));
+  });
   document.querySelectorAll('[data-ko][data-en]').forEach(el => {
     const val = el.getAttribute('data-' + lang);
     if (val !== null) el.innerHTML = val;
