@@ -166,34 +166,13 @@ footer{background:#111;color:rgba(255,255,255,.4);padding:3rem 2rem 2rem}
 <div class="top-bar">
   <div class="top-bar-links">
     <div class="top-bar-item">
-      <a href="#" data-ko="미술관 안내" data-en="Visit">미술관 안내</a>
-      <div class="top-bar-dropdown">
-        <a href="#" onclick="document.getElementById('aboutModal').classList.add('open');return false;" data-ko="미술관 소개" data-en="About">미술관 소개</a>
-        <a href="#floor" data-ko="층별 안내" data-en="Floor Guide">층별 안내</a>
-        <a href="#" data-ko="오시는 길" data-en="Directions">오시는 길</a>
-        <a href="#" onclick="document.getElementById('modal').classList.add('open');return false;" data-ko="이용 안내" data-en="Visitor Info">이용 안내</a>
-      </div>
-    </div>
-    <div class="top-bar-item">
-      <a href="#exhibit" data-ko="전시 / 소장품" data-en="Exhibition / Collection">전시 / 소장품</a>
-      <div class="top-bar-dropdown">
-        <a href="#exhibit" data-ko="현재 전시" data-en="Current">현재 전시</a>
-        <a href="#exhibit" data-ko="과거 전시" data-en="Past">과거 전시</a>
-        <a href="#collection" data-ko="소장품" data-en="Collection">소장품</a>
-        <a href="#" data-ko="아카이브" data-en="Archive">아카이브</a>
-      </div>
-    </div>
-    <div class="top-bar-item">
-      <a href="#" data-ko="배움 / 연구" data-en="Learn / Research">배움 / 연구</a>
-      <div class="top-bar-dropdown">
-        <a href="https://c-straw.com/posts/7513" target="_blank" data-ko="교육 프로그램" data-en="Education">교육 프로그램</a>
-        <a href="#" data-ko="레지던시" data-en="Residency">레지던시</a>
-        <a href="#" data-ko="MMMA 아트샵" data-en="MMMA Art Shop">MMMA 아트샵</a>
-        <a href="#" data-ko="후원" data-en="Support">후원</a>
-      </div>
+      <a href="#" onclick="document.getElementById('aboutModal').classList.add('open');return false;" data-ko="미술관 소개" data-en="About">미술관 소개</a>
     </div>
     <div class="top-bar-item">
       <a href="https://www.artscene.co.kr/2100" target="_blank" data-ko="보도자료" data-en="Press">보도자료</a>
+    </div>
+    <div class="top-bar-item">
+      <a href="#" onclick="document.getElementById('ticketModal').classList.add('open');return false;" data-ko="관람료 안내" data-en="Admission">관람료 안내</a>
     </div>
   </div>
   <div class="top-bar-right">
@@ -212,9 +191,9 @@ footer{background:#111;color:rgba(255,255,255,.4);padding:3rem 2rem 2rem}
       <ul>
         <li><a href="#exhibit" data-ko="전시" data-en="Exhibition">전시</a></li>
         <li><a href="#collection" data-ko="소장품" data-en="Collection">소장품</a></li>
-        <li><a href="#edu" data-ko="배움·연구" data-en="Learn">배움·연구</a></li>
-        <li><a href="#floor" data-ko="미술관 안내" data-en="Visit">미술관 안내</a></li>
-        <li><a href="#shop" data-ko="아트샵" data-en="Art Shop">아트샵</a></li>
+        <li><a href="#architecture" data-ko="건축" data-en="Architecture">건축</a></li>
+        <li><a href="#floor" data-ko="층별 안내" data-en="Floor Guide">층별 안내</a></li>
+        <li><a href="#" onclick="document.getElementById('modal').classList.add('open');return false;" data-ko="이용 안내" data-en="Visitor Info">이용 안내</a></li>
       </ul>
     </nav>
     <div class="nav-right"><a href="#" class="btn-ticket" data-ko="예매 / 예약" data-en="Tickets">예매 / 예약</a></div>
@@ -222,34 +201,15 @@ footer{background:#111;color:rgba(255,255,255,.4);padding:3rem 2rem 2rem}
   </div>
   <!-- 모바일 메뉴 -->
   <div class="mobile-menu" id="mobileMenu">
-    <div class="mobile-cat">
-      <button class="mobile-cat-btn" onclick="toggleMobileCat(this)" data-ko="전시 / 소장품" data-en="Exhibition / Collection">전시 / 소장품</button>
-      <div class="mobile-sub">
-        <a href="#exhibit" onclick="closeMobileMenu()" data-ko="현재 전시" data-en="Current">현재 전시</a>
-        <a href="#exhibit" onclick="closeMobileMenu()" data-ko="과거 전시" data-en="Past">과거 전시</a>
-        <a href="#collection" onclick="closeMobileMenu()" data-ko="소장품" data-en="Collection">소장품</a>
-        <a href="#" onclick="closeMobileMenu()" data-ko="아카이브" data-en="Archive">아카이브</a>
-      </div>
-    </div>
-    <div class="mobile-cat">
-      <button class="mobile-cat-btn" onclick="toggleMobileCat(this)" data-ko="미술관 안내" data-en="Visit">미술관 안내</button>
-      <div class="mobile-sub">
-        <a href="#" onclick="document.getElementById('aboutModal').classList.add('open');closeMobileMenu();return false;" data-ko="미술관 소개" data-en="About">미술관 소개</a>
-        <a href="#floor" onclick="closeMobileMenu()" data-ko="층별 안내" data-en="Floor Guide">층별 안내</a>
-        <a href="#" onclick="closeMobileMenu()" data-ko="오시는 길" data-en="Directions">오시는 길</a>
-        <a href="#" onclick="document.getElementById('modal').classList.add('open');closeMobileMenu();return false;" data-ko="이용 안내" data-en="Visitor Info">이용 안내</a>
-      </div>
-    </div>
-    <div class="mobile-cat">
-      <button class="mobile-cat-btn" onclick="toggleMobileCat(this)" data-ko="배움 / 연구" data-en="Learn / Research">배움 / 연구</button>
-      <div class="mobile-sub">
-        <a href="https://c-straw.com/posts/7513" target="_blank" onclick="closeMobileMenu()" data-ko="교육 프로그램" data-en="Education">교육 프로그램</a>
-        <a href="#" onclick="closeMobileMenu()" data-ko="레지던시" data-en="Residency">레지던시</a>
-        <a href="#" onclick="closeMobileMenu()" data-ko="MMMA 아트샵" data-en="MMMA Art Shop">MMMA 아트샵</a>
-        <a href="#" onclick="closeMobileMenu()" data-ko="후원" data-en="Support">후원</a>
-      </div>
-    </div>
+    <a href="#exhibit" onclick="closeMobileMenu()" data-ko="전시" data-en="Exhibition">전시</a>
+    <a href="#collection" onclick="closeMobileMenu()" data-ko="소장품" data-en="Collection">소장품</a>
+    <a href="#architecture" onclick="closeMobileMenu()" data-ko="건축" data-en="Architecture">건축</a>
+    <a href="#floor" onclick="closeMobileMenu()" data-ko="층별 안내" data-en="Floor Guide">층별 안내</a>
+    <a href="#" onclick="document.getElementById('modal').classList.add('open');closeMobileMenu();return false;" data-ko="이용 안내" data-en="Visitor Info">이용 안내</a>
+    <div style="height:1px;background:var(--line);"></div>
+    <a href="#" onclick="document.getElementById('aboutModal').classList.add('open');closeMobileMenu();return false;" data-ko="미술관 소개" data-en="About">미술관 소개</a>
     <a href="https://www.artscene.co.kr/2100" target="_blank" onclick="closeMobileMenu()" data-ko="보도자료" data-en="Press">보도자료</a>
+    <a href="#" onclick="document.getElementById('ticketModal').classList.add('open');closeMobileMenu();return false;" data-ko="관람료 안내" data-en="Admission">관람료 안내</a>
     <a href="#" onclick="document.getElementById('modal').classList.add('open');closeMobileMenu();return false;" data-ko="예매 / 예약" data-en="Tickets">예매 / 예약</a>
     <div style="display:flex;gap:1rem;padding:.9rem 1.5rem;border-bottom:1px solid var(--line);">
       <button class="lang-btn active" onclick="setLang('ko')" style="color:var(--black);font-size:.85rem;">KO</button>
