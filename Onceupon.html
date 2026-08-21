@@ -1,1 +1,134 @@
-!DOCTYPE="html"
+<!DOCTYPE html>
+<html lang="kor">
+  <head>
+    <meta name="viewport", charset="UTF-8", content="width=device-width, initial-scale = 1.0">
+  <link rel="icon" href="favicon.ico" type="favicon.ico">
+  <link rel="stylesheet" href="redbro.css">
+  <title> Once upon a Time in ... </title>
+  
+</head>
+
+<body>
+
+<nav>
+  <a href="index.html" class="nav-id">박정아 / Bahc Jung A</a>
+  <a href="index.html#works" class="nav-back">← Works</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-slider-wrap">
+    <div class="slider" id="slider">
+      <div class="slide active">
+        <img src="" alt="">
+      </div>
+      <div class="slide">
+        <img src="" alt="">
+      </div>
+      <div class="slide">
+         <img src="" alt="">
+      </div>
+      <div class="slide">
+         <img src="" alt="">
+      </div>
+      <div class="slide">
+         <img src="" alt="">
+      </div>
+    </div>
+    <div class="slider-arrows">
+      <button class="slider-btn" id="prev">←</button>
+      <button class="slider-btn" id="next">→</button>
+    </div>
+    <div class="slider-nav" id="dots"></div>
+  </div>
+
+  <div class="hero-left">
+    <div>
+      <p class="hero-index">Works — 06</p>
+      <h1 class="hero-title">Once upon a Time in ... </h1>
+    </div>
+    <div class="hero-specs">
+      <div>
+        <span class="label label-bold">1 channel video . 4K (2.39:1) . 26min . </span>
+      </div>
+      <div>
+        <span class="label">2026</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 설명 + 크레딧 -->
+<div class="content-grid">
+  <div class="content-left">
+    <p class="block-label">작품 설명</p>
+    <p class="description"></p>
+    <p class="description"></p>
+    <p class="description"></p>
+  </div>
+  <div class="content-right">
+    <p class="block-label">크레딧</p>
+    <div class="credits">
+      <div class="credit-row">
+        <span class="credit-key">형식</span>
+        <span class="credit-val">1 channel video</span>
+      </div>
+      <div class="credit-row">
+        <span class="credit-key">해상도</span>
+        <span class="credit-val">4K (2.39:1)</span>
+      </div>
+      <div class="credit-row">
+        <span class="credit-key">러닝타임</span>
+        <span class="credit-val">26분</span>
+      </div>
+      <div class="credit-row">
+        <span class="credit-key">제작연도</span>
+        <span class="credit-val">2026</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 다음 작업 -->
+<div class="section-green">
+  <p class="block-label">다음 작업</p>
+  <a href="MMMA.html" class="next-link">
+    <span class="next-title">MMMA 메스매스 뮤지엄 →</span>
+  </a>
+</div>
+
+<footer>
+  <span>박정아 © 2026</span>
+  <span>Seoul, Korea</span>
+</footer>
+
+<script>
+  document.addEventListener('contextmenu', e => e.preventDefault());
+  document.addEventListener('dragstart', e => e.preventDefault());
+
+  const slides = document.querySelectorAll('.slide');
+  const dotsContainer = document.getElementById('dots');
+  let current = 0;
+
+  slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+    dot.addEventListener('click', () => goTo(i));
+    dotsContainer.appendChild(dot);
+  });
+
+  function goTo(n) {
+    slides[current].classList.remove('active');
+    dotsContainer.children[current].classList.remove('active');
+    current = (n + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    dotsContainer.children[current].classList.add('active');
+  }
+
+  document.getElementById('prev').addEventListener('click', () => goTo(current - 1));
+  document.getElementById('next').addEventListener('click', () => goTo(current + 1));
+  setInterval(() => goTo(current + 1), 4000);
+</script>
+
+</body>
+</html>
